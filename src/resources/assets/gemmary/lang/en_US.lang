@@ -1,0 +1,87 @@
+﻿<Minecraft English File for Gemmary. Made by SirBlobman>
+mod.name=Gemmary
+mod.preinitserver.done=[Gemmary] Server-Side Pre Initilization has completed!
+mod.initserver.done=[Gemmary] Server-Side Initilization has completed!
+mod.postinitserver.done=[Gemmary] Server-Side Post Initilization has completed!
+mod.preinitclient.done=[Gemmary] Client-Side Pre Initilization has completed!
+mod.initclient.done=[Gemmary] Client-Side Initilization has completed!
+mod.postinitclient.done=[Gemmary] Client-Side Post Initilization has completed!
+
+<Elements>
+item.aluminum_element.name=§7Aluminum
+item.carbon_element.name=§0Carbon
+item.chromium_element.name=§8Chromium
+item.oxygen_element.name=§cOxygen
+
+<Gems>
+item.amethyst.name=§5Amethyst
+item.corundum.name=§cCorundum
+item.ruby.name=§4Ruby
+item.sapphire.name=§9Sapphire
+item.talc.name=§fTalc
+item.tanzanite.name=§1Tanzanite
+item.topaz.name=§6Topaz
+item.turquoise.name=§3Turquoise
+
+<Gem Parts>
+item.diamond_part.name=§3Diamond §fPart
+item.emerald_part.name=§2Emerald §fPart
+
+<Ores>
+tile.amethyst_ore.name=§5Amethyst §fOre
+tile.corundum_ore.name=§cCorundum §fOre
+tile.ruby_ore.name=§4Ruby §fOre
+tile.sapphire_ore.name=§9Sapphire §fOre
+tile.talc_ore.name=§fTalc §fOre
+tile.tanzanite_ore.name=§1Tanzanite §fOre
+tile.topaz_ore.name=§6Topaz §fOre
+tile.turquoise_ore.name=§3Turquoise §fOre
+
+<Blocks and Machines>
+tile.atom_combiner.name=Atom Combiner
+tile.carbon_compressor.name=Compressor
+tile.chalk.name=§fChalk
+tile.diamond_tnt.name=§bDiamond §cTnT
+tile.small_engine.name=Small Engine
+tile.quartz_crystals.name=§f§lQuartz §fCrystals
+tile.amethyst_block.name=§5Amethyst §fBlock
+tile.corundum_block.name=§cCorundum §fBlock
+tile.ruby_block.name=§4Ruby §fBlock
+tile.sapphire_block.name=§9Sapphire §fBlock
+tile.talc_block.name=§fTalc §fBlock
+tile.tanzanite_block.name=§1Tanzanite §fBlock
+tile.topaz_block.name=§6Topaz §fBlock
+tile.turquoise_block.name=§3Turquoise §fBlock
+
+<Creative Tabs>
+itemGroup.Gems=§9Gemmary §3§ki§b§lGems §rand §eIngots§3§ki§f
+itemGroup.Elements=§9Gemmary §6Elements
+itemGroup.Blocks_Ores=§9Gemmary §aBlocks §rand §8Ores
+itemGroup.Gem_Parts=§9Gemmary §rGem Parts
+itemGroup.Other=§9Gemmary §rOther Items
+
+<Containers>
+container.ac=§fAtom Combiner
+container.ac.inv=§fInventory
+container.cc=§fCompressor
+
+<GUI Buttons>
+button.block=Block Recipes
+button.item=Item Recipes
+
+<Lores>
+lore.atoms=Enlarged and Unstable Atom. You can only hold one at a time
+
+<Texts>
+text.blocks.unavailable=[Gemmary Recipes] Block Recipes are currently unviewable
+text.items.unavailable=[Gemmary Recipes] Item Recipes are currently unviewable
+
+<Just Enough Items (JEI)>
+gui.jei.category.compressor=Gemmary Compressor
+gui.jei.category.compressor.experience=%s Exp.
+
+<Other>
+item.recipe_book.name=Recipe Book
+gui.done.gemmary=Close Recipe Book
+gui.cc.cooktime=Progress:
+gui.cc.fuel=Pressure Power:

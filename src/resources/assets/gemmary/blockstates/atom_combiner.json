@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "gemmary:atom_combiner" },
+        "facing=south": { "model": "gemmary:atom_combiner", "y": 180 },
+        "facing=west":  { "model": "gemmary:atom_combiner", "y": 270 },
+        "facing=east":  { "model": "gemmary:atom_combiner", "y": 90 }
+    }
+}
