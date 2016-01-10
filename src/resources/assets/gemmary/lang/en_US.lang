@@ -9,6 +9,7 @@ mod.postinitclient.done=[Gemmary] Client-Side Post Initilization has completed!
 
 <Elements>
 item.aluminum_element.name=§7Aluminum
+item.beryllium_element.name=§8Beryllium
 item.carbon_element.name=§0Carbon
 item.chromium_element.name=§8Chromium
 item.oxygen_element.name=§cOxygen
@@ -38,6 +39,7 @@ tile.topaz_ore.name=§6Topaz §fOre
 tile.turquoise_ore.name=§3Turquoise §fOre
 
 <Blocks and Machines>
+tile.artificial_hydrothermal_vein.name=Artificial Hydrothermal Vein
 tile.atom_combiner.name=Atom Combiner
 tile.carbon_compressor.name=Compressor
 tile.chalk.name=§fChalk
@@ -64,6 +66,7 @@ itemGroup.Other=§9Gemmary §rOther Items
 container.ac=§fAtom Combiner
 container.ac.inv=§fInventory
 container.cc=§fCompressor
+container.ahtv.name=§fArtificial Hydrothermal Vein
 
 <GUI Buttons>
 button.block=Block Recipes
@@ -77,11 +80,14 @@ text.blocks.unavailable=[Gemmary Recipes] Block Recipes are currently unviewable
 text.items.unavailable=[Gemmary Recipes] Item Recipes are currently unviewable
 
 <Just Enough Items (JEI)>
-gui.jei.category.compressor=Gemmary Compressor
+gui.jei.category.compressor=§9Gemmary §rCompressor
 gui.jei.category.compressor.experience=%s Exp.
+gui.jei.category.htv=§9Gemmary §rArtificial Hydrothermal Vein
 
 <Other>
 item.recipe_book.name=Recipe Book
 gui.done.gemmary=Close Recipe Book
 gui.cc.cooktime=Progress:
+gui.htv.progress=Hydration Progress:
 gui.cc.fuel=Pressure Power:
+gui.htv.water=Water:

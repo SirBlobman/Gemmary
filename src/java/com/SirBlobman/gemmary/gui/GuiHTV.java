@@ -26,7 +26,7 @@ public class GuiHTV extends GuiContainer
 	{
 		super(new ContainerHTV(invPlayer, tileHTV));
 		xSize = 176; 
-		ySize = 165;
+		ySize = 250;
 		
 		this.tileEntity = tileHTV;
 	}
@@ -42,7 +42,7 @@ public class GuiHTV extends GuiContainer
 	//Graphical Elements for the Progress Bar
 	final int ProgXPos = 87;
 	final int ProgYPos = 84;
-	final int ProgIconU = 324;
+	final int ProgIconU = 234;
 	final int ProgIconV = 13;
 	final int ProgIconWidth = 22;
 	final int ProgIconHeight = 15;
@@ -51,7 +51,7 @@ public class GuiHTV extends GuiContainer
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int x, int y)
 	{
 		Minecraft.getMinecraft().getTextureManager().bindTexture(htv);
-		GlStateManager.color(1.0F, 1.0F, 1.0F,1.0F);
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 		
 		double Progress = tileEntity.fractionOfProgressComplete();

@@ -7,4 +7,5 @@ public class GemmaryRecipeCategoryUid
 		
 	}
 	public static final String COMPRESSING = "gemmary.compressing";
+	public static final String HYDRATING = "gemmary.hydrating";
 }

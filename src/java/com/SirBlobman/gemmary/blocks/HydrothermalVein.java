@@ -169,4 +169,10 @@ public class HydrothermalVein extends BlockContainer
     {
         this.setDefaultFacing(worldIn, pos, state);
     }
+    
+    @Override
+    public int getRenderType()
+    {
+    	return 3;
+    }
 }

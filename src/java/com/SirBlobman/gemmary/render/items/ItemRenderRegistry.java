@@ -26,6 +26,7 @@ public final class ItemRenderRegistry
 		reg(GemmaryGems.turquoise);
 		//Elements
 		reg(GemmaryElements.aluminum);
+		reg(GemmaryElements.beryllium);
 		reg(GemmaryElements.carbon);
 		reg(GemmaryElements.chromium);
 		reg(GemmaryElements.oxygen);

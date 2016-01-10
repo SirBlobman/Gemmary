@@ -25,7 +25,11 @@ public class ContainerHTV extends Container
 	private final int VanillaSlotCount = HotBarSlotCount + PlayerInventorySlotCount;
 	
 	public final int WaterSlotsCount = 1;
-	public final int InputSlotsCount = 9;
+	
+	public final int InputSlotsRowCount = 3;
+	public final int InputSlotsColumnCount = 3;
+	public final int InputSlotsCount = InputSlotsRowCount * InputSlotsColumnCount;
+	
 	public final int OutputSlotsCount = 1;
 	public final int HTVSlotsCount = WaterSlotsCount + InputSlotsCount + OutputSlotsCount;
 	
@@ -43,16 +47,16 @@ public class ContainerHTV extends Container
 		
 		final int SlotXSpacing = 18;
 		final int SlotYSpacing = 18;
-		final int HotbarXPos = 9;
-		final int HotbarYPos = 231;
+		final int HotbarXPos = 10;
+		final int HotbarYPos = 232;
 		for (int x = 0; x < HotBarSlotCount; x++)
 		{
 			int slotNumber = x;
 			addSlotToContainer(new Slot(invPlayer, slotNumber, HotbarXPos + SlotXSpacing * x, HotbarYPos));
 		}
 		
-		final int PlayerInventoryXPos = 9;
-		final int PlayerInventoryYPos = 170;
+		final int PlayerInventoryXPos = 10;
+		final int PlayerInventoryYPos = 171;
 		for (int y = 0; y < PlayerInventoryRowCount; y++)
 		{
 			for (int x = 0; x < PlayerInventoryColumnCount; x++)
@@ -64,24 +68,28 @@ public class ContainerHTV extends Container
 			}
 		}
 		
-		final int WaterSlotsXPos = 42;
-		final int WaterSlotsYPos = 99;
+		final int WaterSlotsXPos = 47;
+		final int WaterSlotsYPos = 104;
 		for(int x = 0; x < WaterSlotsCount; x++)
 		{
 			int slotNumber = x + FirstWaterSlotNumber;
 			addSlotToContainer(new SlotWater(tileHTV, slotNumber, WaterSlotsXPos + SlotXSpacing * x, WaterSlotsYPos));
 		}
 		
-		final int InputSlotsXPos = 27;
-		final int InputSlotsYPos = 30;
-		for (int y = 0; y < InputSlotsCount; y++)
+		final int InputSlotsXPos = 28;
+		final int InputSlotsYPos = 31;
+		for (int y = 0; y < 3; y++) 
 		{
-			int slotNumber = y + FirstInputSlotNumber;
-			addSlotToContainer(new SlotHydratableInput(tileHTV, slotNumber, InputSlotsXPos, InputSlotsYPos + SlotYSpacing * y));
+			for (int x = 0; x < 3; ++x)
+			{
+				int slotNumber = WaterSlotsCount + y * InputSlotsColumnCount + x;
+				addSlotToContainer(new SlotHydratableInput(tileHTV, slotNumber, InputSlotsXPos + x * 18, InputSlotsYPos + y * 18));
+			}
 		}
+
 		
-		final int OutputSlotsXPos = 116;
-		final int OutputSlotsYPos = 79;
+		final int OutputSlotsXPos = 121;
+		final int OutputSlotsYPos = 84;
 		for (int y = 0; y < OutputSlotsCount; y++)
 		{
 			int slotNumber = y + FirstOutputSlotNumber;

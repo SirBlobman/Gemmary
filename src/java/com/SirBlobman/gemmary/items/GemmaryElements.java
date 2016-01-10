@@ -18,6 +18,7 @@ public class GemmaryElements
 	
 	//Element Objects
 	public static Item aluminum;
+	public static Item beryllium;
 	public static Item carbon;
 	public static Item chromium;
 	public static Item oxygen;
@@ -26,6 +27,7 @@ public class GemmaryElements
 	public static void createChemicalElements()
 	{
 		GameRegistry.registerItem(aluminum = new Atom("aluminum_element"), "aluminum_element");
+		GameRegistry.registerItem(beryllium = new Atom("beryllium_element"), "beryllium_element");
 		GameRegistry.registerItem(carbon = new Atom("carbon_element"), "carbon_element");
 		GameRegistry.registerItem(chromium = new Atom("chromium_element"), "chromium_element");
 		GameRegistry.registerItem(oxygen = new Atom("oxygen_element"), "oxygen_element");

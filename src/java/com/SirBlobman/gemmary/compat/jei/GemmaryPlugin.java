@@ -3,7 +3,11 @@ package com.SirBlobman.gemmary.compat.jei;
 import com.SirBlobman.gemmary.compat.jei.compressor.CompressorCompressingCategory;
 import com.SirBlobman.gemmary.compat.jei.compressor.CompressorRecipeHandler;
 import com.SirBlobman.gemmary.compat.jei.compressor.CompressorRecipeMaker;
+import com.SirBlobman.gemmary.compat.jei.hydrothermalvein.ArtificialHydratingCategory;
+import com.SirBlobman.gemmary.compat.jei.hydrothermalvein.HydratorRecipeHandler;
+import com.SirBlobman.gemmary.compat.jei.hydrothermalvein.HydratorRecipeMaker;
 import com.SirBlobman.gemmary.guicontainer.ContainerCompressor;
+import com.SirBlobman.gemmary.guicontainer.ContainerHTV;
 
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IItemRegistry;
@@ -45,17 +49,21 @@ public class GemmaryPlugin implements IModPlugin
 		IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
 		registry.addRecipeCategories
 		(
-			new CompressorCompressingCategory(guiHelper)	
+			new CompressorCompressingCategory(guiHelper),
+			new ArtificialHydratingCategory(guiHelper)
 		);
 		registry.addRecipeHandlers
 		(
-			new CompressorRecipeHandler()
+			new CompressorRecipeHandler(),
+			new HydratorRecipeHandler()
 		);
 		IRecipeTransferRegistry recipeTransferRegistry = registry.getRecipeTransferRegistry();
 		
 		recipeTransferRegistry.addRecipeTransferHandler(ContainerCompressor.class, GemmaryRecipeCategoryUid.COMPRESSING, 0, 1, 1, 36);
+		recipeTransferRegistry.addRecipeTransferHandler(ContainerHTV.class, GemmaryRecipeCategoryUid.HYDRATING, 0, 1, 1, 36);
 		
 		registry.addRecipes(CompressorRecipeMaker.getCompressorRecipes());
+		registry.addRecipes(HydratorRecipeMaker.getHydratorRecipes());
 	}
 	
 	@Override

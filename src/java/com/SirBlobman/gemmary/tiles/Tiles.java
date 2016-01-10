@@ -8,5 +8,6 @@ public final class Tiles
 	{
 		GameRegistry.registerTileEntity(ACTE.class, "acte");
 		GameRegistry.registerTileEntity(CCTE.class, "compressor");
+		GameRegistry.registerTileEntity(AHTV_TE.class, "ahtv");
 	}
 }

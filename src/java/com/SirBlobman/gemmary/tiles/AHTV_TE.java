@@ -2,10 +2,16 @@ package com.SirBlobman.gemmary.tiles;
 
 import java.util.Arrays;
 
-import com.SirBlobman.gemmary.crafting.CarbonCompressorRecipes;
+import com.SirBlobman.gemmary.crafting.HydroThermalRecipes;
 
+import net.minecraft.block.Block;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagIntArray;
@@ -14,7 +20,6 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.IChatComponent;
@@ -27,11 +32,11 @@ public class AHTV_TE extends TileEntity implements ITickable, IInventory
 	public static final int WaterSlotsCount = 1;
 	public static final int InputSlotsCount = 9;
 	public static final int OutputSlotsCount = 1;
-	public static final int TotalSlotsCount = WaterSlotsCount + InputSlotsCount + OutputSlotsCount;
+	public static final int TotalSlotsCount = 11;
 	
 	public static final int FirstWaterSlot = 0;
-	public static final int FirstInputSlot = FirstWaterSlot + WaterSlotsCount;
-	public static final int FirstOutputSlot = FirstInputSlot + InputSlotsCount;
+	public static final int FirstInputSlot = 1;
+	public static final int FirstOutputSlot = 10;
 	
 	private ItemStack[] itemStacks = new ItemStack[TotalSlotsCount];
 	
@@ -202,13 +207,41 @@ public class AHTV_TE extends TileEntity implements ITickable, IInventory
 		return true;
 	}
 	
-	public static ItemStack getHydratingResultForItem(ItemStack stack) {return CarbonCompressorRecipes.instance().getCompressingResult(stack); }
+	public static ItemStack getHydratingResultForItem(ItemStack stack) {return HydroThermalRecipes.instance().getHydratingResult(stack); }
 	
 	public static short getItemHydrateTime(ItemStack stack)
 	{
-		int hydratetime = TileEntityFurnace.getItemBurnTime(stack);
+		int hydratetime = AHTV_TE.getItemWaterValue(stack);
 		return (short)MathHelper.clamp_int(hydratetime,  0,  Short.MAX_VALUE);
 	}
+	
+	public static int getItemWaterValue(ItemStack stack)
+	{
+		if (stack == null)
+		{
+			return 0;
+		}
+		else
+		{
+			Item item = stack.getItem();
+			if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.air)
+            {
+                Block block = Block.getBlockFromItem(item);
+
+                if (block == Blocks.ice)
+                {
+                	return 800;
+                }
+                if (block == Blocks.packed_ice)
+                {
+                	return 400;
+                }
+            }
+            if (item == Items.water_bucket) return 800;
+            return 0;
+		}
+	}
+	
 	@Override
 	public int getSizeInventory()
 	{
@@ -306,16 +339,16 @@ public class AHTV_TE extends TileEntity implements ITickable, IInventory
 		parentNBTTagCompound.setTag("Items", dataForAllSlots);
 
 		// Save everything else
-		parentNBTTagCompound.setShort("CookTime", progress);
-	  parentNBTTagCompound.setTag("burnTimeRemaining", new NBTTagIntArray(waterRemaining));
-		parentNBTTagCompound.setTag("burnTimeInitial", new NBTTagIntArray(waterInitialValue));
+		parentNBTTagCompound.setShort("Progress", progress);
+	  parentNBTTagCompound.setTag("waterRemaining", new NBTTagIntArray(waterRemaining));
+		parentNBTTagCompound.setTag("waterInitial", new NBTTagIntArray(waterInitialValue));
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound nbtTagCompound)
 	{
 		super.readFromNBT(nbtTagCompound);
-		final byte NBT_TYPE_COMPOUND = 10;
+		final byte NBT_TYPE_COMPOUND = 11;
 		NBTTagList dataForAllSlots = nbtTagCompound.getTagList("Items", NBT_TYPE_COMPOUND);
 
 		Arrays.fill(itemStacks, null);
@@ -330,9 +363,9 @@ public class AHTV_TE extends TileEntity implements ITickable, IInventory
 		}
 
 		// Load everything else.  Trim the arrays (or pad with 0) to make sure they have the correct number of elements
-		progress = nbtTagCompound.getShort("CookTime");
-		waterRemaining = Arrays.copyOf(nbtTagCompound.getIntArray("burnTimeRemaining"), WaterSlotsCount);
-		waterInitialValue = Arrays.copyOf(nbtTagCompound.getIntArray("burnTimeInitial"), WaterSlotsCount);
+		progress = nbtTagCompound.getShort("Progress");
+		waterRemaining = Arrays.copyOf(nbtTagCompound.getIntArray("waterRemaining"), WaterSlotsCount);
+		waterInitialValue = Arrays.copyOf(nbtTagCompound.getIntArray("waterInitial"), WaterSlotsCount);
 		cachedNumberOfWaterSlots = -1;
 	}
 
@@ -348,7 +381,8 @@ public class AHTV_TE extends TileEntity implements ITickable, IInventory
 	}
 
 	@Override
-	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) 
+	{
 		readFromNBT(pkt.getNbtCompound());
 	}
 
@@ -356,14 +390,15 @@ public class AHTV_TE extends TileEntity implements ITickable, IInventory
 
 	// set all slots to empty
 	@Override
-	public void clear() {
+	public void clear() 
+	{
 		Arrays.fill(itemStacks, null);
 	}
 
 	// will add a key for this container to the lang file so we can name it in the GUI
 	@Override
 	public String getName() {
-		return "container.ahtv.name";
+		return I18n.format("container.ahtv.name", new Object[0]);
 	}
 
 	@Override
@@ -383,12 +418,15 @@ public class AHTV_TE extends TileEntity implements ITickable, IInventory
 	private static final byte NUMBER_OF_FIELDS = FIRST_BURN_TIME_INITIAL_FIELD_ID + (byte)WaterSlotsCount;
 
 	@Override
-	public int getField(int id) {
+	public int getField(int id) 
+	{
 		if (id == COOK_FIELD_ID) return progress;
-		if (id >= FIRST_BURN_TIME_REMAINING_FIELD_ID && id < FIRST_BURN_TIME_REMAINING_FIELD_ID + WaterSlotsCount) {
+		if (id >= FIRST_BURN_TIME_REMAINING_FIELD_ID && id < FIRST_BURN_TIME_REMAINING_FIELD_ID + WaterSlotsCount) 
+		{
 			return waterRemaining[id - FIRST_BURN_TIME_REMAINING_FIELD_ID];
 		}
-		if (id >= FIRST_BURN_TIME_INITIAL_FIELD_ID && id < FIRST_BURN_TIME_INITIAL_FIELD_ID + WaterSlotsCount) {
+		if (id >= FIRST_BURN_TIME_INITIAL_FIELD_ID && id < FIRST_BURN_TIME_INITIAL_FIELD_ID + WaterSlotsCount) 
+		{
 			return waterInitialValue[id - FIRST_BURN_TIME_INITIAL_FIELD_ID];
 		}
 		System.err.println("Invalid field ID in TileInventorySmelting.getField:" + id);

@@ -8,6 +8,7 @@ import com.SirBlobman.gemmary.items.GemmaryGems;
 import com.SirBlobman.gemmary.items.GemmaryRandomItems;
 import com.SirBlobman.gemmary.network.GuiHandler;
 import com.SirBlobman.gemmary.ores.GemmaryOres;
+import com.SirBlobman.gemmary.tiles.Tiles;
 import com.SirBlobman.gemmary.world.OreGeneration;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -26,6 +27,7 @@ public class GemmaryCommon
 		GemmaryRandomItems.createRandomItems();
 		GemmaryOres.createOres();
 		RandomBlocks.createRandomBlocks();
+		Tiles.createNewTiles();
     }
 
     public void init(FMLInitializationEvent e) 
