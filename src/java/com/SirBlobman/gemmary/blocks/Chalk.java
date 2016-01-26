@@ -1,6 +1,6 @@
 package com.SirBlobman.gemmary.blocks;
 
-import com.SirBlobman.gemmary.ores.GemmaryOres;
+import com.SirBlobman.gemmary.items.GemmaryRandomItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -22,7 +22,7 @@ public class Chalk extends Block
 		this.setHardness(10.0f);
 		this.setResistance(15.0f);
 		this.setUnlocalizedName(unlocalizedName);
-		this.setCreativeTab(GemmaryOres.BlocksOres);
+		this.setCreativeTab(GemmaryRandomItems.OtherBlocks);
 		this.setBlockBoundsFromMeta(0);
 	}
 	@SideOnly(Side.CLIENT)

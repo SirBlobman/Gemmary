@@ -2,6 +2,7 @@ package com.SirBlobman.gemmary;
 
 import com.SirBlobman.gemmary.blocks.RandomBlocks;
 import com.SirBlobman.gemmary.crafting.Crafting;
+import com.SirBlobman.gemmary.items.GemmaryArmor;
 import com.SirBlobman.gemmary.items.GemmaryElements;
 import com.SirBlobman.gemmary.items.GemmaryGemParts;
 import com.SirBlobman.gemmary.items.GemmaryGems;
@@ -24,6 +25,7 @@ public class GemmaryCommon
 		GemmaryGems.createGems();
 		GemmaryElements.createChemicalElements();
 		GemmaryGemParts.createGemParts();
+		GemmaryArmor.createArmor();
 		GemmaryRandomItems.createRandomItems();
 		GemmaryOres.createOres();
 		RandomBlocks.createRandomBlocks();

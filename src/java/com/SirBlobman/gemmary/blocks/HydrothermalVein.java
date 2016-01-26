@@ -1,8 +1,8 @@
 package com.SirBlobman.gemmary.blocks;
 
 import com.SirBlobman.gemmary.Gemmary;
+import com.SirBlobman.gemmary.items.GemmaryRandomItems;
 import com.SirBlobman.gemmary.network.GuiHandler;
-import com.SirBlobman.gemmary.ores.GemmaryOres;
 import com.SirBlobman.gemmary.tiles.AHTV_TE;
 
 import net.minecraft.block.Block;
@@ -37,7 +37,7 @@ public class HydrothermalVein extends BlockContainer
         super(Material.circuits);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));        
         this.setUnlocalizedName(unlocalizedName);
-        this.setCreativeTab(GemmaryOres.BlocksOres);
+        this.setCreativeTab(GemmaryRandomItems.OtherBlocks);
         this.setStepSound(soundTypeMetal);
     }
 	@SideOnly(Side.CLIENT)

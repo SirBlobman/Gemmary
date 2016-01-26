@@ -1,8 +1,8 @@
 package com.SirBlobman.gemmary.blocks;
 
 import com.SirBlobman.gemmary.Gemmary;
+import com.SirBlobman.gemmary.items.GemmaryRandomItems;
 import com.SirBlobman.gemmary.network.GuiHandler;
-import com.SirBlobman.gemmary.ores.GemmaryOres;
 import com.SirBlobman.gemmary.tiles.ACTE;
 
 import net.minecraft.block.Block;
@@ -35,7 +35,7 @@ public class AtomCombiner extends BlockContainer
         super(Material.iron);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         this.setUnlocalizedName("atom_combiner");
-        this.setCreativeTab(GemmaryOres.BlocksOres);
+        this.setCreativeTab(GemmaryRandomItems.OtherBlocks);
         this.setStepSound(soundTypeAnvil);
         this.isBlockContainer = true;
     }

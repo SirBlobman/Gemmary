@@ -15,6 +15,7 @@ public class GemmaryClient extends GemmaryCommon
 	public void preInit(FMLPreInitializationEvent e) 
 	{
 		super.preInit(e);
+		ItemRenderRegistry.preInit();
 		FMLLog.info(I18n.format("mod.preinitclient.done", new Object[0]));
 	}
 

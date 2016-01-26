@@ -34,13 +34,13 @@ public final class GemmaryOres
 	
 	public static void createOres()
 	{
-		GameRegistry.registerBlock(amethystOre = new Ore("amethyst_ore", Material.rock, GemmaryGems.amethyst, 0, 2, 4, "pickaxe", 2), "amethyst_ore");
+		GameRegistry.registerBlock(amethystOre = new Ore("amethyst_ore", Material.rock, GemmaryGems.amethyst, 1, 2, 4, "pickaxe", 2), "amethyst_ore");
 		GameRegistry.registerBlock(quartzCrystal = new QuartzCrystals("quartz_crystals", Material.rock, Items.quartz, 2, 4), "quartz_crystals");
-		GameRegistry.registerBlock(rubyOre = new Ore("ruby_ore", Material.rock, GemmaryGems.ruby, 0, 2, 4, "pickaxe", 3), "ruby_ore");
-		GameRegistry.registerBlock(sapphireOre = new Ore("sapphire_ore", Material.rock, GemmaryGems.sapphire, 0, 2, 4, "pickaxe", 3), "sapphire_ore");
-		GameRegistry.registerBlock(talcOre = new Ore("talc_ore", Material.rock, GemmaryGems.talc, 0, 2, 4, "pickaxe", 0), "talc_ore");
-		GameRegistry.registerBlock(tanzaniteOre = new Ore("tanzanite_ore", Material.rock, GemmaryGems.tanzanite, 0, 2, 4, "pickaxe", 2), "tanzanite_ore");
-		GameRegistry.registerBlock(topazOre = new Ore("topaz_ore", Material.rock, GemmaryGems.topaz, 0, 2, 4, "pickaxe", 2), "topaz_ore");
-		GameRegistry.registerBlock(turquoiseOre = new Ore("turquoise_ore", Material.rock, GemmaryGems.turquoise, 0, 2, 4, "pickaxe", 1), "turquoise_ore");
+		GameRegistry.registerBlock(rubyOre = new Ore("ruby_ore", Material.rock, GemmaryGems.ruby, 1, 2, 4, "pickaxe", 3), "ruby_ore");
+		GameRegistry.registerBlock(sapphireOre = new Ore("sapphire_ore", Material.rock, GemmaryGems.sapphire, 1, 2, 4, "pickaxe", 3), "sapphire_ore");
+		GameRegistry.registerBlock(talcOre = new Ore("talc_ore", Material.rock, GemmaryGems.talc, 1, 2, 4, "pickaxe", 0), "talc_ore");
+		GameRegistry.registerBlock(tanzaniteOre = new Ore("tanzanite_ore", Material.rock, GemmaryGems.tanzanite, 1, 2, 4, "pickaxe", 2), "tanzanite_ore");
+		GameRegistry.registerBlock(topazOre = new Ore("topaz_ore", Material.rock, GemmaryGems.topaz, 1, 2, 4, "pickaxe", 2), "topaz_ore");
+		GameRegistry.registerBlock(turquoiseOre = new Ore("turquoise_ore", Material.rock, GemmaryGems.turquoise, 1, 2, 4, "pickaxe", 1), "turquoise_ore");
 	}
 }

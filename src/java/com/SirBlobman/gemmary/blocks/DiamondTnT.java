@@ -1,6 +1,6 @@
 package com.SirBlobman.gemmary.blocks;
 
-import com.SirBlobman.gemmary.ores.GemmaryOres;
+import com.SirBlobman.gemmary.items.GemmaryRandomItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -28,7 +28,7 @@ public class DiamondTnT extends Block
     {
         super(Material.tnt);
         this.setDefaultState(this.blockState.getBaseState().withProperty(EXPLODE, Boolean.valueOf(false)));
-        this.setCreativeTab(GemmaryOres.BlocksOres);
+        this.setCreativeTab(GemmaryRandomItems.OtherBlocks);
         this.setUnlocalizedName(unlocalizedName);
         this.setStepSound(soundTypeGrass);
         this.setBlockBounds(0.25F, 0.0F, 0.25F, 0.75F, 0.5F, 0.75F);

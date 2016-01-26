@@ -25,13 +25,6 @@ public final class RandomBlocks
 	
 	public static final void createRandomBlocks()
 	{
-		//Random
-		GameRegistry.registerBlock(atomCombiner = new AtomCombiner(), "atom_combiner");
-		GameRegistry.registerBlock(carbonCompressor = new CarbonCompressor(), "carbon_compressor");
-		GameRegistry.registerBlock(chalk = new Chalk("chalk", Material.circuits), "chalk");
-		GameRegistry.registerBlock(diamondTnT = new DiamondTnT("diamond_tnt"), "diamond_tnt");
-		GameRegistry.registerBlock(SmallEngine = new Engine("small_engine"), "small_engine");
-		GameRegistry.registerBlock(AHTV = new HydrothermalVein("artificial_hydrothermal_vein"), "artificial_hydrothermal_vein");
 		//Gem Blocks: Hardness is the Mohs Scale divided by 2. Example: Diamond is 10 so Diamond Block hardness is 5.0F
 		GameRegistry.registerBlock(amethystBlock = new GemBlock("amethyst_block", 4.5F) , "amethyst_block");
 		GameRegistry.registerBlock(corundumBlock = new GemBlock("corundum_block", 4.5F), "corundum_block");
@@ -41,6 +34,13 @@ public final class RandomBlocks
 		GameRegistry.registerBlock(tanzaniteBlock = new GemBlock("tanzanite_block", 3.25F) , "tanzanite_block");
 		GameRegistry.registerBlock(topazBlock = new GemBlock("topaz_block", 4.0F) , "topaz_block");
 		GameRegistry.registerBlock(turquoiseBlock = new GemBlock("turquoise_block", 2.5F) , "turquoise_block");
+		//Random
+		GameRegistry.registerBlock(atomCombiner = new AtomCombiner(), "atom_combiner");
+		GameRegistry.registerBlock(carbonCompressor = new CarbonCompressor(), "carbon_compressor");
+		GameRegistry.registerBlock(chalk = new Chalk("chalk", Material.circuits), "chalk");
+		GameRegistry.registerBlock(diamondTnT = new DiamondTnT("diamond_tnt"), "diamond_tnt");
+		GameRegistry.registerBlock(SmallEngine = new Engine("small_engine"), "small_engine");
+		GameRegistry.registerBlock(AHTV = new HydrothermalVein("artificial_hydrothermal_vein"), "artificial_hydrothermal_vein");
 		
 	}
 }

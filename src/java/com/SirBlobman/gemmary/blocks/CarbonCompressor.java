@@ -1,8 +1,8 @@
 package com.SirBlobman.gemmary.blocks;
 
 import com.SirBlobman.gemmary.Gemmary;
+import com.SirBlobman.gemmary.items.GemmaryRandomItems;
 import com.SirBlobman.gemmary.network.GuiHandler;
-import com.SirBlobman.gemmary.ores.GemmaryOres;
 import com.SirBlobman.gemmary.tiles.CCTE;
 
 import net.minecraft.block.Block;
@@ -44,7 +44,7 @@ public class CarbonCompressor extends BlockContainer
 	public CarbonCompressor()
 	{
 		super(Material.rock);
-		this.setCreativeTab(GemmaryOres.BlocksOres);
+		this.setCreativeTab(GemmaryRandomItems.OtherBlocks);
 		this.setUnlocalizedName("carbon_compressor");
 		this.setStepSound(soundTypeAnvil);
 	}

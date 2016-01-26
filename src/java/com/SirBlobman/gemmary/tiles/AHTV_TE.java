@@ -3,6 +3,7 @@ package com.SirBlobman.gemmary.tiles;
 import java.util.Arrays;
 
 import com.SirBlobman.gemmary.crafting.HydroThermalRecipes;
+import com.SirBlobman.gemmary.items.GemmaryRandomItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
@@ -44,7 +45,7 @@ public class AHTV_TE extends TileEntity implements ITickable, IInventory
 	private int [] waterInitialValue = new int[WaterSlotsCount];
 	
 	private short progress;
-	private static final short ProgressForCompletion = 2400; //2 Minutes = 2400 ticks
+	private static final short ProgressForCompletion = 2500; //2 Minutes = 2400 ticks
 	
 	private int cachedNumberOfWaterSlots = -1;
 	
@@ -58,7 +59,7 @@ public class AHTV_TE extends TileEntity implements ITickable, IInventory
 	public int millibucketsOfWaterRemaining(int waterSlot)
 	{
 		if (waterRemaining[waterSlot] <= 0 ) return 0;
-		return waterRemaining[waterSlot] / 20; // 20 ticks per second
+		return waterRemaining[waterSlot]; // 20 ticks per second
 	}
 	
 	public int numberOfWaterSlots()
@@ -230,14 +231,15 @@ public class AHTV_TE extends TileEntity implements ITickable, IInventory
 
                 if (block == Blocks.ice)
                 {
-                	return 800;
+                	return 500;
                 }
                 if (block == Blocks.packed_ice)
                 {
-                	return 400;
+                	return 250;
                 }
             }
-            if (item == Items.water_bucket) return 800;
+            if (item == Items.water_bucket) return 1000;
+            if (item == GemmaryRandomItems.HeatedWaterContainer) return 2500;
             return 0;
 		}
 	}

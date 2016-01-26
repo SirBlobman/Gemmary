@@ -61,3 +61,36 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run
+
+#Minecraft
+crash-reports
+config
+logs
+saves
+resourcepacks
+usercache.json
+usernamecache.json
+
