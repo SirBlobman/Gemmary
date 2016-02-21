@@ -10,12 +10,14 @@ import net.minecraft.item.ItemStack;
 
 public class Gem extends Item
 {
-	public Gem(String unlocalizedName)
+	public double MohsValue;
+	public Gem(String unlocalizedName, double MohsDouble)
 	{
 		super();
 		this.setUnlocalizedName(unlocalizedName);
 		this.setCreativeTab(GemmaryGems.Gems);
 		this.setHasSubtypes(true);
+		this.MohsValue = MohsDouble;
 	}
 	
 	public boolean isBeaconPayment(ItemStack stack)
@@ -39,11 +41,16 @@ public class Gem extends Item
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer par2, @SuppressWarnings("rawtypes") List par3, boolean par4)
+	public void addInformation(ItemStack stack, EntityPlayer par2, @SuppressWarnings("rawtypes") List lore, boolean par4)
 	{
+		double Mohs = this.MohsValue;
 		if (stack.getItemDamage() == 1)
-			par3.add(I18n.format("lore.dusty_gems" , new Object[0]));
+			lore.add(I18n.format("lore.dusty_gems", new Object[0]));
+		lore.add(I18n.format("lore.mohs_scale", new Object[0]) + ":" + " " + Mohs);
 	}
 	
-	
+	public double getMohsValue()
+	{
+		return this.MohsValue;
+	}
 }

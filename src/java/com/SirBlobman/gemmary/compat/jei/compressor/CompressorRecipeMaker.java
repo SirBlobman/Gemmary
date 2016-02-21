@@ -6,7 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Nonnull;
 
-import com.SirBlobman.gemmary.crafting.CarbonCompressorRecipes;
+import com.SirBlobman.gemmary.crafting.CompressorRecipes;
 
 import mezz.jei.util.StackUtil;
 import net.minecraft.item.ItemStack;
@@ -16,7 +16,7 @@ public class CompressorRecipeMaker
 	@Nonnull
 	public static List<CompressorRecipe> getCompressorRecipes()
 	{
-		CarbonCompressorRecipes compressorRecipes = CarbonCompressorRecipes.instance();
+		CompressorRecipes compressorRecipes = CompressorRecipes.instance();
 		Map<ItemStack, ItemStack> compressingMap = getCompressingMap(compressorRecipes);
 		
 		List<CompressorRecipe> recipes = new ArrayList<>();
@@ -36,7 +36,7 @@ public class CompressorRecipeMaker
 		return recipes;
 	}
 	
-	private static Map<ItemStack, ItemStack> getCompressingMap(@Nonnull CarbonCompressorRecipes compressorRecipes)
+	private static Map<ItemStack, ItemStack> getCompressingMap(@Nonnull CompressorRecipes compressorRecipes)
 	{
 		return compressorRecipes.getSmeltingList();
 	}

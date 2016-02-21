@@ -11,20 +11,21 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 
 public final class ItemRenderRegistry 
 {
-	@SuppressWarnings("deprecation")
 	public static void preInit() 
 	{
-	    ModelBakery.addVariantName(GemmaryGems.amethyst, "gemmary:amethyst", "gemmary:amethyst_dusty");
-	    ModelBakery.addVariantName(GemmaryGems.corundum, "gemmary:corundum", "gemmary:corundum_dusty");
-	    ModelBakery.addVariantName(GemmaryGems.ruby, "gemmary:ruby", "gemmary:ruby_dusty");
-	    ModelBakery.addVariantName(GemmaryGems.sapphire, "gemmary:sapphire", "gemmary:sapphire_dusty");
-	    ModelBakery.addVariantName(GemmaryGems.talc, "gemmary:talc", "gemmary:talc_dusty");
-	    ModelBakery.addVariantName(GemmaryGems.tanzanite, "gemmary:tanzanite", "gemmary:tanzanite_dusty");
-	    ModelBakery.addVariantName(GemmaryGems.topaz, "gemmary:topaz", "gemmary:topaz_dusty");
-	    ModelBakery.addVariantName(GemmaryGems.turquoise, "gemmary:turquoise", "gemmary:turquoise_dusty");
+	    ModelBakery.registerItemVariants(GemmaryGems.amethyst, new ResourceLocation("gemmary:amethyst"), new ResourceLocation("gemmary:amethyst_dusty"));
+	    ModelBakery.registerItemVariants(GemmaryGems.corundum, new ResourceLocation("gemmary:corundum"), new ResourceLocation("gemmary:corundum_dusty"));
+	    ModelBakery.registerItemVariants(GemmaryGems.real_diamond, new ResourceLocation("gemmary:diamond"), new ResourceLocation("gemmary:diamond_dusty"));
+	    ModelBakery.registerItemVariants(GemmaryGems.ruby, new ResourceLocation("gemmary:ruby"), new ResourceLocation("gemmary:ruby_dusty"));
+	    ModelBakery.registerItemVariants(GemmaryGems.sapphire, new ResourceLocation("gemmary:sapphire"), new ResourceLocation("gemmary:sapphire_dusty"));
+	    ModelBakery.registerItemVariants(GemmaryGems.talc, new ResourceLocation("gemmary:talc"), new ResourceLocation("gemmary:talc_dusty"));
+	    ModelBakery.registerItemVariants(GemmaryGems.tanzanite, new ResourceLocation("gemmary:tanzanite"), new ResourceLocation("gemmary:tanzanite_dusty"));
+	    ModelBakery.registerItemVariants(GemmaryGems.topaz, new ResourceLocation("gemmary:topaz"), new ResourceLocation("gemmary:topaz_dusty"));
+	    ModelBakery.registerItemVariants(GemmaryGems.turquoise, new ResourceLocation("gemmary:turquoise"), new ResourceLocation("gemmary:turquoise_dusty"));
 	}
 	
 	public static void registerItemRenderer()
@@ -32,6 +33,7 @@ public final class ItemRenderRegistry
 		//Gems
 		reg(GemmaryGems.amethyst);
 		reg(GemmaryGems.corundum);
+		reg(GemmaryGems.real_diamond);
 		reg(GemmaryGems.random);
 		reg(GemmaryGems.ruby);
 		reg(GemmaryGems.sapphire);
@@ -42,6 +44,7 @@ public final class ItemRenderRegistry
 		//Dusty Gems
 		regm(GemmaryGems.amethyst, 1, "amethyst_dusty");
 		regm(GemmaryGems.corundum, 1, "corundum_dusty");
+		regm(GemmaryGems.real_diamond, 1, "diamond_dusty");
 		regm(GemmaryGems.ruby, 1, "ruby_dusty");
 		regm(GemmaryGems.sapphire, 1, "sapphire_dusty");
 		regm(GemmaryGems.talc, 1, "talc_dusty");

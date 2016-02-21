@@ -17,36 +17,35 @@ public final class GemmaryGems
 	};
 	
 	//Gem Objects
-	public static Item amethyst;
-	public static Item corundum;
-	public static Item ruby;
-	public static Item random;
-	public static Item sapphire;
-	public static Item talc;
-	public static Item tanzanite;
-	public static Item topaz;
-	public static Item turquoise;
+	//public static Item object = new Gem("gem_name", mohsScale);
+	public static Item amethyst = new Gem("amethyst", 7.0);
+	public static Item corundum = new Gem("corundum", 9.0);
+	public static Item random = new Gem("random", 0.0).setCreativeTab(null);
+	public static Item real_diamond = new Gem("diamond", 10.0);
+	public static Item ruby = new Gem("ruby", 9.0);
+	public static Item sapphire = new Gem("sapphire", 9.0);
+	public static Item talc = new Gem("talc", 1.0);
+	public static Item tanzanite = new Gem("tanzanite", 6.75);
+	public static Item topaz = new Gem("topaz", 8.0);
+	public static Item turquoise = new Gem("turquoise", 5.5);
 	
 	public static void createGems()
 	{
 	//These should be created in ABC order
-		//Amethyst
-		GameRegistry.registerItem(amethyst = new Gem("amethyst"), "amethyst");
-		//Corundum
-		GameRegistry.registerItem(corundum = new Gem("corundum"), "corundum");
-		//Random: This one will have no use in game
-		GameRegistry.registerItem(random = new Gem("random").setCreativeTab(null), "random");
-		//Ruby
-		GameRegistry.registerItem(ruby = new Gem("ruby"), "ruby");
-		//Sapphire
-		GameRegistry.registerItem(sapphire = new Gem("sapphire"), "sapphire");
-		//Talc
-		GameRegistry.registerItem(talc = new Gem("talc"), "talc");
-		//Tanzanite
-		GameRegistry.registerItem(tanzanite = new Gem("tanzanite"), "tanzanite");
-		//Topaz
-		GameRegistry.registerItem(topaz = new Gem("topaz"), "topaz");
-		//Turquoise
-		GameRegistry.registerItem(turquoise = new Gem("turquoise"), "turquoise");
+		r(amethyst);
+		r(corundum);
+		r(real_diamond);
+		r(ruby);
+		r(random);
+		r(sapphire);
+		r(talc);
+		r(tanzanite);
+		r(topaz);
+		r(turquoise);
+	}
+	
+	public static void r(Item item)
+	{
+		GameRegistry.registerItem(item, item.getUnlocalizedName().substring(5));
 	}
 }

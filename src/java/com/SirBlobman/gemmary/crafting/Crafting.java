@@ -2,6 +2,7 @@ package com.SirBlobman.gemmary.crafting;
 
 import com.SirBlobman.gemmary.blocks.RandomBlocks;
 import com.SirBlobman.gemmary.items.GemmaryArmor;
+import com.SirBlobman.gemmary.items.GemmaryElements;
 import com.SirBlobman.gemmary.items.GemmaryGemParts;
 import com.SirBlobman.gemmary.items.GemmaryGems;
 import com.SirBlobman.gemmary.items.GemmaryRandomItems;
@@ -89,5 +90,10 @@ public class Crafting
 		//Recipe Book
 		GameRegistry.addShapelessRecipe(new ItemStack(GemmaryRandomItems.RecipeBook), new Object[] {new ItemStack(GemmaryGems.amethyst, 1, 1)});
 	//Furnace
+	//Compressor
+		//Example: CarbonCompressorRecipes.addCompressingRecipe(input, output, experience);
+		//Example 2: CarbonCompressorRecipes.addCompressingRecipe(new ItemStack(Blocks.coal_block, 1) new ItemStack(Items.diamond), 100.0F);
+		CompressorRecipes.addCompressingRecipe(new ItemStack(Blocks.coal_block, 1), new ItemStack(Items.diamond), 100.0F);
+        CompressorRecipes.addCompressingRecipe(new ItemStack(GemmaryElements.carbon, 1), new ItemStack(GemmaryGemParts.DiamondPart), 100.0F);
 	}
 }

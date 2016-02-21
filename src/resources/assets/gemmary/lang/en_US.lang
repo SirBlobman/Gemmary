@@ -121,6 +121,7 @@ button.item=Item Recipes
 <Lores>
 lore.atoms=Enlarged and Unstable Atom. You can only hold one at a time
 lore.dusty_gems=Dusty. Must be polished if you want any use from it.
+lore.mohs_scale=§2Mohs Scale
 
 <Texts>
 text.blocks.unavailable=[Gemmary Recipes] Block Recipes are currently unviewable

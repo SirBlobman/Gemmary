@@ -1,5 +1,6 @@
 package com.SirBlobman.gemmary;
 
+import com.SirBlobman.gemmary.OreDictionary.GemmaryOreDictionary;
 import com.SirBlobman.gemmary.blocks.RandomBlocks;
 import com.SirBlobman.gemmary.crafting.Crafting;
 import com.SirBlobman.gemmary.items.GemmaryArmor;
@@ -34,6 +35,7 @@ public class GemmaryCommon
 
     public void init(FMLInitializationEvent e) 
     {
+    	GemmaryOreDictionary.defineThings();
     	GameRegistry.registerWorldGenerator(new OreGeneration(), 0);
     	NetworkRegistry.INSTANCE.registerGuiHandler(Gemmary.instance, new GuiHandler());
     	Crafting.startCraftingRecipes();

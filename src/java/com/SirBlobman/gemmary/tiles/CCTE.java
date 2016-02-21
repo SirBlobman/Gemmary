@@ -2,7 +2,7 @@ package com.SirBlobman.gemmary.tiles;
 
 import java.util.Arrays;
 
-import com.SirBlobman.gemmary.crafting.CarbonCompressorRecipes;
+import com.SirBlobman.gemmary.crafting.CompressorRecipes;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -204,7 +204,8 @@ public class CCTE extends TileEntity implements ITickable, IInventory
 		return true;
 	}
 
-	public static ItemStack getSmeltingResultForItem(ItemStack stack) { return CarbonCompressorRecipes.instance().getCompressingResult(stack); }
+	public static ItemStack getSmeltingResultForItem(ItemStack stack) { CompressorRecipes.instance();
+	return CompressorRecipes.getCompressingResult(stack); }
 
 	public static short getItemBurnTime(ItemStack stack)
 	{

@@ -16,13 +16,18 @@ public class GemmaryGemParts
 	};
 	
 	//Gem Part Objects
-	public static Item DiamondPart;
-	public static Item EmeraldPart;
+	public static Item DiamondPart = new Part("diamond_part");
+	public static Item EmeraldPart = new Part("emerald_part");
 	
 	//Gem Part Creator
 	public static void createGemParts()
 	{
-		GameRegistry.registerItem(DiamondPart = new Part("diamond_part"), "diamond_part");
-		GameRegistry.registerItem(EmeraldPart = new Part("emerald_part"), "emerald_part");
+		r(DiamondPart);
+		r(EmeraldPart);
+	}
+	
+	private static void r(Item item)
+	{
+		GameRegistry.registerItem(item, item.getUnlocalizedName().substring(5));
 	}
 }
