@@ -1,0 +1,7 @@
+{
+    "parent": "block/redstone_nsew",
+    "textures": {
+        "particle": "gemmary:blocks/chalk_dust",
+        "wool": "gemmary:blocks/chalk_dust"
+    }
+}

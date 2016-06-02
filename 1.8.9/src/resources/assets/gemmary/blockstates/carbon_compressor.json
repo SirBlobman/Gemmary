@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "facing=north": { "model": "gemmary:carbon_compressor" },
+        "facing=south": { "model": "gemmary:carbon_compressor", "y": 180 },
+        "facing=west":  { "model": "gemmary:carbon_compressor", "y": 270 },
+        "facing=east":  { "model": "gemmary:carbon_compressor", "y": 90 },
+        "burning_sides_count=0": { "model": "gemmary:carbon_compressor" },
+        "burning_sides_count=1": { "model": "gemmary:carbon_compressor" },
+        "burning_sides_count=2": { "model": "gemmary:carbon_compressor" },
+        "burning_sides_count=3": { "model": "gemmary:carbon_compressor" },
+        "burning_sides_count=4": { "model": "gemmary:carbon_compressor" }
+    }
+}

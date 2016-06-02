@@ -1,0 +1,16 @@
+{
+    "variants": {
+        "normal":
+        [
+            {"model": "gemmary:diamond_tnt"}
+        ],
+        "explode=true":
+        [
+            {"model": "gemmary:diamond_tnt"}
+        ],
+        "explode=false":
+        [
+            {"model": "gemmary:diamond_tnt"}
+        ]
+    }
+}
