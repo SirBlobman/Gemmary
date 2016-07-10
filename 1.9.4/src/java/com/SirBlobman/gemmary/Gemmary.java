@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid = Gemmary.MODID, name = "Gemmary", version = "Release 0.0.1.9", updateJSON = "")
+@Mod(modid = Gemmary.MODID, name = "Gemmary", version = "Release 0.0.1.9", updateJSON = "https://raw.githubusercontent.com/SirBlobman/Gemmary/master/update.json")
 public class Gemmary 
 {
 	public static final String MODID = "gemmary";
