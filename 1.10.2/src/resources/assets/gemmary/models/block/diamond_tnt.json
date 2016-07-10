@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "bottom": "gemmary:blocks/diamond_tnt_bottom",
+        "top": "gemmary:blocks/diamond_tnt_top",
+        "side": "gemmary:blocks/diamond_tnt_side"
+    }
+}
