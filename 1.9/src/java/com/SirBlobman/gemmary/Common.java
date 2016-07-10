@@ -22,6 +22,7 @@ public class Common
 		GItems.createGemParts();
 		GItems.createElements();
 		GItems.createItems();
+		GItems.createArmor();
 		
 		GBlocks.createGemBlocks();
 		GBlocks.createOres();

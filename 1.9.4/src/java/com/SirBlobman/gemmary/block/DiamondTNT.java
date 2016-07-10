@@ -1,6 +1,7 @@
 package com.SirBlobman.gemmary.block;
 
 import com.SirBlobman.gemmary.creative.tab.GemmaryTabs;
+import com.SirBlobman.gemmary.entity.DiamondTNTPrimed;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -15,10 +16,12 @@ import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
@@ -29,12 +32,12 @@ public class DiamondTNT extends Block
 	
 	public DiamondTNT()
 	{
-		super(Material.tnt);
+		super(Material.TNT);
 		setDefaultState(blockState.getBaseState().withProperty(Explode, false));
 		setCreativeTab(GemmaryTabs.Blocks);
 		setUnlocalizedName("diamond_tnt");
 		setRegistryName("diamond_tnt");
-		setStepSound(SoundType.PLANT);
+		setSoundType(SoundType.PLANT);
 	}
 	
 	@Override
@@ -49,7 +52,7 @@ public class DiamondTNT extends Block
 	}
 	
 	@Override
-	public void onNeighborBlockChange(World w, BlockPos pos, IBlockState ibs, Block neighbor)
+	public void neighborChanged(IBlockState ibs, World w, BlockPos pos, Block neighbor)
 	{
 		if(w.isBlockPowered(pos))
 		{
@@ -77,13 +80,15 @@ public class DiamondTNT extends Block
 	
 	public void explode(World w, BlockPos pos, IBlockState ibs, EntityLivingBase igniter)
 	{
-		if(!w.isRemote)
-		{
-			if(ibs.getValue(Explode).booleanValue())
-			{
-				w.newExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 50.0F, false, true);
-			}
-		}
+		if (!w.isRemote)
+        {
+            if (((Boolean)ibs.getValue(Explode)).booleanValue())
+            {
+                DiamondTNTPrimed dtnt = new DiamondTNTPrimed(w, (double)((float)pos.getX() + 0.5F), (double)pos.getY(), (double)((float)pos.getZ() + 0.5F), igniter);
+                w.spawnEntityInWorld(dtnt);
+                w.playSound((EntityPlayer)null, dtnt.posX, dtnt.posY, dtnt.posZ, SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            }
+        }
 	}
 	
 	@Override
@@ -93,12 +98,12 @@ public class DiamondTNT extends Block
 		{
 			Item i = heldItem.getItem();
 			
-			if(i == Items.flint_and_steel || i == Items.fire_charge)
+			if(i == Items.FLINT_AND_STEEL || i == Items.FIRE_CHARGE)
 			{
 				explode(w, pos, ibs.withProperty(Explode, true), p);
 				w.setBlockToAir(pos);
 				
-				if(i == Items.flint_and_steel)
+				if(i == Items.FLINT_AND_STEEL)
 				{
 					heldItem.damageItem(1, p);
 				}
@@ -115,7 +120,7 @@ public class DiamondTNT extends Block
 	}
 	
 	@Override
-	 public void onEntityCollidedWithBlock(World w, BlockPos pos, Entity e)
+	 public void onEntityCollidedWithBlock(World w, BlockPos pos, IBlockState ibs, Entity e)
 	 {
 		if(!w.isRemote && e instanceof EntityArrow)
 		{

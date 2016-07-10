@@ -9,11 +9,11 @@ import net.minecraft.world.IBlockAccess;
 
 public class GemBlock extends Block 
 {
-	public GemBlock(String name, float hardness)
+	public GemBlock(String gem, float hardness)
 	{
-		super(Material.iron);
-		setUnlocalizedName(name);
-		setRegistryName(name);
+		super(Material.IRON);
+		setUnlocalizedName(gem + "_block");
+		setRegistryName(gem + "_block");
 		setCreativeTab(GemmaryTabs.Blocks);
 		setHardness(hardness);
 	}

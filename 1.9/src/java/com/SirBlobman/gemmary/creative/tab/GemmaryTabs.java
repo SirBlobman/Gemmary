@@ -25,4 +25,13 @@ public final class GemmaryTabs
 			return GItems.amethyst;
 		}
 	};
+	
+	public static final CreativeTabs Armor = new CreativeTabs("Armor")
+	{
+		@Override
+		public Item getTabIconItem()
+		{
+			return GItems.amethystHelmet;
+		}
+	};
 }

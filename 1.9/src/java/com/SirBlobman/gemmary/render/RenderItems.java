@@ -56,6 +56,47 @@ public final class RenderItems
 		reg(GItems.hydrogen);
 		reg(GItems.oxygen);
 		
+	//Armor
+		reg(GItems.amethystHelmet);
+		reg(GItems.amethystChestplate);
+		reg(GItems.amethystLeggings);
+		reg(GItems.amethystBoots);
+		
+		reg(GItems.corundumHelmet);
+		reg(GItems.corundumChestplate);
+		reg(GItems.corundumLeggings);
+		reg(GItems.corundumBoots);
+		
+		reg(GItems.rubyHelmet);
+		reg(GItems.rubyChestplate);
+		reg(GItems.rubyLeggings);
+		reg(GItems.rubyBoots);
+		
+		reg(GItems.sapphireHelmet);
+		reg(GItems.sapphireChestplate);
+		reg(GItems.sapphireLeggings);
+		reg(GItems.sapphireBoots);
+
+		reg(GItems.talcHelmet);
+		reg(GItems.talcChestplate);
+		reg(GItems.talcLeggings);
+		reg(GItems.talcBoots);
+
+		reg(GItems.tanzaniteHelmet);
+		reg(GItems.tanzaniteChestplate);
+		reg(GItems.tanzaniteLeggings);
+		reg(GItems.tanzaniteBoots);
+		
+		reg(GItems.topazHelmet);
+		reg(GItems.topazChestplate);
+		reg(GItems.topazLeggings);
+		reg(GItems.topazBoots);
+
+		reg(GItems.turquoiseHelmet);
+		reg(GItems.turquoiseChestplate);
+		reg(GItems.turquoiseLeggings);
+		reg(GItems.turquoiseBoots);
+		
 	//Other
 		reg(GItems.heatedWaterContainer);
 		reg(GItems.cloth);
@@ -67,7 +108,7 @@ public final class RenderItems
 	//Default Model	
 	public static void reg(Item i)
 	{
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(i, 0, new ModelResourceLocation(m_id + ":" + i.getUnlocalizedName().substring(5), "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(i, 0, new ModelResourceLocation(i.getRegistryName(), "inventory"));
 	}
 	
 	//Metadata Model

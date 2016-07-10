@@ -15,7 +15,7 @@ import net.minecraftforge.common.util.EnumHelper;
 public class Cloth extends ItemTool
 {
 	public static ToolMaterial CLOTH = EnumHelper.addToolMaterial("cloth", 0, 10, 0.0F, 0.0F, 0);
-	private static final Set Effective_On = Sets.newHashSet(new Block[] {Blocks.air});
+	private static final Set Effective_On = Sets.newHashSet(new Block[] {Blocks.AIR});
 	
 	public Cloth(String name)
 	{

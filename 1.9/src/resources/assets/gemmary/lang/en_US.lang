@@ -12,6 +12,7 @@ log.server.post-init-done=Post-Init Complted on Server
 <Creative Tabs>
 itemGroup.Blocks=§3Gemmary §9Blocks
 itemGroup.Items=§3Gemmary §9Items
+itemGroup.Armor=§3Gemmary §9Armor
 
 <Lores>
 lore.mohs_scale=§eMohs Scale Hardness

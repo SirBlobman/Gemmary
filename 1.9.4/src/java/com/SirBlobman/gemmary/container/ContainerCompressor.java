@@ -5,7 +5,7 @@ import com.SirBlobman.gemmary.tile.CompressorTE;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ICrafting;
+import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -178,9 +178,9 @@ public class ContainerCompressor extends Container
 			}
 		}
 		
-		for(int i = 0; i < this.crafters.size(); ++i)
+		for(int i = 0; i < this.listeners.size(); ++i)
 		{
-			ICrafting iC = (ICrafting)this.crafters.get(i);
+			IContainerListener iC = (IContainerListener)this.listeners.get(i);
 			for(int fieldID = 0; fieldID < tC.getFieldCount(); ++fieldID)
 			{
 				if(fieldHasChanged[fieldID])

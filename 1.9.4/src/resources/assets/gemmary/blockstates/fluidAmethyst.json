@@ -1,0 +1,73 @@
+{
+    "forge_marker": 1,
+    "variants": {
+        "normal": {
+            "model" : "forge:fluid",
+            "custom" : {"fluid": "amethyst"}
+        },
+        "level=15": {
+            "model" : "forge:fluid",
+            "custom" : {"fluid": "amethyst"}
+        },
+        "level=14": {
+            "model" : "forge:fluid",
+            "custom" : {"fluid": "amethyst"}
+        },
+        "level=13": {
+            "model" : "forge:fluid",
+            "custom" : {"fluid": "amethyst"}
+        },
+        "level=12": {
+            "model" : "forge:fluid",
+            "custom" : {"fluid": "amethyst"}
+        },
+        "level=11": {
+            "model" : "forge:fluid",
+            "custom" : {"fluid": "amethyst"}
+        },
+        "level=10": {
+            "model" : "forge:fluid",
+            "custom" : {"fluid": "amethyst"}
+        },
+        "level=9": {
+            "model" : "forge:fluid",
+            "custom" : {"fluid": "amethyst"}
+        },
+        "level=8": {
+            "model" : "forge:fluid",
+            "custom" : {"fluid": "amethyst"}
+        },
+        "level=7": {
+            "model" : "forge:fluid",
+            "custom" : {"fluid": "amethyst"}
+        },
+        "level=6": {
+            "model" : "forge:fluid",
+            "custom" : {"fluid": "amethyst"}
+        },
+        "level=5": {
+            "model" : "forge:fluid",
+            "custom" : {"fluid": "amethyst"}
+        },
+        "level=4": {
+            "model" : "forge:fluid",
+            "custom" : {"fluid": "amethyst"}
+        },
+        "level=3": {
+            "model" : "forge:fluid",
+            "custom" : {"fluid": "amethyst"}
+        },
+        "level=2": {
+            "model" : "forge:fluid",
+            "custom" : {"fluid": "amethyst"}
+        },
+        "level=1": {
+            "model" : "forge:fluid",
+            "custom" : {"fluid": "amethyst"}
+        },
+        "level=0": {
+            "model" : "forge:fluid",
+            "custom" : {"fluid": "amethyst"}
+        }
+    }
+}

@@ -6,6 +6,7 @@ import mezz.jei.api.gui.IDrawableStatic;
 import mezz.jei.api.recipe.BlankRecipeCategory;
 import net.minecraft.util.ResourceLocation;
 
+@SuppressWarnings("rawtypes")
 public abstract class CompressorRecipeCategory extends BlankRecipeCategory
 {
 	protected static final int inputSlot = 0;

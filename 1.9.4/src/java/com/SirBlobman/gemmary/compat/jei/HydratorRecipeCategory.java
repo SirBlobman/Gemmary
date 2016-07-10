@@ -6,6 +6,7 @@ import mezz.jei.api.gui.IDrawableStatic;
 import mezz.jei.api.recipe.IRecipeCategory;
 import net.minecraft.util.ResourceLocation;
 
+@SuppressWarnings("rawtypes")
 public abstract class HydratorRecipeCategory implements IRecipeCategory
 {
 	protected static final int inputSlot = 0;

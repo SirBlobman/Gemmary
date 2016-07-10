@@ -43,8 +43,8 @@ public class GUtil
 		String yes = new String(translate("command.gemmary.MohsScale") + ": ");
 		String no = new String(translate("command.gemmary.error.noMohsScale"));
 		
-		mohsScale.put(Items.diamond, 10.0);
-		mohsScale.put(Items.emerald, 8.0);
+		mohsScale.put(Items.DIAMOND, 10.0);
+		mohsScale.put(Items.EMERALD, 8.0);
 		mohsScale.put(GItems.diamondPart, 10.0);
 		mohsScale.put(GItems.emeraldPart, 8.0);
 		

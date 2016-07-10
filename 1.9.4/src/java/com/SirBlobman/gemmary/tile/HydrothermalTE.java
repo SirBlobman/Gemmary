@@ -236,14 +236,14 @@ public class HydrothermalTE extends TileEntity implements ITickable, IInventory
 		else
 		{
 			Item i = is.getItem();
-			if(i instanceof ItemBlock && Block.getBlockFromItem(i) != Blocks.air)
+			if(i instanceof ItemBlock && Block.getBlockFromItem(i) != Blocks.AIR)
 			{
 				Block b = Block.getBlockFromItem(i);
 				
-				if(b == Blocks.ice) return 500;
-				if(b == Blocks.packed_ice) return 250;
+				if(b == Blocks.ICE) return 500;
+				if(b == Blocks.PACKED_ICE) return 250;
 			}
-			if(i == Items.water_bucket) return 1000;
+			if(i == Items.WATER_BUCKET) return 1000;
 			if(i == GItems.heatedWaterContainer) return 2500;
 		}
 		
@@ -334,7 +334,7 @@ public class HydrothermalTE extends TileEntity implements ITickable, IInventory
 	}
 	
 	@Override
-	public void writeToNBT(NBTTagCompound parent)
+	public NBTTagCompound writeToNBT(NBTTagCompound parent)
 	{
 		super.writeToNBT(parent);
 
@@ -354,6 +354,8 @@ public class HydrothermalTE extends TileEntity implements ITickable, IInventory
 		parent.setShort("Progress", progress);
 		parent.setTag("waterRemaining", new NBTTagIntArray(waterRemaining));
 		parent.setTag("waterInitial", new NBTTagIntArray(waterInitValue));
+		
+		return parent;
 	}
 	
 	@Override

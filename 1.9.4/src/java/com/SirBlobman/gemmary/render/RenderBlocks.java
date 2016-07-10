@@ -2,11 +2,15 @@ package com.SirBlobman.gemmary.render;
 
 import com.SirBlobman.gemmary.Gemmary;
 import com.SirBlobman.gemmary.block.GBlocks;
+import com.SirBlobman.gemmary.fluid.GFluids;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fluids.BlockFluidBase;
 
 public final class RenderBlocks 
 {
@@ -24,14 +28,14 @@ public final class RenderBlocks
 		reg(GBlocks.turquoise);
 		
 	//Ore Blocks
-		reg(GBlocks.amethyst_ore);
-		reg(GBlocks.corundum_ore);
-		reg(GBlocks.ruby_ore);
-		reg(GBlocks.sapphire_ore);
-		reg(GBlocks.talc_ore);
-		reg(GBlocks.tanzanite_ore);
-		reg(GBlocks.topaz_ore);
-		reg(GBlocks.turquoise_ore);
+		reg(GBlocks.amethystOre);
+		reg(GBlocks.corundumOre);
+		reg(GBlocks.rubyOre);
+		reg(GBlocks.sapphireOre);
+		reg(GBlocks.talcOre);
+		reg(GBlocks.tanzaniteOre);
+		reg(GBlocks.topazOre);
+		reg(GBlocks.turquoiseOre);
 		
 	//Crystals
 		reg(GBlocks.quartzCrystals);
@@ -40,10 +44,16 @@ public final class RenderBlocks
 		reg(GBlocks.compressor);
 		reg(GBlocks.superCompressor);
 		reg(GBlocks.ahtv);
+		
+	//Fluids
+		ModelLoader.setCustomStateMapper(GFluids.amethystBlock, (new StateMap.Builder()).ignore(BlockFluidBase.LEVEL).build());
+		reg(GFluids.amethystBlock);
 	
 	//Other Blocks
 		reg(GBlocks.diamondTNT);
 		reg(GBlocks.whiteChalk);
+		reg(GBlocks.atomGatherer);
+		reg(GBlocks.autoAtomGatherer);
 	}
 	
 	public static void reg(Block b)

@@ -2,6 +2,7 @@ package com.SirBlobman.gemmary;
 
 import com.SirBlobman.gemmary.command.CommandGemmary;
 
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -11,13 +12,18 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid = Gemmary.MODID, name = "Gemmary", version = "Alpha 0.0.1.7")
+@Mod(modid = Gemmary.MODID, name = "Gemmary", version = "Release 0.0.1.9", updateJSON = "")
 public class Gemmary 
 {
 	public static final String MODID = "gemmary";
 	
 	@SidedProxy(clientSide="com.SirBlobman.gemmary.ClientSide", serverSide="com.SirBlobman.gemmary.ServerSide")
     public static Common proxy;
+	
+	static
+	{
+		FluidRegistry.enableUniversalBucket();
+	}
 	
 	@Instance
 	public static Gemmary instance = new Gemmary();

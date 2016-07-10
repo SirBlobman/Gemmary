@@ -29,7 +29,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@SuppressWarnings({"unused"})
+@SuppressWarnings({"unused", "deprecation"})
 public class HydrothermalVein extends BlockContainer
 {
 	private static boolean keepInventory;
@@ -37,11 +37,11 @@ public class HydrothermalVein extends BlockContainer
 	
 	protected HydrothermalVein()
 	{
-		super(Material.circuits);
+		super(Material.CIRCUITS);
 		setUnlocalizedName("artificial_hydrothermal_vein");
 		setRegistryName("artificial_hydrothermal_vein");
 		setCreativeTab(GemmaryTabs.Blocks);
-		setStepSound(SoundType.METAL);
+		setSoundType(SoundType.METAL);
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -106,8 +106,8 @@ public class HydrothermalVein extends BlockContainer
 		TileEntity te = w.getTileEntity(pos);
 		keepInventory = true;
 		
-		Block aturner = Blocks.lit_furnace;
-		Block turner = Blocks.furnace;
+		Block aturner = Blocks.LIT_FURNACE;
+		Block turner = Blocks.FURNACE;
 		
 		if(active)
 		{

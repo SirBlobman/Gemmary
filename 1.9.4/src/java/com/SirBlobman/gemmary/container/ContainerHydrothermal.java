@@ -5,7 +5,7 @@ import com.SirBlobman.gemmary.tile.HydrothermalTE;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ICrafting;
+import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -172,9 +172,9 @@ public class ContainerHydrothermal extends Container
 			}
 		}
 		
-		for(int i = 0; i < crafters.size(); ++i)
+		for(int i = 0; i < listeners.size(); ++i)
 		{
-			ICrafting ic = (ICrafting)crafters.get(i);
+			IContainerListener ic = (IContainerListener)listeners.get(i);
 			for(int fieldID = 0; fieldID < tH.getFieldCount(); ++fieldID)
 			{
 				if(fieldHasChanged[fieldID])

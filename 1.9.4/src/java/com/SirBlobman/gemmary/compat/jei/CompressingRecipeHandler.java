@@ -8,7 +8,13 @@ import mezz.jei.util.ErrorUtil;
 public class CompressingRecipeHandler implements IRecipeHandler<CompressingRecipe> 
 {
 	@Override
-	public String getRecipeCategoryUid()
+	public String getRecipeCategoryUid(CompressingRecipe recipe)
+	{
+		return GemmaryRecipeUIDS.COMPRESSING;
+	}
+
+	@Override
+	public String getRecipeCategoryUid() 
 	{
 		return GemmaryRecipeUIDS.COMPRESSING;
 	}
@@ -41,5 +47,4 @@ public class CompressingRecipeHandler implements IRecipeHandler<CompressingRecip
 		
 		return true;
 	}
-
 }

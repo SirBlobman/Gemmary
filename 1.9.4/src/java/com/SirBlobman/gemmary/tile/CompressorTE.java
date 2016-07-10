@@ -10,7 +10,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagIntArray;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
-import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
@@ -22,7 +21,6 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.EnumSkyBlock;
 import scala.actors.threadpool.Arrays;
 
-@SuppressWarnings({ "unchecked", "rawtypes" })
 public class CompressorTE extends TileEntity implements ITickable, IInventory
 {
 	public static final int FuelSlotsCount = 1;
@@ -394,7 +392,7 @@ public class CompressorTE extends TileEntity implements ITickable, IInventory
 	}
 	
 	@Override
-	public void writeToNBT(NBTTagCompound parent)
+	public NBTTagCompound writeToNBT(NBTTagCompound parent)
 	{
 		super.writeToNBT(parent);
 		
@@ -414,6 +412,8 @@ public class CompressorTE extends TileEntity implements ITickable, IInventory
 		parent.setShort("CompressTime", compressTime);
 		parent.setTag("compressTimeRemaining", new NBTTagIntArray(compressTimeRemaining));
 		parent.setTag("compressTimeInitial", new NBTTagIntArray(compressTimeInitValue));
+		
+		return parent;
 	}
 	
 	@Override
@@ -442,7 +442,7 @@ public class CompressorTE extends TileEntity implements ITickable, IInventory
 	}
 	
 	@Override
-	public Packet getDescriptionPacket()
+	public SPacketUpdateTileEntity getUpdatePacket()
 	{
 		NBTTagCompound tag = new NBTTagCompound();
 		writeToNBT(tag);

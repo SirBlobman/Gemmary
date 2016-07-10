@@ -1,6 +1,8 @@
 package com.SirBlobman.gemmary;
 
 import com.SirBlobman.gemmary.block.GBlocks;
+import com.SirBlobman.gemmary.entity.GEntities;
+import com.SirBlobman.gemmary.fluid.GFluids;
 import com.SirBlobman.gemmary.forge.GDictionary;
 import com.SirBlobman.gemmary.gui.GuiHandler;
 import com.SirBlobman.gemmary.item.GItems;
@@ -21,12 +23,15 @@ public class Common
 		GItems.createGems();
 		GItems.createGemParts();
 		GItems.createElements();
+		GItems.createArmor();
 		GItems.createItems();
 		
 		GBlocks.createGemBlocks();
 		GBlocks.createOres();
 		GBlocks.createCrystals();
 		GBlocks.createOtherBlocks();
+		
+		GFluids.createGemFluids();;
 		
 		GTiles.createTiles();
 	}
@@ -42,6 +47,8 @@ public class Common
 		GRecipes.createCraftingRecipes();
 		GRecipes.createCompressingRecipes();
 		GRecipes.createHydratingRecipes();
+		
+		GEntities.createEntities();
 	}
 	
 	public void postInit(FMLPostInitializationEvent e)

@@ -29,7 +29,7 @@ public class Crystals extends Block
 	
 	protected Crystals(String type, Item drop, int meta, int least, int most)
 	{
-		super(Material.rock);
+		super(Material.ROCK);
 		setDefaultState(blockState.getBaseState().withProperty(Facing, EnumFacing.UP));
 		this.drop = drop;
 		this.meta = meta;

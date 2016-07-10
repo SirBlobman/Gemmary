@@ -1,4 +1,4 @@
-<English Language File for Gemmary 1.9>
+<English Language File for Gemmary 1.9.4>
 <Client Logs>
 log.client.pre-init-done=Pre-Init Completed on Client
 log.client.init-done=Init Completed on Client
@@ -42,6 +42,9 @@ tile.turquoise_ore.name=§3Turquoise§r Ore
 <Crystals>
 tile.quartz_crystal.name=§f§lQuartz§f Crystal
 
+<Fluids>
+fluid.amethyst=Liquid §5Amethyst§r
+
 <Chalk>
 tile.white_chalk.name=§fWhite§r Chalk
 
@@ -80,6 +83,12 @@ item.chromium.name=§7Chromium
 item.hydrogen.name=§1Hydrogen
 item.oxygen.name=§cOxygen
 
+<Armor>
+armor.helmet=§rHelmet
+armor.chestplate=§rChestplate
+armor.leggings=§rLeggings
+armor.boots=§rBoots
+
 <Other Items>
 item.recipe_book.name=[WIP] Recipe Book
 item.heated_water_container.name=Water Container - Heated
@@ -101,6 +110,9 @@ tile.artificial_hydrothermal_vein.name=§bHydrothermal Vein§r
 container.ahtv.name=§aHydrothermal Vein
 gui.htv.water=§9Water
 gui.htv.progress=§fProgress
+
+tile.atom_gatherer.name=§rAtom Gatherer
+tile.auto_atom_gatherer.name=§r
 
 <Just Enough Items>
 gui.gemmary-jei.compressing=§9Gemmary §fCompressing

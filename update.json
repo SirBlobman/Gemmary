@@ -1,0 +1,17 @@
+{
+    "homepage": "http://minecraft.curseforge.com/projects/gemmary/files/",
+    "promos": {
+        "1.8.9-latest": "Release 0.0.1.5",
+        "1.9-latest": "Release 0.0.1.8",
+        "1.9.4-latest": "Release 0.0.1.9"
+    },
+    "1.9.4": {
+        "Release 0.0.1.9": "Update to 1.9.4, Adds a WIP fluid, fixes itemRegistry names"
+    },
+    "1.9": {
+        "Release 0.0.1.8": "N/A"
+    },
+    "1.8.9": {
+        "Release 0.0.1.5": "N/A"
+    }
+}

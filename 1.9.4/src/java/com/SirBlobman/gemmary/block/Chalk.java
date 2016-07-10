@@ -20,7 +20,7 @@ public class Chalk extends Block
 	
 	protected Chalk(String color)
 	{
-		super(Material.circuits);
+		super(Material.CIRCUITS);
 		setHarvestLevel("pickaxe", 1);
 		setHardness(10.0F);
 		setResistance(15.0F);
@@ -54,31 +54,12 @@ public class Chalk extends Block
 		return super.canPlaceBlockAt(w, pos) && this.canBlockStay(w, pos);
 	}
 	
-	@Override
-	public void onNeighborBlockChange(World w, BlockPos pos, IBlockState ibs, Block nb)
-	{
-		this.checkForDrop(w, pos, ibs);
-	}
-	
-	private boolean checkForDrop(World w, BlockPos pos, IBlockState ibs)
-	{
-		if(!this.canBlockStay(w, pos))
-		{
-			dropBlockAsItem(w, pos, ibs, 0);
-			w.setBlockToAir(pos);
-			return false;
-		}
-		else
-		{
-			return true;
-		}
-	}
-	
 	private boolean canBlockStay(World w, BlockPos pos)
 	{
 		return !w.isAirBlock(pos.down());
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean shouldSideBeRendered(IBlockState ibs, IBlockAccess w, BlockPos pos, EnumFacing side)

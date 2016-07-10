@@ -17,7 +17,7 @@ public class OreBlock extends Block
 	private int least;
 	private int most;
 	
-	protected OreBlock(String name, Material m, Item drop, int meta, int least, int most, String harvestTool, int harvestLvl, float hardness)
+	protected OreBlock(String gem, Material m, Item drop, int meta, int least, int most, String harvestTool, int harvestLvl, float hardness)
 	{
 		super(m);
 		this.drop = drop;
@@ -27,9 +27,9 @@ public class OreBlock extends Block
 		setHarvestLevel(harvestTool, harvestLvl);
 		setHardness(hardness);
 		setResistance(15.0F);
-		setUnlocalizedName(name);
+		setUnlocalizedName(gem + "_ore");
+		setRegistryName(gem + "_ore");
 		setCreativeTab(GemmaryTabs.Blocks);
-		setRegistryName(name);
 	}
 	
 	@Override

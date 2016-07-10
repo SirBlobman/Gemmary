@@ -16,6 +16,12 @@ public class HydratingRecipeHandler implements IRecipeHandler<HydratorRecipe>
 	{
 		return GemmaryRecipeUIDS.HYDRATING;
 	}
+
+	@Override
+	public String getRecipeCategoryUid(HydratorRecipe recipe)
+	{
+		return GemmaryRecipeUIDS.HYDRATING;
+	}
 	
 	@Override
 	public IRecipeWrapper getRecipeWrapper(HydratorRecipe hr)

@@ -29,6 +29,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SuppressWarnings({"deprecation"})
 public class Compressor extends BlockContainer
 {
 	String type;
@@ -36,11 +37,11 @@ public class Compressor extends BlockContainer
 	
 	public Compressor(String type)
 	{
-		super(Material.rock);
+		super(Material.ROCK);
 		setCreativeTab(GemmaryTabs.Blocks);
 		setUnlocalizedName(type + "_compressor");
 		setRegistryName(type + "_compressor");
-		setStepSound(SoundType.ANVIL);
+		setSoundType(SoundType.ANVIL);
 		translucent = true;
 		this.type = type;
 	}
@@ -122,8 +123,8 @@ public class Compressor extends BlockContainer
 	{
 		IBlockState ibs = w.getBlockState(pos);
 		TileEntity tE = w.getTileEntity(pos);
-		Block aturner = Blocks.lit_furnace;
-		Block turner = Blocks.furnace;
+		Block aturner = Blocks.LIT_FURNACE;
+		Block turner = Blocks.FURNACE;
 		if(active)
 		{
 			w.setBlockState(pos, aturner.getDefaultState().withProperty(Facing, ibs.getValue(Facing)), 3);

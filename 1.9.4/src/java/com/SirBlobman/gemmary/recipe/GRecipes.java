@@ -15,19 +15,19 @@ public class GRecipes
 	{
 	//Shaped
 		//Compressors
-		aSdR(new ItemStack(GBlocks.superCompressor, 1), new Object[] {"CCC", "CSC", "CCC", 'C', GBlocks.compressor, 'S', Items.string});
-		aSdR(new ItemStack(GBlocks.compressor, 1), new Object[] {"PPP","PRP","PPP", 'P', Blocks.piston, 'R', Items.redstone});
+		aSdR(new ItemStack(GBlocks.superCompressor, 1), new Object[] {"CCC", "CSC", "CCC", 'C', GBlocks.compressor, 'S', Items.STRING});
+		aSdR(new ItemStack(GBlocks.compressor, 1), new Object[] {"PPP","PRP","PPP", 'P', Blocks.PISTON, 'R', Items.REDSTONE});
 		//Hydrothermal Vein
-		aSdR(new ItemStack(GBlocks.ahtv, 1), new Object[] {"CcL", " B ", "RRR", 'C', Blocks.crafting_table, 'c', Blocks.chest, 'L', Items.lava_bucket, 'B', Items.bucket, 'R', Blocks.redstone_block});
+		aSdR(new ItemStack(GBlocks.ahtv, 1), new Object[] {"CcL", " B ", "RRR", 'C', Blocks.CRAFTING_TABLE, 'c', Blocks.CHEST, 'L', Items.LAVA_BUCKET, 'B', Items.BUCKET, 'R', Blocks.REDSTONE_BLOCK});
 		//Diamond TNT
-		aSdR(new ItemStack(GBlocks.diamondTNT, 1), new Object[] {"DDD", "DTD", "DDD", 'D', Blocks.diamond_block, 'T', Blocks.tnt});
+		aSdR(new ItemStack(GBlocks.diamondTNT, 1), new Object[] {"DDD", "DTD", "DDD", 'D', Blocks.DIAMOND_BLOCK, 'T', Blocks.TNT});
 		//Heated Water Container
-		aSdR(new ItemStack(GItems.heatedWaterContainer, 1), new Object[] {" I ", "IWI", "ILI", 'I', Items.iron_ingot, 'W', Items.water_bucket, 'L', Items.lava_bucket});
+		aSdR(new ItemStack(GItems.heatedWaterContainer, 1), new Object[] {" I ", "IWI", "ILI", 'I', Items.IRON_INGOT, 'W', Items.WATER_BUCKET, 'L', Items.LAVA_BUCKET});
 		//Gem Parts
-		aSdR(new ItemStack(Items.diamond, 1), new Object[] {"DDD", "DDD", "DDD", 'D', GItems.diamondPart});
-		aSdR(new ItemStack(Items.emerald, 1), new Object[] {"EEE", "EEE", "EEE", 'E', GItems.emeraldPart});
+		aSdR(new ItemStack(Items.DIAMOND, 1), new Object[] {"DDD", "DDD", "DDD", 'D', GItems.diamondPart});
+		aSdR(new ItemStack(Items.EMERALD, 1), new Object[] {"EEE", "EEE", "EEE", 'E', GItems.emeraldPart});
 		//Cloth
-		aSdR(new ItemStack(GItems.cloth, 1), new Object[] {"WWW", "WWW", "WWW", 'W', new ItemStack(Blocks.wool, 1, OreDictionary.WILDCARD_VALUE)});
+		aSdR(new ItemStack(GItems.cloth, 1), new Object[] {"WWW", "WWW", "WWW", 'W', new ItemStack(Blocks.WOOL, 1, OreDictionary.WILDCARD_VALUE)});
 		
 	//Shapeless
 		//Recipe Book
@@ -38,7 +38,7 @@ public class GRecipes
 	
 	public static void createCompressingRecipes()
 	{
-		aCR(new ItemStack(Blocks.coal_block,1), new ItemStack(Items.diamond, 1), 100.0F);
+		aCR(new ItemStack(Blocks.COAL_BLOCK,1), new ItemStack(Items.DIAMOND, 1), 100.0F);
 		aCR(new ItemStack(GItems.carbon, 1), new ItemStack(GItems.diamondPart), 11.11F);
 	}
 	

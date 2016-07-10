@@ -3,9 +3,8 @@ package com.SirBlobman.gemmary.world;
 import java.util.Random;
 
 import com.SirBlobman.gemmary.block.GBlocks;
-import com.google.common.base.Predicate;
 
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.state.pattern.BlockMatcher;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -19,27 +18,27 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 public class OreGeneration implements IWorldGenerator
 {
 	
-	private WorldGenerator amethyst_ore;
-	private WorldGenerator corundum_ore;
-	private WorldGenerator ruby_ore;
-	private WorldGenerator sapphire_ore;
-	private WorldGenerator talc_ore;
-	private WorldGenerator tanzanite_ore;
-	private WorldGenerator topaz_ore;
-	private WorldGenerator turquoise_ore;
+	private WorldGenerator amethystOre;
+	private WorldGenerator corundumOre;
+	private WorldGenerator rubyOre;
+	private WorldGenerator sapphireOre;
+	private WorldGenerator talcOre;
+	private WorldGenerator tanzaniteOre;
+	private WorldGenerator topazOre;
+	private WorldGenerator turquoiseOre;
 	private WorldGenerator quartz_crystals;
 	
 	public OreGeneration()
 	{
-		amethyst_ore = new WorldGenMinable(GBlocks.amethyst_ore.getDefaultState(), 8);
-		ruby_ore = new WorldGenMinable(GBlocks.ruby_ore.getDefaultState(), 8);
-		corundum_ore = new WorldGenMinable(GBlocks.corundum_ore.getDefaultState(), 8);
-		sapphire_ore = new WorldGenMinable(GBlocks.sapphire_ore.getDefaultState(), 8);
-		talc_ore = new WorldGenMinable(GBlocks.talc_ore.getDefaultState(), 8);
-		tanzanite_ore = new WorldGenMinable(GBlocks.tanzanite_ore.getDefaultState(), 8);
-		topaz_ore = new WorldGenMinable(GBlocks.topaz_ore.getDefaultState(), 8);
-		turquoise_ore = new WorldGenMinable(GBlocks.turquoise_ore.getDefaultState(), 8);
-		quartz_crystals = new WorldGenMinable(GBlocks.quartzCrystals.getDefaultState(), 8);
+		amethystOre = new WorldGenMinable(GBlocks.amethystOre.getDefaultState(), 8);
+		rubyOre = new WorldGenMinable(GBlocks.rubyOre.getDefaultState(), 8);
+		corundumOre = new WorldGenMinable(GBlocks.corundumOre.getDefaultState(), 8);
+		sapphireOre = new WorldGenMinable(GBlocks.sapphireOre.getDefaultState(), 8);
+		talcOre = new WorldGenMinable(GBlocks.talcOre.getDefaultState(), 8, BlockMatcher.forBlock(Blocks.SAND));
+		tanzaniteOre = new WorldGenMinable(GBlocks.tanzaniteOre.getDefaultState(), 8);
+		topazOre = new WorldGenMinable(GBlocks.topazOre.getDefaultState(), 8);
+		turquoiseOre = new WorldGenMinable(GBlocks.turquoiseOre.getDefaultState(), 8);
+		quartz_crystals = new WorldGenMinable(GBlocks.quartzCrystals.getDefaultState(), 8, BlockMatcher.forBlock(Blocks.AIR));
 	}
 	
 	@Override
@@ -48,13 +47,13 @@ public class OreGeneration implements IWorldGenerator
 		switch(w.provider.getDimension())
 		{
 			case 0: //Overworld
-				runGenerator(amethyst_ore, w, r, X, Z, 20, 0, 32);
-				runGenerator(ruby_ore, w, r, X, Z, 20, 0, 32);
-				runGenerator(sapphire_ore, w, r, X, Z, 20, 0, 32);
-				runGenerator(talc_ore, w, r, X, Z, 20, 0, 32);
-				runGenerator(tanzanite_ore, w, r, X, Z, 20, 0, 32);
-				runGenerator(topaz_ore, w, r, X, Z, 20, 0, 32);
-				runGenerator(turquoise_ore, w, r, X, Z, 20, 0, 32);
+				runGenerator(amethystOre, w, r, X, Z, 20, 0, 32);
+				runGenerator(rubyOre, w, r, X, Z, 20, 0, 32);
+				runGenerator(sapphireOre, w, r, X, Z, 20, 0, 32);
+				runGenerator(talcOre, w, r, X, Z, 20, 32, 128);
+				runGenerator(tanzaniteOre, w, r, X, Z, 20, 0, 32);
+				runGenerator(topazOre, w, r, X, Z, 20, 0, 32);
+				runGenerator(turquoiseOre, w, r, X, Z, 20, 0, 32);
 				runGenerator(quartz_crystals, w, r, X, Z, 20, 0, 32);
 				break;
 			case -1: //Nether
@@ -66,10 +65,7 @@ public class OreGeneration implements IWorldGenerator
 	
 	private void runGenerator(WorldGenerator wg, World w, Random r, int X, int Z, int spawnChance, int minHeight, int maxHeight)
 	{
-		if(minHeight < 0 || maxHeight > 256 || minHeight > maxHeight)
-		{
-			throw new IllegalArgumentException("Invalid height arguments for OreGeneration");
-		}
+		if(minHeight < 0 || maxHeight > 256 || minHeight > maxHeight){throw new IllegalArgumentException("Invalid height arguments for OreGeneration");}
 		
 		int heightDiff = maxHeight - minHeight + 1;
 		
