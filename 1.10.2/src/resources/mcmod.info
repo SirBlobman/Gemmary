@@ -3,7 +3,7 @@
 "name": "Gemmary",
 "description": "The Science of Gems",
 "mcversion": "1.10.2",
-"version": "",
+"version": "${version}",
 "url": "", 
 "updateUrl": "",
 "authorList": ["SirBlobman"],

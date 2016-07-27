@@ -23,7 +23,6 @@ public final class GItems
  * 
  */
 	public static ArmorMaterial Amethyst = EnumHelper.addArmorMaterial("Amethyst", "gemmary:amethyst", 30, new int[] {4, 6, 5, 3}, 30, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0);
-	public static ArmorMaterial Corundum = EnumHelper.addArmorMaterial("Corundum", "gemmary:corundum", 30, new int[] {4, 6, 5, 3}, 30, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0);
 	public static ArmorMaterial Ruby = EnumHelper.addArmorMaterial("Ruby", "gemmary:ruby", 30, new int[] {4, 6, 5, 3}, 30, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0);
 	public static ArmorMaterial Sapphire = EnumHelper.addArmorMaterial("Sapphire", "gemmary:sapphire", 30, new int[] {4, 6, 5, 3}, 30, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0);
 	public static ArmorMaterial Talc = EnumHelper.addArmorMaterial("Talc", "gemmary:talc", 4, new int[] {0, 1, 0, 0}, 30, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0);
@@ -49,19 +48,21 @@ public final class GItems
 	public static Item aluminum = new Element("aluminum");
 	public static Item beryllium = new Element("beryllium");
 	public static Item carbon = new Element("carbon");
+	public static Item chromium = new Element("chromium");
 	public static Item hydrogen = new Element("hydrogen");
+	public static Item iron = new Element("iron");
 	public static Item oxygen = new Element("oxygen");
+	public static Item titanium = new Element("titanium");
+	
+//Alloys
+	public static Item corundumChromium = new Alloy(corundum, chromium, ruby);
+	public static Item corundumIron = new Alloy(corundum, iron, sapphire);
 	
 //Armor
 	public static Armor amethystHelmet = new Armor("amethyst", "helmet", Amethyst, 1, EntityEquipmentSlot.HEAD, amethyst);
 	public static Armor amethystChestplate = new Armor("amethyst", "chestplate", Amethyst, 1, EntityEquipmentSlot.CHEST, amethyst);
 	public static Armor amethystLeggings = new Armor("amethyst", "leggings", Amethyst, 2, EntityEquipmentSlot.LEGS, amethyst);
 	public static Armor amethystBoots = new Armor("amethyst", "boots", Amethyst, 1, EntityEquipmentSlot.FEET, amethyst);
-
-	public static Armor corundumHelmet = new Armor("corundum", "helmet", Corundum, 1, EntityEquipmentSlot.HEAD, corundum);
-	public static Armor corundumChestplate = new Armor("corundum", "chestplate", Corundum, 1, EntityEquipmentSlot.CHEST, corundum);
-	public static Armor corundumLeggings = new Armor("corundum", "leggings", Corundum, 2, EntityEquipmentSlot.LEGS, corundum);
-	public static Armor corundumBoots = new Armor("corundum", "boots", Corundum, 1, EntityEquipmentSlot.FEET, corundum);
 
 	public static Armor rubyHelmet = new Armor("ruby", "helmet", Ruby, 1, EntityEquipmentSlot.HEAD, ruby);
 	public static Armor rubyChestplate = new Armor("ruby", "chestplate", Ruby, 1, EntityEquipmentSlot.CHEST, ruby);
@@ -121,8 +122,17 @@ public final class GItems
 		r(aluminum);
 		r(beryllium);
 		r(carbon);
+		r(chromium);
 		r(hydrogen);
+		r(iron);
 		r(oxygen);
+		r(titanium);
+	}
+	
+	public static final void createAlloys()
+	{
+		r(corundumChromium);
+		r(corundumIron);
 	}
 	
 	public static final void createItems()
@@ -138,11 +148,6 @@ public final class GItems
 		rArmor(amethystChestplate, amethyst);
 		rArmor(amethystLeggings, amethyst);
 		rArmor(amethystBoots, amethyst);
-		
-		rArmor(corundumHelmet, corundum);
-		rArmor(corundumChestplate, corundum);
-		rArmor(corundumLeggings, corundum);
-		rArmor(corundumBoots, corundum);
 		
 		rArmor(rubyHelmet, ruby);
 		rArmor(rubyChestplate, ruby);

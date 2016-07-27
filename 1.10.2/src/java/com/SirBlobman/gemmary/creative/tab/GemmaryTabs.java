@@ -8,7 +8,7 @@ import net.minecraft.item.Item;
 
 public final class GemmaryTabs 
 {
-	public static final CreativeTabs Blocks = new CreativeTabs("Blocks")
+	public static final CreativeTabs Blocks = new CreativeTabs("GBlocks")
 	{
 		@Override
 		public Item getTabIconItem() 
@@ -17,7 +17,7 @@ public final class GemmaryTabs
 		}		
 	};
 	
-	public static final CreativeTabs Items = new CreativeTabs("Items")
+	public static final CreativeTabs Items = new CreativeTabs("GItems")
 	{
 		@Override
 		public Item getTabIconItem()
@@ -26,7 +26,7 @@ public final class GemmaryTabs
 		}
 	};
 	
-	public static final CreativeTabs Armor = new CreativeTabs("Armor")
+	public static final CreativeTabs Armor = new CreativeTabs("GArmor")
 	{
 		@Override
 		public Item getTabIconItem()

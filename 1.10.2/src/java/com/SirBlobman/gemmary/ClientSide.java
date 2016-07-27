@@ -10,16 +10,15 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class ClientSide extends Common
 {
-	Object p = new Object[0];
-	
 	@Override
 	public void preInit(FMLPreInitializationEvent e)
 	{
 		super.preInit(e);
 		
 		RenderItems.preInit();
+		RenderBlocks.INSTANCE.rBR();
 		
-		GUtil.print(I18n.format("log.client.pre-init-done", p));
+		GUtil.print(I18n.format("log.client.pre-init-done"));
 	}
 	
 	@Override
@@ -27,10 +26,7 @@ public class ClientSide extends Common
 	{
 		super.init(e);
 		
-		RenderItems.rIR();
-		RenderBlocks.rBR();
-		
-		GUtil.print(I18n.format("log.client.init-done", p));
+		GUtil.print(I18n.format("log.client.init-done"));
 	}
 	
 	@Override
@@ -38,6 +34,6 @@ public class ClientSide extends Common
 	{
 		super.postInit(e);
 		
-		GUtil.print(I18n.format("log.client.post-init-done", p));
+		GUtil.print(I18n.format("log.client.post-init-done"));
 	}
 }

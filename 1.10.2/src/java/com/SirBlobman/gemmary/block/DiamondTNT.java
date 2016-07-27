@@ -1,5 +1,6 @@
 package com.SirBlobman.gemmary.block;
 
+import com.SirBlobman.gemmary.Gemmary;
 import com.SirBlobman.gemmary.creative.tab.GemmaryTabs;
 import com.SirBlobman.gemmary.entity.DiamondTNTPrimed;
 
@@ -12,7 +13,6 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
@@ -66,7 +66,7 @@ public class DiamondTNT extends Block
 	{
 		if(w.isRemote)
 		{
-			EntityTNTPrimed tnt = new EntityTNTPrimed(w, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, e.getExplosivePlacedBy());
+			DiamondTNTPrimed tnt = new DiamondTNTPrimed(w, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, e.getExplosivePlacedBy());
 			tnt.setFuse(w.rand.nextInt(tnt.getFuse() / 4) + tnt.getFuse() / 8);
 			w.spawnEntityInWorld(tnt);
 		}
@@ -86,7 +86,7 @@ public class DiamondTNT extends Block
             {
                 DiamondTNTPrimed dtnt = new DiamondTNTPrimed(w, (double)((float)pos.getX() + 0.5F), (double)pos.getY(), (double)((float)pos.getZ() + 0.5F), igniter);
                 w.spawnEntityInWorld(dtnt);
-                w.playSound((EntityPlayer)null, dtnt.posX, dtnt.posY, dtnt.posZ, SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 100.0F, -5.0F);
+                w.playSound((EntityPlayer)null, dtnt.posX, dtnt.posY, dtnt.posZ, SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 100.0F, -1 * Gemmary.diamondTntExplosionSize);
             }
         }
 	}

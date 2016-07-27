@@ -7,14 +7,12 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class ServerSide extends Common
 {
-	Object p = new Object[0];
-	
 	@Override
 	public void preInit(FMLPreInitializationEvent e)
 	{
 		super.preInit(e);
 		
-		GUtil.print(I18n.format("log.server.pre-init-done", p));
+		GUtil.print(I18n.format("log.server.pre-init-done"));
 	}
 	
 	@Override
@@ -22,7 +20,7 @@ public class ServerSide extends Common
 	{
 		super.init(e);
 		
-		GUtil.print(I18n.format("log.server.init-done", p));
+		GUtil.print(I18n.format("log.server.init-done"));
 	}
 	
 	@Override
@@ -30,6 +28,6 @@ public class ServerSide extends Common
 	{
 		super.postInit(e);
 		
-		GUtil.print(I18n.format("log.server.post-init-done", p));
+		GUtil.print(I18n.format("log.server.post-init-done"));
 	}
 }

@@ -1,13 +1,12 @@
 package com.SirBlobman.gemmary.block;
 
-import java.util.List;
 import java.util.Random;
 
 import javax.annotation.Nullable;
 
 import com.SirBlobman.gemmary.GUtil;
+import com.SirBlobman.gemmary.Gemmary;
 import com.SirBlobman.gemmary.creative.tab.GemmaryTabs;
-import com.SirBlobman.gemmary.item.GItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -18,7 +17,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
@@ -38,8 +36,8 @@ public class AtomGatherer extends Block
 	{
 		super(Material.IRON);
 		automatic = auto;
-		if(automatic) {setRegistryName("auto_atom_gatherer"); setUnlocalizedName("auto_atom_gatherer"); setTickRandomly(true);}
-		else {setUnlocalizedName("atom_gatherer"); setRegistryName("atom_gatherer");}
+		if(!automatic) {setUnlocalizedName("atom_gatherer"); setRegistryName("atom_gatherer");}
+		else {setRegistryName("auto_atom_gatherer"); setUnlocalizedName("auto_atom_gatherer"); setTickRandomly(true);}
 		setCreativeTab(GemmaryTabs.Blocks);
 		setDefaultState(blockState.getBaseState().withProperty(facing, EnumFacing.NORTH));
 	}
@@ -92,7 +90,7 @@ public class AtomGatherer extends Block
 	{
 		if(automatic)
 		{
-			int items = 4;
+			int items = Gemmary.atomsToSpawn;
 			while(items > 0)
 			{
 				spawnItem(w, pos);
@@ -108,12 +106,9 @@ public class AtomGatherer extends Block
     }
 
     @Override
-    public int getMetaFromState(IBlockState state)
+    public int getMetaFromState(IBlockState ibs)
     {
-        int i = 0;
-        i = i | ((EnumFacing)state.getValue(facing)).getHorizontalIndex();
-
-        return i;
+    	return ((EnumFacing)ibs.getValue(facing)).getHorizontalIndex();
     }
     
     private void spawnItem(World w, BlockPos pos)
@@ -121,10 +116,10 @@ public class AtomGatherer extends Block
     	if(!w.isRemote)
     	{
     		Random r = new Random();
-
-    		List<Item> atoms = GItems.getAtoms();
-    		EntityItem item = new EntityItem(w, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(atoms.get(r.nextInt(atoms.size()))));
-    		w.spawnEntityInWorld(item);
+    		
+    		ItemStack is = new ItemStack(GUtil.getElements().get(r.nextInt(GUtil.getElements().size())));
+    		EntityItem ei = new EntityItem(w, pos.getX(), pos.getY(), pos.getZ(), is);
+    		w.spawnEntityInWorld(ei);
     	}
     }
     

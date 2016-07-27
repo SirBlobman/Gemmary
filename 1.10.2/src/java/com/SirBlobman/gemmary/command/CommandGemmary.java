@@ -13,9 +13,11 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraftforge.oredict.OreDictionary;
 
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class CommandGemmary extends CommandBase implements ICommand
@@ -42,13 +44,13 @@ public class CommandGemmary extends CommandBase implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender ics)
 	{
-		return "§f/gemmary [mohsscale | suicide]";
+		return "§f/gemmary [mohsscale | suicide | OreDictionary]";
 	}
 	
 	@Override
 	public List<String> getTabCompletionOptions(MinecraftServer server, ICommandSender sender, String[] args, BlockPos pos)
     {
-		return args.length == 1 ? getListOfStringsMatchingLastWord(args, new String[] {"mohsScale", "suicide"}): Collections.<String>emptyList();
+		return args.length == 1 ? getListOfStringsMatchingLastWord(args, new String[] {"mohsScale", "suicide", "oredictionary"}): Collections.<String>emptyList();
     }
 
 	@Override
@@ -61,9 +63,11 @@ public class CommandGemmary extends CommandBase implements ICommand
 		}
 		if(args.length > 0)
 		{
+			String air = new String(GUtil.translate("command.gemmary.error.holdingAir"));
+			
 			if(args[0].equalsIgnoreCase("mohsscale"))
 			{
-				String air = new String(GUtil.translate("command.gemmary.error.holdingAir"));
+				
 				Item held_item = player.getHeldItemMainhand().getItem();
 				
 
@@ -74,6 +78,21 @@ public class CommandGemmary extends CommandBase implements ICommand
 				else
 				{
 					player.addChatComponentMessage(new TextComponentString(GUtil.getMohsValueOfItem(held_item)));
+				}
+			}
+			if(args[0].equalsIgnoreCase("oredictionary"))
+			{
+				ItemStack held = player.getHeldItemMainhand();
+				if(held == null) {player.addChatComponentMessage(new TextComponentString(air));}
+				else
+				{
+					int[] ids = OreDictionary.getOreIDs(held);
+					player.addChatComponentMessage(new TextComponentString("OreDictionary Names:"));
+					for(int i : ids)
+					{
+						String name = OreDictionary.getOreName(i);
+						player.addChatComponentMessage(new TextComponentString(" - " + name));
+					}
 				}
 			}
 			if(args[0].equalsIgnoreCase("suicide"))

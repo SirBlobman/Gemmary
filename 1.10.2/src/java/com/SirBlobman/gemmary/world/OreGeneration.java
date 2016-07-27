@@ -14,14 +14,10 @@ import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
-@SuppressWarnings({"unused"})
 public class OreGeneration implements IWorldGenerator
 {
-	
 	private WorldGenerator amethystOre;
 	private WorldGenerator corundumOre;
-	private WorldGenerator rubyOre;
-	private WorldGenerator sapphireOre;
 	private WorldGenerator talcOre;
 	private WorldGenerator tanzaniteOre;
 	private WorldGenerator topazOre;
@@ -31,9 +27,7 @@ public class OreGeneration implements IWorldGenerator
 	public OreGeneration()
 	{
 		amethystOre = new WorldGenMinable(GBlocks.amethystOre.getDefaultState(), 8);
-		rubyOre = new WorldGenMinable(GBlocks.rubyOre.getDefaultState(), 8);
 		corundumOre = new WorldGenMinable(GBlocks.corundumOre.getDefaultState(), 8);
-		sapphireOre = new WorldGenMinable(GBlocks.sapphireOre.getDefaultState(), 8);
 		talcOre = new WorldGenMinable(GBlocks.talcOre.getDefaultState(), 8, BlockMatcher.forBlock(Blocks.SAND));
 		tanzaniteOre = new WorldGenMinable(GBlocks.tanzaniteOre.getDefaultState(), 8);
 		topazOre = new WorldGenMinable(GBlocks.topazOre.getDefaultState(), 8);
@@ -48,8 +42,7 @@ public class OreGeneration implements IWorldGenerator
 		{
 			case 0: //Overworld
 				runGenerator(amethystOre, w, r, X, Z, 20, 0, 32);
-				runGenerator(rubyOre, w, r, X, Z, 20, 0, 32);
-				runGenerator(sapphireOre, w, r, X, Z, 20, 0, 32);
+				runGenerator(corundumOre, w, r, X, Z, 20, 0, 32);
 				runGenerator(talcOre, w, r, X, Z, 20, 32, 128);
 				runGenerator(tanzaniteOre, w, r, X, Z, 20, 0, 32);
 				runGenerator(topazOre, w, r, X, Z, 20, 0, 32);

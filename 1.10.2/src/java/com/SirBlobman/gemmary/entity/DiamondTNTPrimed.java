@@ -1,5 +1,7 @@
 package com.SirBlobman.gemmary.entity;
 
+import com.SirBlobman.gemmary.Gemmary;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -94,7 +96,7 @@ public class DiamondTNTPrimed extends Entity
 	
 	private void explode()
 	{
-		float power = 500.F;
+		float power = Gemmary.diamondTntExplosionSize;
 		worldObj.createExplosion(this, posX, posY + (height/16.0), posZ, power, true);
 	}
 

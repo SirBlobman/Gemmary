@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer1": "gemmary:items/Atoms/Iron/iron",
+        "layer0": "gemmary:items/corundum"
+    }
+}

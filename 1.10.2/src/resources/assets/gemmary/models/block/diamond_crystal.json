@@ -1,6 +1,6 @@
 {
     "parent": "gemmary:block/crystal",
     "textures": {
-        "0": "gemmary:blocks/quartz_crystal"
+        "0": "blocks/diamond_block"
     }
 }

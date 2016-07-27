@@ -4,9 +4,11 @@
         "1.8.9-latest": "Release 0.0.1.5",
         "1.9-latest": "Release 0.0.1.8",
         "1.9.4-latest": "Release 0.0.1.9",
-        "1.10.2-latest": "Release 0.0.2.0"
+        "1.10-latest": "Release 0.0.2.1",
+        "1.10.2-latest": "Release 0.0.2.1"
     },
     "1.10.2": {
+      "Release 0.0.2.1": "Tons of bug and model fixes, Fixed corundum, sapphire, and ruby incoherence"
       "Release 0.0.2.0": "Update to 1.10.2"  
     },
     "1.9.4": {

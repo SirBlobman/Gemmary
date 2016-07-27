@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "facing=up":    { "model": "gemmary:diamond_crystal" },
+        "facing=down":  { "model": "gemmary:diamond_crystal", "x": 180 },
+        "facing=east":  { "model": "gemmary:diamond_crystal", "x": 90, "y": 90 },
+        "facing=west":  { "model": "gemmary:diamond_crystal", "x": 90, "y": 270 },
+        "facing=south": { "model": "gemmary:diamond_crystal", "x": 90, "y": 180 },
+        "facing=north": { "model": "gemmary:diamond_crystal", "x": 90 }
+    }
+}

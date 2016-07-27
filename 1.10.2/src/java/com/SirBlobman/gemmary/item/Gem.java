@@ -35,8 +35,16 @@ public class Gem extends Item
 	@Override
 	public String getUnlocalizedName(ItemStack is)
 	{
-		String newname = super.getUnlocalizedName() + "_" + (is.getItemDamage() == 0 ? "normal" : "dusty");
+		String newname = super.getUnlocalizedName() + (is.getItemDamage() == 0 ? "" : "_dusty");
 		return newname;
+	}
+	
+	@Override
+	public String getItemStackDisplayName(ItemStack is)
+	{
+		if(getUnlocalizedName(is).contains("dusty")) return I18n.format("info.dusty", I18n.format(getUnlocalizedName() + ".name")).trim();
+		
+		return I18n.format(getUnlocalizedName() + ".name").trim();
 	}
 	
 	@Override

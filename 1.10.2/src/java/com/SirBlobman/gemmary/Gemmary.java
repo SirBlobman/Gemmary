@@ -2,6 +2,7 @@ package com.SirBlobman.gemmary;
 
 import com.SirBlobman.gemmary.command.CommandGemmary;
 
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -12,12 +13,19 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid = Gemmary.MODID, name = "Gemmary", version = "Release 0.0.2.0", updateJSON = "https://raw.githubusercontent.com/SirBlobman/Gemmary/master/update.json", acceptedMinecraftVersions = "[1.9.4, 1.10, 1.10.2]")
+@Mod(modid = Gemmary.MODID, name = Gemmary.NAME, version = Gemmary.VERSION, updateJSON = Gemmary.UPDATE_JSON, acceptedMinecraftVersions = Gemmary.ACCEPTED_VERSIONS, guiFactory = Gemmary.CONFIG_FACTORY)
 public class Gemmary 
 {
 	public static final String MODID = "gemmary";
+	public static final String NAME = "Gemmary";
+	public static final String VERSION = "Release 0.0.2.1";
+	public static final String UPDATE_JSON = "https://raw.githubusercontent.com/SirBlobman/Gemmary/master/update.json";
+	public static final String ACCEPTED_VERSIONS = "[1.9.4, 1.10.2]";
+	public static final String CONFIG_FACTORY = "com.SirBlobman." + MODID + ".config.GConfigGui";
+	public static final String CLIENT_PROXY = "com.SirBlobman." + MODID + ".ClientSide";
+	public static final String SERVER_PROXY = "com.SirBlobman." + MODID + ".ServerSide";
 	
-	@SidedProxy(clientSide="com.SirBlobman.gemmary.ClientSide", serverSide="com.SirBlobman.gemmary.ServerSide")
+	@SidedProxy(clientSide=CLIENT_PROXY, serverSide=SERVER_PROXY)
     public static Common proxy;
 	
 	static
@@ -28,9 +36,27 @@ public class Gemmary
 	@Instance
 	public static Gemmary instance = new Gemmary();
 	
+	public static Configuration config;
+	public static int atomsToSpawn;
+	public static float diamondTntExplosionSize;
+	public static int clothDurability;
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e)
 	{
+	//Config
+		config = new Configuration(e.getSuggestedConfigurationFile());
+		config.load();
+	//Config Comments
+		config.addCustomCategoryComment("Atom Gatherer", "This section is for the Atom Gatherer, which spawns atoms");
+		config.addCustomCategoryComment("Diamond TNT", "This section is for the Diamond TNT, which has a huge explosion");
+		config.addCustomCategoryComment("Items", "This section is for Items");
+	//Config Options
+		atomsToSpawn = config.getInt("atoms to spawn", "Atom Gatherer", 4, 1, 20, "If the atom gatherer is causing server lag, lower this amount.");
+		diamondTntExplosionSize = config.getFloat("explosion size", "Diamond TNT", 500.0F, 1.0F, Float.MAX_VALUE, "Diamond TNT Explosion size.");
+		clothDurability = config.getInt("cloth durability", "Items", 10, 1, Integer.MAX_VALUE, "Durability of the cloth. \nThe cloth is used to dust items.");
+		
+		config.save();
 		proxy.preInit(e);
 	}
 	

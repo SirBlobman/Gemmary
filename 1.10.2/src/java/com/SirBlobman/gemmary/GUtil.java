@@ -1,15 +1,22 @@
 package com.SirBlobman.gemmary;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
+import com.SirBlobman.gemmary.block.GemBlock;
+import com.SirBlobman.gemmary.item.Element;
 import com.SirBlobman.gemmary.item.GItems;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class GUtil 
 {
@@ -54,5 +61,31 @@ public class GUtil
 		}
 		
 		return yes + "§b" + mohsScale.get(i);
+	}
+	
+	public static List<Item> getElements()
+	{
+		Iterator<Item> itemList = ForgeRegistries.ITEMS.iterator();
+		List<Item> atoms = new ArrayList<Item>();
+		while(itemList.hasNext())
+		{
+			Item i = itemList.next();
+			if(i instanceof Element) atoms.add(i);
+		}
+		
+		return atoms;
+	}
+	
+	public static List<GemBlock> getGemBlocks()
+	{
+		Iterator<Block> blockList = ForgeRegistries.BLOCKS.iterator();
+		List<GemBlock> gemBlocks = new ArrayList<GemBlock>();
+		while(blockList.hasNext())
+		{
+			Block b = blockList.next();
+			if(b instanceof GemBlock) gemBlocks.add((GemBlock) b);
+		}
+		
+		return gemBlocks;
 	}
 }

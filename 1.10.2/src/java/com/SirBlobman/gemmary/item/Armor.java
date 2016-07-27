@@ -28,7 +28,7 @@ public class Armor extends ItemArmor
 	@Override
 	public String getItemStackDisplayName(ItemStack item)
 	{
-		return I18n.format("item." + gem + "_normal.name") + "§r §r" + I18n.format("armor." + type);
+		return I18n.format("armor." + type, I18n.format("item." + gem + ".name")).trim();
 	}
 	
 	@Override

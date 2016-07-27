@@ -3,11 +3,11 @@ package com.SirBlobman.gemmary.render;
 import com.SirBlobman.gemmary.Gemmary;
 import com.SirBlobman.gemmary.item.GItems;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.ModelLoader;
 
 public final class RenderItems 
 {
@@ -21,6 +21,7 @@ public final class RenderItems
 		ModelBakery.registerItemVariants(GItems.tanzanite, new ResourceLocation("gemmary:tanzanite"), new ResourceLocation("gemmary:tanzanite_dusty"));
 		ModelBakery.registerItemVariants(GItems.topaz, new ResourceLocation("gemmary:topaz"), new ResourceLocation("gemmary:topaz_dusty"));
 		ModelBakery.registerItemVariants(GItems.turquoise, new ResourceLocation("gemmary:turquoise"), new ResourceLocation("gemmary:turquoise_dusty"));
+		rIR();
 	}
 	
 	public static void rIR()
@@ -53,19 +54,21 @@ public final class RenderItems
 		reg(GItems.aluminum);
 		reg(GItems.beryllium);
 		reg(GItems.carbon);
+		reg(GItems.chromium);
 		reg(GItems.hydrogen);
+		reg(GItems.iron);
 		reg(GItems.oxygen);
+		reg(GItems.titanium);
+		
+	//Alloys
+		reg(GItems.corundumChromium);
+		reg(GItems.corundumIron);
 		
 	//Armor
 		reg(GItems.amethystHelmet);
 		reg(GItems.amethystChestplate);
 		reg(GItems.amethystLeggings);
 		reg(GItems.amethystBoots);
-		
-		reg(GItems.corundumHelmet);
-		reg(GItems.corundumChestplate);
-		reg(GItems.corundumLeggings);
-		reg(GItems.corundumBoots);
 		
 		reg(GItems.rubyHelmet);
 		reg(GItems.rubyChestplate);
@@ -108,13 +111,15 @@ public final class RenderItems
 	//Default Model	
 	public static void reg(Item i)
 	{
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(i, 0, new ModelResourceLocation(i.getRegistryName(), "inventory"));
+		ModelResourceLocation mrl = new ModelResourceLocation(i.getRegistryName(), "inventory");
+		ModelLoader.setCustomModelResourceLocation(i, 0, mrl);
 	}
 	
 	//Metadata Model
 	//i = item, m = meta, f = file
 	public static void reg(Item i, int m, String f)
 	{
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(i, m, new ModelResourceLocation(mod + ":" + f, "inventory"));
+		ModelResourceLocation mrl = new ModelResourceLocation(mod + ":" + f, "inventory");
+		ModelLoader.setCustomModelResourceLocation(i, m, mrl);
 	}
 }

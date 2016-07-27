@@ -51,9 +51,9 @@ public class Compressor extends BlockContainer
 	{
 		if(type == "fast")
 		{
-			return new CompressorTE((short) 100);
+			return new CompressorTE().setCompletionTime(100);
 		}
-		return new CompressorTE((short) 3000);
+		return new CompressorTE().setCompletionTime(3000);
 	}
 	
 	@Override

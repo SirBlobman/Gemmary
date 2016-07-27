@@ -38,13 +38,14 @@ public class CompressorTE extends TileEntity implements ITickable, IInventory
 	private int [] compressTimeInitValue = new int[FuelSlotsCount];
 	
 	private short compressTime;
-	private static short CompressTimeForCompletion;
+	private short CompressTimeForCompletion;
 	
 	private int cachedNumberOfBurningSlots = -1;
 	
-	public CompressorTE(short cTimeForCompletion)
+	public CompressorTE setCompletionTime(int time)
 	{
-		CompressTimeForCompletion = cTimeForCompletion;
+		this.CompressTimeForCompletion = (short) time;
+		return this;
 	}
 	
 	public double fractionOfFuelRemaining(int fuelslot)

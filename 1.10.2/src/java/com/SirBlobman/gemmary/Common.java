@@ -3,7 +3,7 @@ package com.SirBlobman.gemmary;
 import com.SirBlobman.gemmary.block.GBlocks;
 import com.SirBlobman.gemmary.entity.GEntities;
 import com.SirBlobman.gemmary.fluid.GFluids;
-import com.SirBlobman.gemmary.forge.GDictionary;
+import com.SirBlobman.gemmary.forge.GOreDict;
 import com.SirBlobman.gemmary.gui.GuiHandler;
 import com.SirBlobman.gemmary.item.GItems;
 import com.SirBlobman.gemmary.recipe.GRecipes;
@@ -23,6 +23,7 @@ public class Common
 		GItems.createGems();
 		GItems.createGemParts();
 		GItems.createElements();
+		GItems.createAlloys();
 		GItems.createArmor();
 		GItems.createItems();
 		
@@ -31,14 +32,15 @@ public class Common
 		GBlocks.createCrystals();
 		GBlocks.createOtherBlocks();
 		
-		GFluids.createGemFluids();;
+		GFluids.registerFluids();
+		GFluids.registerFluidBuckets();
 		
 		GTiles.createTiles();
 	}
 	
 	public void init(FMLInitializationEvent e)
 	{
-		GDictionary.defineItems();
+		GOreDict.createOreDictionaryEntries();
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(Gemmary.instance, new GuiHandler());
 		
