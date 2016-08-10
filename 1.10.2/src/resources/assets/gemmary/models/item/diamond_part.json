@@ -1,6 +1,29 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "gemmary:items/diamond_part"
+    "parent": "item/diamond",
+    "display": {
+    	"thirdperson_righthand": {
+            "scale": [ 0.140625, 0.140625, 0.140625 ]
+        }, 
+    	"thirdperson_lefthand": {
+            "scale": [ 0.140625, 0.140625, 0.140625 ]
+        }, 
+    	"firstperson_righthand": {
+            "scale": [ 0.140625, 0.140625, 0.140625 ]
+        }, 
+    	"firstperson_lefthand": {
+            "scale": [ 0.140625, 0.140625, 0.140625 ]
+        }, 
+    	"gui": {
+            "scale": [ 0.140625, 0.140625, 0.140625 ]
+        }, 
+    	"head": {
+            "scale": [ 0.140625, 0.140625, 0.140625 ]
+        }, 
+    	"ground": {
+            "scale": [ 0.140625, 0.140625, 0.140625 ]
+        },
+    	"fixed": {
+            "scale": [ 0.140625, 0.140625, 0.140625 ]
+        }
     }
 }

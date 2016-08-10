@@ -58,7 +58,7 @@ public class Gem extends Item
 	public void addInformation(ItemStack is, EntityPlayer p, List lore, boolean b)
 	{
 		double Mohs = MohsValue;
-		GUtil.mohsScale.put(is.getItem(), MohsValue);
+		GUtil.setMohsScaleOfItem(is.getItem(), Mohs);
 		if(is.getItemDamage() == 1) lore.add(I18n.format("lore.dusty_gems", new Object[0]));
 		lore.add(I18n.format("lore.mohs_scale", new Object[0]) + ": " + Mohs);
 	}

@@ -17,11 +17,13 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -115,11 +117,35 @@ public class AtomGatherer extends Block
     {
     	if(!w.isRemote)
     	{
-    		Random r = new Random();
-    		
-    		ItemStack is = new ItemStack(GUtil.getElements().get(r.nextInt(GUtil.getElements().size())));
-    		EntityItem ei = new EntityItem(w, pos.getX(), pos.getY(), pos.getZ(), is);
-    		w.spawnEntityInWorld(ei);
+    		if(breakBelow(w, pos))
+    		{
+    			Random r = new Random();
+    			ItemStack is = GUtil.getOreDictionaryAtoms().get(r.nextInt(GUtil.getOreDictionaryAtoms().size()));
+    			EntityItem ei = new EntityItem(w, pos.getX(), pos.getY(), pos.getZ());
+    			ei.entityDropItem(is, 2);
+    			EntityPlayer p = w.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 2.0, true);
+    			if(p != null) p.addChatMessage(new TextComponentString("Drop:" + is));
+    		}
+    	}
+    }
+    
+    private boolean breakBelow(World w, BlockPos pos)
+    {
+    	int y = pos.getY() - 1;
+    	BlockPos newLocation = new BlockPos(pos.getX(), y, pos.getZ());
+    	while(w.getBlockState(newLocation).getBlock().equals(Blocks.AIR))
+    	{
+    		newLocation = new BlockPos(pos.getX(), y--, pos.getZ());
+    	}
+    	IBlockState below = w.getBlockState(newLocation);
+    	if(below.getBlockHardness(w, newLocation) != -1.0F)
+    	{
+    		w.setBlockToAir(newLocation);
+    		return true;
+    	}
+    	else
+    	{
+    		return false;
     	}
     }
     

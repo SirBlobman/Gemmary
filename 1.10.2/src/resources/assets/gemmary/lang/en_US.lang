@@ -13,6 +13,7 @@ log.server.post-init-done=Post-Init Complted on Server
 itemGroup.GBlocks=§3Gemmary §9Blocks
 itemGroup.GItems=§3Gemmary §9Items
 itemGroup.GArmor=§3Gemmary §9Armor
+itemGroup.GBuckets=§3Gemmary §9Buckets
 
 <Lores>
 lore.mohs_scale=§eMohs Scale Hardness

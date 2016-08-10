@@ -61,41 +61,92 @@ public class GRecipes
 		aHR(new ItemStack(GItems.beryllium, 1), new ItemStack(GItems.emeraldPart), 100.0F);
 	}
 	
-	//Add a Shaped Recipe. This can be like the recipe for a chest, which can't be in random order
+	/**
+	 * Add a shaped recipe!
+	 * This is like a recipe for an enderchest
+	 * Must be in a specific order
+	 * @param output Output {@link ItemStack}
+	 * @param input Object. Example: new Object[] {"WWW", "W W", "WWW", Blocks.PLANKS}
+	 * @see ItemStack
+	 * @see Object
+	 */
 	private static void aSdR(ItemStack output, Object[] input)
 	{
 		GameRegistry.addShapedRecipe(output, input);
 	}
 	
-	//Add a Shapeless Recipe. This can be like Colored Wool. It doesn't matter where the items are on the crafting table.
+	/**
+	 * Add a shapeless recipe
+	 * This can be like colored wool
+	 * It doesn't matter where the items are on the crafting table
+	 * @param output Ouput {@link ItemStack}
+	 * @param input Input ItemStacks. Example: new Object[] {Blocks.WOOL, new ItemStack(Items.DYE, 1, 1)}
+	 * @see ItemStack
+	 * @see Object
+	 */
 	private static void aSlR(ItemStack output, Object[] input)
 	{
 		GameRegistry.addShapelessRecipe(output, input);
 	}
 	
 	
-	//Add a Compressor Recipe. These go into the Gemmary Item Compressor
+	/**
+	 * Add a recipe to the compressor
+	 * @param input Item you put in to get an output
+	 * @param output Item you get for compressing the input
+	 * @param exp Experience (currently broken, just put 0.0F)
+	 * @see ItemStack
+	 * @see Float
+	 */
 	private static void aCR(ItemStack input, ItemStack output, float exp)
 	{
 		CompressorRecipes.addCompressingRecipe(input, output, exp);
 	}
 	
-	//Add a Hydrator Recipe. These go into the Gemmary Artificial Hydrothermal Vein
+	/**
+	 * Add a Hydrator Recipe. 
+	 * These go into the Gemmary Artificial Hydrothermal Vein
+	 * @param input Item that goes in
+	 * @param output Item that comes out
+	 * @param exp Experience (currently broken, just put 0.0F)
+	 */
 	private static void aHR(ItemStack input, ItemStack output, float exp)
 	{
 		HydrothermalRecipes.addHydratingRecipe(input, output, exp);
 	}
 	
-	//Add a shaped recipe with OreDictionary entries
+	/**
+	 * Add a shaped recipe
+	 * This type can have OreDictionary entries
+	 * @param output Item that comes out
+	 * @param input Items used for crafting. Example: new Object[] {"WWW", "W W", "WWW", 'W', "plankWood"}
+	 */
 	private static void aSOR(ItemStack output, Object[] input)
 	{
 		IRecipe recipe = new ShapedOreRecipe(output, input);
 		GameRegistry.addRecipe(recipe);
 	}
 	
+	/**
+	 * Add a shapeless recipe
+	 * This type can have OreDictionary entries
+	 * @param output Item that comes out
+	 * @param input Items used for crafting
+	 */
 	private static void aSlOR(ItemStack output, Object[] input)
 	{
 		IRecipe recipe = new ShapelessOreRecipe(output, input);
 		GameRegistry.addRecipe(recipe);
+	}
+	
+	/**
+	 * Add a smelting recipe
+	 * @param output Output Item
+	 * @param input Input Item
+	 * @param xp Experience
+	 */
+	private static void aSR(ItemStack output, ItemStack input, float xp)
+	{
+		GameRegistry.addSmelting(input, output, xp);
 	}
 }

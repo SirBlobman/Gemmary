@@ -1,16 +1,12 @@
 package com.SirBlobman.gemmary.forge;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.SirBlobman.gemmary.GUtil;
 import com.SirBlobman.gemmary.block.GBlocks;
-import com.SirBlobman.gemmary.fluid.GFluids;
 import com.SirBlobman.gemmary.item.GItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.oredict.OreDictionary;
 
 public final class GOreDict 
@@ -50,8 +46,6 @@ public final class GOreDict
 		reg("blockTopaz", GBlocks.topaz);
 		reg("blockTurquoise", GBlocks.turquoise);
 		reg("tnt", Blocks.TNT);
-	//Fluids
-		for(IFluidBlock ifb : GFluids.FLUID_BLOCKS) reg("liquid" + StringUtils.capitalize(ifb.getFluid().getName()), ifb.getFluid().getBlock());
 	}
 	
 	private static void reg(String name, Item i)

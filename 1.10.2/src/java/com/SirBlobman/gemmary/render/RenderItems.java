@@ -112,6 +112,12 @@ public final class RenderItems
 	public static void reg(Item i)
 	{
 		ModelResourceLocation mrl = new ModelResourceLocation(i.getRegistryName(), "inventory");
+		if(Gemmary.altTextures)
+		{
+			String[] name = i.getRegistryName().toString().split(":");
+			String item = name[1];
+			mrl = new ModelResourceLocation(mod + ":16x/" + item, "inventory");
+		}
 		ModelLoader.setCustomModelResourceLocation(i, 0, mrl);
 	}
 	
@@ -120,6 +126,10 @@ public final class RenderItems
 	public static void reg(Item i, int m, String f)
 	{
 		ModelResourceLocation mrl = new ModelResourceLocation(mod + ":" + f, "inventory");
+		if(Gemmary.altTextures)
+		{
+			mrl = new ModelResourceLocation(mod + ":16x/" + f, "inventory");
+		}
 		ModelLoader.setCustomModelResourceLocation(i, m, mrl);
 	}
 }

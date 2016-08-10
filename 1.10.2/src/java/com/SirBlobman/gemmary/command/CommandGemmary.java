@@ -44,13 +44,13 @@ public class CommandGemmary extends CommandBase implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender ics)
 	{
-		return "§f/gemmary [mohsscale | suicide | OreDictionary]";
+		return "§f/gemmary [mohsScale | suicide | OreDictionary | getClass]";
 	}
 	
 	@Override
 	public List<String> getTabCompletionOptions(MinecraftServer server, ICommandSender sender, String[] args, BlockPos pos)
     {
-		return args.length == 1 ? getListOfStringsMatchingLastWord(args, new String[] {"mohsScale", "suicide", "oredictionary"}): Collections.<String>emptyList();
+		return args.length == 1 ? getListOfStringsMatchingLastWord(args, new String[] {"mohsScale", "suicide", "OreDictionary", "getClass"}): Collections.<String>emptyList();
     }
 
 	@Override
@@ -99,6 +99,16 @@ public class CommandGemmary extends CommandBase implements ICommand
 			{
 				player.setHealth(0.0F);
 				player.addChatComponentMessage(new TextComponentString("§5[§3Gemmary§5]§r Oops! You killed your self!"));
+			}
+			if(args[0].equalsIgnoreCase("getClass"))
+			{
+				ItemStack held = player.getHeldItemMainhand();
+				if(held == null) {player.addChatComponentMessage(new TextComponentString(air));}
+				else
+				{
+					Class c = held.getItem().getClass();
+					player.addChatMessage(new TextComponentString("Item Class Type: " + c.getName()));
+				}
 			}
 		}
 		else

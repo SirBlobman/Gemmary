@@ -34,4 +34,13 @@ public final class GemmaryTabs
 			return GItems.amethystHelmet;
 		}
 	};
+	
+	public static final CreativeTabs Buckets = new CreativeTabs("GBuckets")
+	{
+		@Override
+		public Item getTabIconItem()
+		{
+			return net.minecraft.init.Items.BUCKET;
+		}
+	};
 }

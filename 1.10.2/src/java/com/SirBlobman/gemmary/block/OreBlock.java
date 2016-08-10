@@ -2,12 +2,20 @@ package com.SirBlobman.gemmary.block;
 
 import java.util.Random;
 
+import com.SirBlobman.gemmary.Gemmary;
 import com.SirBlobman.gemmary.creative.tab.GemmaryTabs;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyBool;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 @SuppressWarnings("unused")
 public class OreBlock extends Block
@@ -47,5 +55,23 @@ public class OreBlock extends Block
 		}
 		
 		return least + r.nextInt(most - least + fortune + 1);
+	}
+	
+	public static final PropertyBool altTexture = PropertyBool.create("16x");
+	
+	public IBlockState getStateFromMeta(int meta)
+	{
+		return getDefaultState().withProperty(altTexture, Gemmary.altTextures);
+	}
+	
+	public int getMetaFromState(IBlockState ibs)
+	{
+		if(ibs.getValue(altTexture)) return 1;
+		else return 0;
+	}
+	
+	protected BlockStateContainer createBlockState()
+	{
+		return new BlockStateContainer(this, new IProperty[] {altTexture});
 	}
 }

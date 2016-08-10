@@ -98,6 +98,7 @@ public final class GItems
 	public static Item heatedWaterContainer = new Item().setUnlocalizedName("heated_water_container").setCreativeTab(GemmaryTabs.Items).setRegistryName("heated_water_container");
 	public static Item cloth = new Cloth("cloth");
 	public static Item recipeBook = new RecipeBook("recipe_book");
+	public static Item creativeFuel = new CreativeFuel();
 	
 	public static final void createGems()
 	{
@@ -140,6 +141,7 @@ public final class GItems
 		r(heatedWaterContainer);
 		r(cloth);
 		r(recipeBook);
+		r(creativeFuel);
 	}
 	
 	public static final void createArmor()

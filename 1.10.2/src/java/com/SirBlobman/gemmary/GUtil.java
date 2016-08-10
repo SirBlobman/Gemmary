@@ -9,24 +9,30 @@ import java.util.Map;
 import com.SirBlobman.gemmary.block.GemBlock;
 import com.SirBlobman.gemmary.item.Element;
 import com.SirBlobman.gemmary.item.GItems;
+import com.SirBlobman.gemmary.item.Gem;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class GUtil 
 {
-	/*
-	 * Sends a message to the System output
+	/**
+	 * Sends a message to {@link FML#getLogger}
 	 * If you are using Forge this would be logged
+	 * @param msg Message to print
 	 */
-	public static void print(String s)
+	public static void print(String msg)
 	{
-		System.out.print("[Gemmary] " + s);
+		FMLLog.info("[Gemmary] " + msg);
 	}
 	
 	/*
@@ -43,7 +49,7 @@ public class GUtil
 		return new String(I18n.format(m));
 	}
 	
-	public static final Map<Item, Double> mohsScale = new HashMap<Item, Double>();
+	private static Map<Item, Double> mohsScale = new HashMap<Item, Double>();
 	
 	public static String getMohsValueOfItem(Item i)
 	{
@@ -63,17 +69,28 @@ public class GUtil
 		return yes + "§b" + mohsScale.get(i);
 	}
 	
-	public static List<Item> getElements()
+	public static void setMohsScaleOfItem(Item i, double mohs)
+	{
+		if(i == null) return;
+		mohsScale.put(i, mohs);
+	}
+	
+	public static List<Element> getElements()
 	{
 		Iterator<Item> itemList = ForgeRegistries.ITEMS.iterator();
-		List<Item> atoms = new ArrayList<Item>();
+		List<Element> atoms = new ArrayList<Element>();
 		while(itemList.hasNext())
 		{
 			Item i = itemList.next();
-			if(i instanceof Element) atoms.add(i);
+			if(i instanceof Element) atoms.add((Element) i);
 		}
 		
 		return atoms;
+	}
+	
+	public static List<ItemStack> getOreDictionaryAtoms()
+	{
+		return OreDictionary.getOres("atom");
 	}
 	
 	public static List<GemBlock> getGemBlocks()
@@ -87,5 +104,23 @@ public class GUtil
 		}
 		
 		return gemBlocks;
+	}
+	
+	public static List<Gem> getGems()
+	{
+		Iterator<Item> itemList = ForgeRegistries.ITEMS.iterator();
+		List<Gem> gems = new ArrayList<Gem>();
+		while(itemList.hasNext())
+		{
+			Item i = itemList.next();
+			if(i instanceof Gem) gems.add((Gem) i);
+		}
+		
+		return gems;
+	}
+	
+	public static void regEvents(Object eventClass)
+	{
+		MinecraftForge.EVENT_BUS.register(eventClass);
 	}
 }

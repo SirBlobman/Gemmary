@@ -14,7 +14,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'maven'
 
-version = "Release 0.0.2.1"
+version = "Release 0.0.2.2"
 group = "com.SirBlobman.gemmary" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "Gemmary"
 
@@ -27,9 +27,9 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 minecraft {
-	version = "1.10.2-12.18.0.2010"
+	version = "1.10.2-12.18.1.2044"
 	runDir = "run"
-	mappings = "snapshot_20160518"
+	mappings = "snapshot_20160801"
     useDepAts = true
     makeObfSourceJar = false
 }
