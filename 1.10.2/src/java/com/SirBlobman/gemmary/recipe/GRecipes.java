@@ -145,8 +145,8 @@ public class GRecipes
 	 * @param input Input Item
 	 * @param xp Experience
 	 */
-	private static void aSR(ItemStack output, ItemStack input, float xp)
-	{
-		GameRegistry.addSmelting(input, output, xp);
-	}
+	//private static void aSR(ItemStack output, ItemStack input, float xp)
+	//{
+	//	GameRegistry.addSmelting(input, output, xp);
+	//}
 }

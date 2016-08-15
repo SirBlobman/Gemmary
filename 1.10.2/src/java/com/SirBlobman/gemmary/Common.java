@@ -9,6 +9,7 @@ import com.SirBlobman.gemmary.forge.GOreDict;
 import com.SirBlobman.gemmary.gui.GuiHandler;
 import com.SirBlobman.gemmary.item.FuelHandler;
 import com.SirBlobman.gemmary.item.GItems;
+import com.SirBlobman.gemmary.item.GemmaryTooltip;
 import com.SirBlobman.gemmary.recipe.GRecipes;
 import com.SirBlobman.gemmary.tile.GTiles;
 import com.SirBlobman.gemmary.world.OreGeneration;
@@ -58,6 +59,7 @@ public class Common
 		
 	//Events
 		GUtil.regEvents(new SwimFog());
+		GUtil.regEvents(new GemmaryTooltip());
 	}
 	
 	public void init(FMLInitializationEvent e)

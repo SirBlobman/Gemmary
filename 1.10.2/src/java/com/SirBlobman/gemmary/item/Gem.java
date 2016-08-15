@@ -11,10 +11,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-@SuppressWarnings({"unchecked", "rawtypes"})
 public class Gem extends Item 
 {
-	public static double MohsValue;
+	public double MohsValue;
 	
 	public Gem(String name, double mohsvalue)
 	{
@@ -23,7 +22,7 @@ public class Gem extends Item
 		setRegistryName(name);
 		setHasSubtypes(true);
 		setCreativeTab(GemmaryTabs.Items);
-		Gem.MohsValue = mohsvalue;
+		MohsValue = mohsvalue;
 	}
 	
 	@Override
@@ -48,23 +47,22 @@ public class Gem extends Item
 	}
 	
 	@Override
-	public void getSubItems(Item i, CreativeTabs t, List l)
+	public void getSubItems(Item i, CreativeTabs t, List<ItemStack> l)
 	{
 		l.add(new ItemStack(i, 1, 0));
 		l.add(new ItemStack(i, 1, 1));
 	}
 	
 	@Override
-	public void addInformation(ItemStack is, EntityPlayer p, List lore, boolean b)
+	public void addInformation(ItemStack is, EntityPlayer p, List<String> lore, boolean b)
 	{
 		double Mohs = MohsValue;
 		GUtil.setMohsScaleOfItem(is.getItem(), Mohs);
 		if(is.getItemDamage() == 1) lore.add(I18n.format("lore.dusty_gems", new Object[0]));
-		lore.add(I18n.format("lore.mohs_scale", new Object[0]) + ": " + Mohs);
 	}
 	
 	public double getMohsValue()
 	{
-		return Gem.MohsValue;
+		return MohsValue;
 	}
 }

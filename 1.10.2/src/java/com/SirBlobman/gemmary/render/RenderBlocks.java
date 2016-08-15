@@ -24,6 +24,7 @@ public final class RenderBlocks
 		reg(GBlocks.talc);
 		reg(GBlocks.tanzanite);
 		reg(GBlocks.topaz);
+		reg(GBlocks.turquoise);
 		
 	//Ore Blocks
 		reg(GBlocks.amethystOre);

@@ -1,6 +1,7 @@
 package com.SirBlobman.gemmary;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -69,6 +70,13 @@ public class GUtil
 		return yes + "§b" + mohsScale.get(i);
 	}
 	
+	public static Double getMohsScaleNumber(Item i)
+	{
+		getMohsValueOfItem(i);
+		if(mohsScale.containsKey(i)) return mohsScale.get(i);
+		return 0.0D;
+	}
+	
 	public static void setMohsScaleOfItem(Item i, double mohs)
 	{
 		if(i == null) return;
@@ -122,5 +130,18 @@ public class GUtil
 	public static void regEvents(Object eventClass)
 	{
 		MinecraftForge.EVENT_BUS.register(eventClass);
+	}
+	
+	public static List<String> getOreDictionaryEntries(Item i)
+	{
+		int[] entries = OreDictionary.getOreIDs(new ItemStack(i));
+		List<String> oreNames = new ArrayList<String>();
+		for(int id : entries)
+		{
+			String oreName = OreDictionary.getOreName(id);
+			oreNames.add(oreName);
+		}
+		Collections.sort(oreNames);
+		return oreNames;
 	}
 }

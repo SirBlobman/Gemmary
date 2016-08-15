@@ -5,9 +5,10 @@
         "1.9-latest": "Release 0.0.1.8",
         "1.9.4-latest": "Release 0.0.1.9",
         "1.10-latest": "Release 0.0.2.2",
-        "1.10.2-latest": "Release 0.0.2.2"
+        "1.10.2-latest": "Beta 0.0.2.3"
     },
     "1.10.2": {
+      "Beta 0.0.2.3": "A lot more fixes, mainly with texturing and rendering",
       "Beta 0.0.2.2": "Too many fixes to list, may include bugs",
       "Release 0.0.2.2": "Fixed invalid OreDictionary entries",
       "Release 0.0.2.1": "Tons of bug and model fixes, Fixed corundum, sapphire, and ruby incoherence",
