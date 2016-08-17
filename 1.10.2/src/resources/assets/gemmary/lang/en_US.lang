@@ -95,6 +95,7 @@ armor.boots=%s §rBoots
 item.recipe_book.name=[WIP] Recipe Book
 item.heated_water_container.name=Water Container - Heated
 item.cloth.name=Cloth
+item.creative_fuel.name=Creative Fuel
 
 <Commands>
 command.gemmary.error.noMohsScale=§5[§3Gemmary§5]§r §4This item doesn't have a Mohs Scale.
