@@ -3,26 +3,33 @@ package com.SirBlobman.gemmary.fluid;
 import org.apache.commons.lang3.StringUtils;
 
 import net.minecraft.block.material.MapColor;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraftforge.fluids.BlockFluidClassic;
+import net.minecraftforge.fluids.Fluid;
 
-public class GemFluidBlock extends BlockFluidClassic 
+public class GemFluidBlock extends BlockFluidClassic
 {
-	public GemFluidBlock(GemFluid fluid)
+	public GemFluidBlock(GemFluid gf)
 	{
-		super(fluid, new MaterialGemLiquid(fluid.getMapColor()));
-		setRegistryName("fluid" + StringUtils.capitalize(fluid.getName()));
-		setUnlocalizedName("fluid." + fluid.getName());
+		super(gf, Material.LAVA);
+		String name = "fluid." + StringUtils.capitalize(gf.getName());
+		setUnlocalizedName(name);
+		setRegistryName(name);
 	}
 	
-	public GemFluid getGemFluid()
+	public GemFluid getGemFluid() 
 	{
-		return (GemFluid)getFluid();
+		Fluid f = getFluid();
+		GemFluid gf = (GemFluid) f;
+		return gf;
 	}
 	
 	@Override
 	public MapColor getMapColor(IBlockState ibs)
 	{
-		return getGemFluid().getMapColor();
+		GemFluid gf = getGemFluid();
+		MapColor mc = gf.getMapColor();
+		return mc;
 	}
 }

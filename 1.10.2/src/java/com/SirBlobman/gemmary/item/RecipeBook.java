@@ -1,11 +1,9 @@
 package com.SirBlobman.gemmary.item;
 
-import com.SirBlobman.gemmary.GUtil;
 import com.SirBlobman.gemmary.Gemmary;
-import com.SirBlobman.gemmary.creative.tab.GemmaryTabs;
+import com.SirBlobman.gemmary.creative.GemmaryTabs;
 import com.SirBlobman.gemmary.gui.GuiHandler;
 
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -14,33 +12,30 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
-@SuppressWarnings({"rawtypes", "unchecked"})
 public class RecipeBook extends Item
 {
-	public RecipeBook(String name)
+	public RecipeBook()
 	{
 		super();
-		setUnlocalizedName(name);
-		setRegistryName(name);
-		setCreativeTab(GemmaryTabs.Items);
+		setUnlocalizedName("recipe_book");
+		setRegistryName("recipe_book");
+		setCreativeTab(GemmaryTabs.ITEMS);
 		setMaxStackSize(1);
 	}
 	
-	
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack is, World w, EntityPlayer p, EnumHand h)
+	public ActionResult<ItemStack> onItemRightClick(ItemStack is, World w, EntityPlayer ep, EnumHand eh)
 	{
 		if(w.isRemote)
 		{
-			int x = (int) p.posX;
-			int y = (int) p.posY;
-			int z = (int) p.posZ;
-			Object[] playerName = new Object[] {p.getName()};
+			int x = (int) ep.posX;
+			int y = (int) ep.posY;
+			int z = (int) ep.posZ;
 			
-			p.openGui(Gemmary.instance, GuiHandler.RecipeBook_GUI, w, x, y, z);
-			GUtil.print(I18n.format("recipe_book.openByPlayer", playerName));
+			ep.openGui(Gemmary.instance, GuiHandler.RECIPE_BOOK, w, x, y, z);
 		}
 		
-		return new ActionResult(EnumActionResult.PASS, is);
+		ActionResult<ItemStack> ar = new ActionResult<ItemStack>(EnumActionResult.PASS, is);
+		return ar;
 	}
 }

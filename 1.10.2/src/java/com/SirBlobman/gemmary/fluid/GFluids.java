@@ -1,32 +1,22 @@
 package com.SirBlobman.gemmary.fluid;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
-import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class GFluids 
-{	
+public class GFluids
+{
 	public static GemFluid amethyst = new GemFluid("amethyst", MapColor.PURPLE);
-	
-	public static void createFluids()
+	public static void fluids()
 	{
-		createFluid(amethyst);
+		fluid(amethyst);
 	}
 	
-	private static void createFluid(GemFluid f)
+	private static void fluid(GemFluid gf)
 	{
-		FluidRegistry.registerFluid(f);
-		createBlock(new GemFluidBlock(f));
-		createBucket(f);
-	}
-	private static void createBlock(Block b)
-	{
-		GameRegistry.register(b);
-	}
-	private static void createBucket(Fluid f)
-	{
-		FluidRegistry.addBucketForFluid(f);
+		FluidRegistry.registerFluid(gf);
+		FluidRegistry.addBucketForFluid(gf);
+		GemFluidBlock gfb = new GemFluidBlock(gf);
+		GameRegistry.register(gfb);
 	}
 }

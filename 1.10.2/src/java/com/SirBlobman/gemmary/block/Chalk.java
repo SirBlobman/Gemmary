@@ -1,6 +1,6 @@
 package com.SirBlobman.gemmary.block;
 
-import com.SirBlobman.gemmary.creative.tab.GemmaryTabs;
+import com.SirBlobman.gemmary.creative.GemmaryTabs;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -11,65 +11,41 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class Chalk extends Block
 {
-	protected static final AxisAlignedBB[] ChalkAABB = new AxisAlignedBB[] {new AxisAlignedBB(0.1875D, 0.0D, 0.1875D, 0.8125D, 0.0625D, 0.8125D)};
+	private final AxisAlignedBB BB = new AxisAlignedBB(0.1875, 0.0, 0.1875, 0.8125, 0.0625, 0.8125);
 	
-	protected Chalk(String color)
+	Chalk(String color)
 	{
 		super(Material.CIRCUITS);
 		setHarvestLevel("pickaxe", 1);
 		setHardness(10.0F);
 		setResistance(15.0F);
-		setUnlocalizedName(color + "_chalk");
-		setRegistryName(color + "_chalk");
-		setCreativeTab(GemmaryTabs.Items);
+		String name = color + "_chalk";
+		setUnlocalizedName(name);
+		setRegistryName(name);
+		setCreativeTab(GemmaryTabs.ITEMS);
 	}
 	
 	@Override
-	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getBlockLayer()
-	{
-		return BlockRenderLayer.TRANSLUCENT;
-	}
-	
+	public BlockRenderLayer getBlockLayer() {return BlockRenderLayer.TRANSLUCENT;}
 	@Override
-	public boolean isOpaqueCube(IBlockState ibs)
-	{
-		return false;
-	}
-	
+	public boolean isOpaqueCube(IBlockState ibs) {return false;}
 	@Override
-	public boolean isFullCube(IBlockState ibs)
-	{
-		return false;
-	}
-	
+	public boolean isFullCube(IBlockState ibs) {return false;}
 	@Override
-	public boolean canPlaceBlockAt(World w, BlockPos pos)
-	{
-		return super.canPlaceBlockAt(w, pos) && this.canBlockStay(w, pos);
-	}
-	
-	private boolean canBlockStay(World w, BlockPos pos)
-	{
-		return !w.isAirBlock(pos.down());
-	}
+	public boolean canPlaceBlockAt(World w, BlockPos bp) {return !w.isAirBlock(bp.down());}
 	
 	@SuppressWarnings("deprecation")
 	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockState ibs, IBlockAccess w, BlockPos pos, EnumFacing side)
+	public boolean shouldSideBeRendered(IBlockState ibs, IBlockAccess iba, BlockPos bp, EnumFacing ef)
 	{
-		return side == EnumFacing.UP ? true : super.shouldSideBeRendered(ibs, w, pos, side);
+		boolean b1 = ef == EnumFacing.UP;
+		boolean b2 = true;
+		return b1 ? b2 : super.shouldSideBeRendered(ibs, iba, bp, ef);
 	}
 	
 	@Override
-	public AxisAlignedBB getBoundingBox(IBlockState ibs, IBlockAccess source, BlockPos pos)
-    {
-        return ChalkAABB[0];
-    }
+	public AxisAlignedBB getBoundingBox(IBlockState ibs, IBlockAccess iba, BlockPos bp) {return BB;}
 }

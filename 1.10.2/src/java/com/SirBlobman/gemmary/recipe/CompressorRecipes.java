@@ -3,79 +3,62 @@ package com.SirBlobman.gemmary.recipe;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.SirBlobman.gemmary.GUtil;
 import com.google.common.collect.Maps;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.FMLLog;
+import net.minecraftforge.oredict.OreDictionary;
 
-public class CompressorRecipes 
+public class CompressorRecipes
 {
-	private static final CompressorRecipes compressingBase = new CompressorRecipes();
-	private static Map<ItemStack, ItemStack> compressingList = Maps.<ItemStack, ItemStack>newHashMap();
-	private static Map<ItemStack, Float> expList = Maps.<ItemStack,Float>newHashMap();
+	private static final CompressorRecipes base = new CompressorRecipes();
+	private static Map<ItemStack, ItemStack> list = Maps.newHashMap();
+	private static Map<ItemStack, Float> exp = Maps.newHashMap();
 	
-	public static CompressorRecipes instance()
+	public static CompressorRecipes instance() {return base;}
+	
+	public void addRecipe(ItemStack input, ItemStack output, float xp)
 	{
-		return compressingBase;
-	}
-	
-	public CompressorRecipes() {}
-	
-	public static void addCompressingRecipe(ItemStack input, ItemStack is, float exp)
-	{
-		if(getCompressingResult(input) != null)
+		if(getResult(input) != null)
 		{
-			FMLLog.info("Ignored compressing recipe with conflicting input: " + input + " = " + is);
+			String msg = "Ignored compressing recipe:\nConflicting Input: " + input + " = " + output;
+			GUtil.print(msg);
 			return;
 		}
 		
-		CompressorRecipes.compressingList.put(input, is);
-		CompressorRecipes.expList.put(is, Float.valueOf(exp));
+		list.put(input, output);
+		exp.put(output, xp);
 	}
 	
-	public void addCompressingRecipeForBlock(Block input, ItemStack is, float exp)
+	public ItemStack getResult(ItemStack is)
 	{
-		addCompressingRecipe(new ItemStack(Item.getItemFromBlock(input)), is, exp);
-	}
-	
-	public static ItemStack getCompressingResult(ItemStack is)
-	{
-		for(Entry<ItemStack, ItemStack> e : CompressorRecipes.compressingList.entrySet())
+		for(Entry<ItemStack, ItemStack> e : list.entrySet())
 		{
-			if(CompressorRecipes.compareItemStacks(is, (ItemStack)e.getKey()))
-			{
-				return (ItemStack)e.getValue();
-			}
+			if(compare(is, e.getKey())) return e.getValue();
 		}
-		
 		return null;
 	}
 	
-	private static boolean compareItemStacks(ItemStack is1, ItemStack is2)
+	private boolean compare(ItemStack is1, ItemStack is2)
 	{
-		return is2.getItem() == is1.getItem() && (is2.getMetadata() == 32767 || is2.getMetadata() == is1.getMetadata());
+		boolean b1 = is2.getItem() == is1.getItem();
+		boolean b2 = is2.getMetadata() == OreDictionary.WILDCARD_VALUE;
+		boolean b3 = is2.getMetadata() == is1.getMetadata();
+		return b1 && (b2 || b3);
 	}
 	
-	public Map<ItemStack, ItemStack> getCompressingList()
-	{
-		return CompressorRecipes.compressingList;
-	}
+	public Map<ItemStack, ItemStack> getRecipeList() {return list;}
 	
-	public float getCompressingExp(ItemStack is)
+	public float getExp(ItemStack is)
 	{
-		float ret = is.getItem().getSmeltingExperience(is);
-		if(ret != -1) return ret;
+		float f = is.getItem().getSmeltingExperience(is);
+		if(f != -1) return f;
 		
-		for(Entry<ItemStack, Float> e : CompressorRecipes.expList.entrySet())
+		for(Entry<ItemStack, Float> e : exp.entrySet())
 		{
-			if(CompressorRecipes.compareItemStacks(is, (ItemStack)e.getKey()))
-			{
-				return ((Float)e.getValue()).floatValue();
-			}
+			if(compare(is, e.getKey())) return e.getValue();
 		}
 		
 		return 0.0F;
 	}
-}
+} 

@@ -1,124 +1,126 @@
 package com.SirBlobman.gemmary.item;
 
-import java.util.Arrays;
-import java.util.List;
-
-import com.SirBlobman.gemmary.creative.tab.GemmaryTabs;
+import com.SirBlobman.gemmary.creative.GemmaryTabs;
+import com.SirBlobman.gemmary.item.armor.Armor;
+import com.SirBlobman.gemmary.item.armor.Boots;
+import com.SirBlobman.gemmary.item.armor.Chestplate;
+import com.SirBlobman.gemmary.item.armor.Helmet;
+import com.SirBlobman.gemmary.item.armor.Leggings;
 
 import net.minecraft.init.SoundEvents;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 
-public final class GItems 
+public final class GItems
 {
 /*
- * Armor Materials (MaterialName, TextureName, Durability, DamageReduction, Enchantability)
- * Durability = 3.3 * Mohs Scale
- * Damage Reduction = Mohs Scale
- * 
+ * Armor Materials (name, durability, protection)
+ * Durability = 3.3 * Mohs
+ * Protection = Mohs
  */
-	public static ArmorMaterial Amethyst = EnumHelper.addArmorMaterial("Amethyst", "gemmary:amethyst", 30, new int[] {4, 6, 5, 3}, 30, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0);
-	public static ArmorMaterial Ruby = EnumHelper.addArmorMaterial("Ruby", "gemmary:ruby", 30, new int[] {4, 6, 5, 3}, 30, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0);
-	public static ArmorMaterial Sapphire = EnumHelper.addArmorMaterial("Sapphire", "gemmary:sapphire", 30, new int[] {4, 6, 5, 3}, 30, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0);
-	public static ArmorMaterial Talc = EnumHelper.addArmorMaterial("Talc", "gemmary:talc", 4, new int[] {0, 1, 0, 0}, 30, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0);
-	public static ArmorMaterial Tanzanite = EnumHelper.addArmorMaterial("Tanzanite", "gemmary:tanzanite", 22, new int[] {5, 7, 6, 4}, 30, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0);
-	public static ArmorMaterial Topaz = EnumHelper.addArmorMaterial("Topaz", "gemmary:topaz", 26, new int[] {6, 8, 7, 5}, 30, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0);
-	public static ArmorMaterial Turquoise = EnumHelper.addArmorMaterial("Turquoise", "gemmary:turquoise", 17, new int[] {4, 6, 5, 2}, 30, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0);
+	private static ArmorMaterial AMETHYST = armor("Amethyst", 30, new int[] {4,6,5,3});
+	private static ArmorMaterial RUBY = armor("Ruby", 30, new int[] {4,6,5,3});
+	private static ArmorMaterial SAPPHIRE = armor("Sapphire", 30, new int[] {4,6,5,3});
+	private static ArmorMaterial TALC = armor("Talc", 4, new int[] {0,1,0,0});
+	private static ArmorMaterial TANZANITE = armor("Tanzanite", 22, new int[] {5,7,6,4});
+	private static ArmorMaterial TOPAZ = armor("Topaz", 26, new int[] {6,8,7,5});
+	private static ArmorMaterial TURQUOISE = armor("Turquoise", 17, new int[] {4,6,5,2});
 	
 //Gems
-	public static Item amethyst = new Gem("amethyst", 7.0);
-	public static Item corundum = new Gem("corundum", 9.0);
-	public static Item ruby = new Gem("ruby", 9.0);
-	public static Item sapphire = new Gem("sapphire", 9.0);
-	public static Item talc = new Gem("talc", 1.0);
-	public static Item tanzanite = new Gem("tanzanite", 6.5);
-	public static Item topaz = new Gem("topaz", 8.0);
-	public static Item turquoise = new Gem("turquoise", 5.0);
+	public static Gem amethyst = new Gem("amethyst", 7.0D);
+	public static Gem corundum = new Gem("corundum", 9.0D);
+	public static Gem ruby = new Gem("ruby", 9.0D);
+	public static Gem sapphire = new Gem("sapphire", 9.0D);
+	public static Gem talc = new Gem("talc", 1.0D);
+	public static Gem tanzanite = new Gem("tanzanite", 6.5D);
+	public static Gem topaz = new Gem("topaz", 8.0D);
+	public static Gem turquoise = new Gem("turquoise", 5.0D);
 	
 //Gem Parts
-	public static Item diamondPart = new GemPart("diamond_part");
-	public static Item emeraldPart = new GemPart("emerald_part");
+	public static GemPart diamond = new GemPart("diamond");
+	public static GemPart emerald = new GemPart("emerald");
 	
-//Elements
-	public static Item aluminum = new Element("aluminum");
-	public static Item beryllium = new Element("beryllium");
-	public static Item carbon = new Element("carbon");
-	public static Item chromium = new Element("chromium");
-	public static Item hydrogen = new Element("hydrogen");
-	public static Item iron = new Element("iron");
-	public static Item oxygen = new Element("oxygen");
-	public static Item titanium = new Element("titanium");
+//Atoms
+	public static Atom aluminum = new Atom("aluminum");
+	public static Atom beryllium = new Atom("beryllium");
+	public static Atom carbon = new Atom("carbon");
+	public static Atom chromium = new Atom("chromium");
+	public static Atom hydrogen = new Atom("hydrogen");
+	public static Atom iron = new Atom("iron");
+	public static Atom oxygen = new Atom("oxygen");
+	public static Atom titanium = new Atom("titanium");
 	
 //Alloys
-	public static Item corundumChromium = new Alloy(corundum, chromium, ruby);
-	public static Item corundumIron = new Alloy(corundum, iron, sapphire);
+	public static Alloy cCr = new Alloy(corundum, chromium, ruby);
+	public static Alloy cFe = new Alloy(corundum, iron, sapphire);
 	
 //Armor
-	public static Armor amethystHelmet = new Armor("amethyst", "helmet", Amethyst, 1, EntityEquipmentSlot.HEAD, amethyst);
-	public static Armor amethystChestplate = new Armor("amethyst", "chestplate", Amethyst, 1, EntityEquipmentSlot.CHEST, amethyst);
-	public static Armor amethystLeggings = new Armor("amethyst", "leggings", Amethyst, 2, EntityEquipmentSlot.LEGS, amethyst);
-	public static Armor amethystBoots = new Armor("amethyst", "boots", Amethyst, 1, EntityEquipmentSlot.FEET, amethyst);
+	public static Armor aHelmet = new Helmet("amethyst", AMETHYST, amethyst);
+	public static Armor aChestplate = new Chestplate("amethyst", AMETHYST, amethyst);
+	public static Armor aLeggings = new Leggings("amethyst", AMETHYST, amethyst);
+	public static Armor aBoots = new Boots("amethyst", AMETHYST, amethyst);
 
-	public static Armor rubyHelmet = new Armor("ruby", "helmet", Ruby, 1, EntityEquipmentSlot.HEAD, ruby);
-	public static Armor rubyChestplate = new Armor("ruby", "chestplate", Ruby, 1, EntityEquipmentSlot.CHEST, ruby);
-	public static Armor rubyLeggings = new Armor("ruby", "leggings", Ruby, 2, EntityEquipmentSlot.LEGS, ruby);
-	public static Armor rubyBoots = new Armor("ruby", "boots", Ruby, 1, EntityEquipmentSlot.FEET, ruby);
-
-	public static Armor sapphireHelmet = new Armor("sapphire", "helmet", Sapphire, 1, EntityEquipmentSlot.HEAD, sapphire);
-	public static Armor sapphireChestplate = new Armor("sapphire", "chestplate", Sapphire, 1, EntityEquipmentSlot.CHEST, sapphire);
-	public static Armor sapphireLeggings = new Armor("sapphire", "leggings", Sapphire, 2, EntityEquipmentSlot.LEGS, sapphire);
-	public static Armor sapphireBoots = new Armor("sapphire", "boots", Sapphire, 1, EntityEquipmentSlot.FEET, sapphire);
-
-	public static Armor talcHelmet = new Armor("talc", "helmet", Talc, 1, EntityEquipmentSlot.HEAD, talc);
-	public static Armor talcChestplate = new Armor("talc", "chestplate", Talc, 1, EntityEquipmentSlot.CHEST, talc);
-	public static Armor talcLeggings = new Armor("talc", "leggings", Talc, 2, EntityEquipmentSlot.LEGS, talc);
-	public static Armor talcBoots = new Armor("talc", "boots", Talc, 1, EntityEquipmentSlot.FEET, talc);
-
-	public static Armor tanzaniteHelmet = new Armor("tanzanite", "helmet", Tanzanite, 1, EntityEquipmentSlot.HEAD, tanzanite);
-	public static Armor tanzaniteChestplate = new Armor("tanzanite", "chestplate", Tanzanite, 1, EntityEquipmentSlot.CHEST, tanzanite);
-	public static Armor tanzaniteLeggings = new Armor("tanzanite", "leggings", Tanzanite, 2, EntityEquipmentSlot.LEGS, tanzanite);
-	public static Armor tanzaniteBoots = new Armor("tanzanite", "boots", Tanzanite, 1, EntityEquipmentSlot.FEET, tanzanite);
-
-	public static Armor topazHelmet = new Armor("topaz", "helmet", Topaz, 1, EntityEquipmentSlot.HEAD, topaz);
-	public static Armor topazChestplate = new Armor("topaz", "chestplate", Topaz, 1, EntityEquipmentSlot.CHEST, topaz);
-	public static Armor topazLeggings = new Armor("topaz", "leggings", Topaz, 2, EntityEquipmentSlot.LEGS, topaz);
-	public static Armor topazBoots = new Armor("topaz", "boots", Topaz, 1, EntityEquipmentSlot.FEET, topaz);
-
-	public static Armor turquoiseHelmet = new Armor("turquoise", "helmet", Turquoise, 1, EntityEquipmentSlot.HEAD, turquoise);
-	public static Armor turquoiseChestplate = new Armor("turquoise", "chestplate", Turquoise, 1, EntityEquipmentSlot.CHEST, turquoise);
-	public static Armor turquoiseLeggings = new Armor("turquoise", "leggings", Turquoise, 2, EntityEquipmentSlot.LEGS, turquoise);
-	public static Armor turquoiseBoots = new Armor("turquoise", "boots", Turquoise, 1, EntityEquipmentSlot.FEET, turquoise);
+	public static Armor rHelmet = new Helmet("ruby", RUBY, ruby);
+	public static Armor rChestplate = new Chestplate("ruby", RUBY, ruby);
+	public static Armor rLeggings = new Leggings("ruby", RUBY, ruby);
+	public static Armor rBoots = new Boots("ruby", RUBY, ruby);
+	
+	public static Armor sHelmet = new Helmet("sapphire", SAPPHIRE, sapphire);
+	public static Armor sChestplate = new Chestplate("sapphire", SAPPHIRE, sapphire);
+	public static Armor sLeggings = new Leggings("sapphire", SAPPHIRE, sapphire);
+	public static Armor sBoots = new Boots("sapphire", SAPPHIRE, sapphire);
+	
+	public static Armor talHelmet = new Helmet("talc", TALC, talc);
+	public static Armor talChestplate = new Chestplate("talc", TALC, talc);
+	public static Armor talLeggings = new Leggings("talc", TALC, talc);
+	public static Armor talBoots = new Boots("talc", TALC, talc);
+	
+	public static Armor tanHelmet = new Helmet("tanzanite", TANZANITE, tanzanite);
+	public static Armor tanChestplate = new Chestplate("tanzanite", TANZANITE, tanzanite);
+	public static Armor tanLeggings = new Leggings("tanzanite", TANZANITE, tanzanite);
+	public static Armor tanBoots = new Boots("tanzanite", TANZANITE, tanzanite);
+	
+	public static Armor topHelmet = new Helmet("topaz", TOPAZ, topaz);
+	public static Armor topChestplate = new Chestplate("topaz", TOPAZ, topaz);
+	public static Armor topLeggings = new Leggings("topaz", TOPAZ, topaz);
+	public static Armor topBoots = new Boots("topaz", TOPAZ, topaz);
+	
+	public static Armor turHelmet = new Helmet("turquoise", TURQUOISE, turquoise);
+	public static Armor turChestplate = new Chestplate("turquoise", TURQUOISE, turquoise);
+	public static Armor turLeggings = new Leggings("turquoise", TURQUOISE, turquoise);
+	public static Armor turBoots = new Boots("turquoise", TURQUOISE, turquoise);
 	
 //Other
-	public static Item heatedWaterContainer = new Item().setUnlocalizedName("heated_water_container").setCreativeTab(GemmaryTabs.Items).setRegistryName("heated_water_container");
-	public static Item cloth = new Cloth("cloth");
-	public static Item recipeBook = new RecipeBook("recipe_book");
-	public static Item creativeFuel = new CreativeFuel();
+	public static Item hWC = new Item().setRegistryName("hwc").setUnlocalizedName("hwc").setCreativeTab(GemmaryTabs.ITEMS);
+	public static Cloth cloth = new Cloth();
+	public static RecipeBook recipeBook = new RecipeBook();
+	public static Fuel fuel = new Fuel();
 	
-	public static final void createGems()
+	public static final void gems()
 	{
-		rDusty(amethyst);
-		rDusty(corundum);
-		rDusty(ruby);
-		rDusty(sapphire);
-		rDusty(talc);
-		rDusty(tanzanite);
-		rDusty(topaz);
-		rDusty(turquoise);
+		r(cloth);
+		rD(amethyst);
+		rD(corundum);
+		rD(ruby);
+		rD(sapphire);
+		rD(talc);
+		rD(tanzanite);
+		rD(topaz);
+		rD(turquoise);
 	}
 	
-	public static final void createGemParts()
+	public static final void gemParts()
 	{
-		r(diamondPart);
-		r(emeraldPart);
+		r(diamond);
+		r(emerald);
 	}
 	
-	public static final void createElements()
+	public static final void atoms()
 	{
 		r(aluminum);
 		r(beryllium);
@@ -130,80 +132,97 @@ public final class GItems
 		r(titanium);
 	}
 	
-	public static final void createAlloys()
+	public static final void alloys()
 	{
-		r(corundumChromium);
-		r(corundumIron);
+		r(cCr);
+		r(cFe);
 	}
 	
-	public static final void createItems()
+	public static final void items()
 	{
-		r(heatedWaterContainer);
-		r(cloth);
+		r(hWC);
 		r(recipeBook);
-		r(creativeFuel);
+		r(fuel);
 	}
 	
-	public static final void createArmor()
+	public static final void armor()
 	{
-		rArmor(amethystHelmet, amethyst);
-		rArmor(amethystChestplate, amethyst);
-		rArmor(amethystLeggings, amethyst);
-		rArmor(amethystBoots, amethyst);
+		rA(aHelmet);
+		rA(aChestplate);
+		rA(aLeggings);
+		rA(aBoots);
 		
-		rArmor(rubyHelmet, ruby);
-		rArmor(rubyChestplate, ruby);
-		rArmor(rubyLeggings, ruby);
-		rArmor(rubyBoots, ruby);
+		rA(rHelmet);
+		rA(rChestplate);
+		rA(rLeggings);
+		rA(rBoots);
 		
-		rArmor(sapphireHelmet, sapphire);
-		rArmor(sapphireChestplate, sapphire);
-		rArmor(sapphireLeggings, sapphire);
-		rArmor(sapphireBoots, sapphire);
-
-		rArmor(talcHelmet, talc);
-		rArmor(talcChestplate, talc);
-		rArmor(talcLeggings, talc);
-		rArmor(talcBoots, talc);
-
-		rArmor(tanzaniteHelmet, tanzanite);
-		rArmor(tanzaniteChestplate, tanzanite);
-		rArmor(tanzaniteLeggings, tanzanite);
-		rArmor(tanzaniteBoots, tanzanite);
+		rA(sHelmet);
+		rA(sChestplate);
+		rA(sLeggings);
+		rA(sBoots);
 		
-		rArmor(topazHelmet, topaz);
-		rArmor(topazChestplate, topaz);
-		rArmor(topazLeggings, topaz);
-		rArmor(topazBoots, topaz);
-
-		rArmor(turquoiseHelmet, turquoise);
-		rArmor(turquoiseChestplate, turquoise);
-		rArmor(turquoiseLeggings, turquoise);
-		rArmor(turquoiseBoots, turquoise);
+		rA(talHelmet);
+		rA(talChestplate);
+		rA(talLeggings);
+		rA(talBoots);
+		
+		rA(tanHelmet);
+		rA(tanChestplate);
+		rA(tanLeggings);
+		rA(tanBoots);
+		
+		rA(topHelmet);
+		rA(topChestplate);
+		rA(topLeggings);
+		rA(topBoots);
+		
+		rA(turHelmet);
+		rA(turChestplate);
+		rA(turLeggings);
+		rA(turBoots);
 	}
 	
-	private static void r(Item i)
+	private static ArmorMaterial armor(String name, int durability, int[] protection)
 	{
-		GameRegistry.register(i);
+		return EnumHelper.addArmorMaterial(name, "gemmary:" + name.toLowerCase(), durability, protection, 30, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0);
 	}
 	
-	private static void rDusty(Item i)
+	private static void r(Item i) {GameRegistry.register(i);}
+	private static void rD(Gem g)
 	{
-		r(i);
-		GameRegistry.addShapelessRecipe(new ItemStack(i, 1, 0), new Object[] {new ItemStack(i, 1, 1), new ItemStack(GItems.cloth, 1, OreDictionary.WILDCARD_VALUE)});
+		r(g);
+		ItemStack result = new ItemStack(g, 1, 0);
+		ItemStack dusty = new ItemStack(g, 1, 1);
+		ItemStack wipe = new ItemStack(cloth, 1, OreDictionary.WILDCARD_VALUE);
+		ShapelessOreRecipe sr = new ShapelessOreRecipe(result, dusty, wipe);
+		GameRegistry.addRecipe(sr);
 	}
-	
-	private static void rArmor(Armor a, Item i)
+	private static void rA(Armor a)
 	{
 		r(a);
-		if(a.armorType == EntityEquipmentSlot.HEAD) {GameRegistry.addShapedRecipe(new ItemStack(a), new Object[] {"###", "# #", '#', i});}
-		if(a.armorType == EntityEquipmentSlot.CHEST) {GameRegistry.addShapedRecipe(new ItemStack(a), new Object[] {"# #", "###", "###", '#', i});}
-		if(a.armorType == EntityEquipmentSlot.LEGS) {GameRegistry.addShapedRecipe(new ItemStack(a), new Object[] {"###", "# #", "# #", '#', i});}
-		if(a.armorType == EntityEquipmentSlot.FEET) {GameRegistry.addShapedRecipe(new ItemStack(a), new Object[] {"# #", "# #", '#', i});}
-	}
-	
-	public static List<Item> getAtoms()
-	{
-		return Arrays.asList(aluminum, beryllium, carbon, hydrogen, oxygen);
+		ItemStack i = a.repair;
+		ItemStack armor = new ItemStack(a);
+		Object[] helmet = new Object[] {"###", "# #", '#', i};
+		Object[] chestplate = new Object[] {"# #", "###", "###", '#', i};
+		Object[] leggings = new Object[] {"###", "# #", "# #", '#', i};
+		Object[] boots = new Object[] {"# #", "# #", '#', i};
+		switch(a.armorType)
+		{
+		case HEAD:
+			GameRegistry.addShapedRecipe(armor, helmet);
+			break;
+		case CHEST:
+			GameRegistry.addShapedRecipe(armor, chestplate);
+			break;
+		case LEGS:
+			GameRegistry.addShapedRecipe(armor, leggings);
+			break;
+		case FEET:
+			GameRegistry.addShapedRecipe(armor, boots);
+			break;
+		default:
+			break;
+		}
 	}
 }

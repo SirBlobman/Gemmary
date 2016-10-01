@@ -1,13 +1,12 @@
 package com.SirBlobman.gemmary.block;
 
 import com.SirBlobman.gemmary.Gemmary;
-import com.SirBlobman.gemmary.creative.tab.GemmaryTabs;
+import com.SirBlobman.gemmary.creative.GemmaryTabs;
 import com.SirBlobman.gemmary.entity.DiamondTNTPrimed;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -28,144 +27,134 @@ import net.minecraft.world.World;
 
 public class DiamondTNT extends Block
 {
-	public static final PropertyBool Explode = PropertyBool.create("explode");
+	private static final PropertyBool EXPLODE = PropertyBool.create("explode");
 	
 	public DiamondTNT()
 	{
 		super(Material.TNT);
-		setDefaultState(blockState.getBaseState().withProperty(Explode, false));
-		setCreativeTab(GemmaryTabs.Blocks);
-		setUnlocalizedName("diamond_tnt");
-		setRegistryName("diamond_tnt");
+		setCreativeTab(GemmaryTabs.BLOCKS);
+		String name = "diamond_tnt";
+		setUnlocalizedName(name);
+		setRegistryName(name);
 		setSoundType(SoundType.PLANT);
 	}
 	
 	@Override
-	public void onBlockAdded(World w, BlockPos pos, IBlockState ibs)
+	public void onBlockAdded(World w, BlockPos bp, IBlockState ibs)
 	{
-		super.onBlockAdded(w, pos, ibs);
-		if(w.isBlockPowered(pos))
+		super.onBlockAdded(w, bp, ibs);
+		if(w.isBlockPowered(bp))
 		{
-			onBlockDestroyedByPlayer(w, pos, ibs.withProperty(Explode, true));
-			w.setBlockToAir(pos);
+			IBlockState i = ibs.withProperty(EXPLODE, true);
+			onBlockDestroyedByPlayer(w, bp, i);
+			w.setBlockToAir(bp);
 		}
 	}
 	
 	@Override
-	public void neighborChanged(IBlockState ibs, World w, BlockPos pos, Block neighbor)
+	public void neighborChanged(IBlockState ibs, World w, BlockPos bp, Block b)
 	{
-		if(w.isBlockPowered(pos))
+		if(w.isBlockPowered(bp))
 		{
-			onBlockDestroyedByPlayer(w, pos, ibs.withProperty(Explode, true));
-			w.setBlockToAir(pos);
+			IBlockState i = ibs.withProperty(EXPLODE, true);
+			onBlockDestroyedByPlayer(w, bp, i);
+			w.setBlockToAir(bp);
 		}
 	}
 	
 	@Override
-	public void onBlockDestroyedByExplosion(World w, BlockPos pos, Explosion e)
+	public void onBlockDestroyedByExplosion(World w, BlockPos bp, Explosion e)
 	{
-		if(w.isRemote)
+		if(!w.isRemote)
 		{
-			DiamondTNTPrimed tnt = new DiamondTNTPrimed(w, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, e.getExplosivePlacedBy());
-			tnt.setFuse(w.rand.nextInt(tnt.getFuse() / 4) + tnt.getFuse() / 8);
-			w.spawnEntityInWorld(tnt);
+			DiamondTNTPrimed dtntp = new DiamondTNTPrimed(w, bp.getX(), bp.getY(), bp.getZ(), e.getExplosivePlacedBy());
+			dtntp.setFuse(w.rand.nextInt(dtntp.getFuse() / 4) + dtntp.getFuse() / 8);
+			w.spawnEntityInWorld(dtntp);
 		}
 	}
 	
 	@Override
-	public void onBlockDestroyedByPlayer(World w, BlockPos pos, IBlockState ibs)
-	{
-		explode(w, pos, ibs, null);
-	}
+	public void onBlockDestroyedByPlayer(World w, BlockPos bp, IBlockState ibs) {explode(w, bp, ibs, null);}
 	
-	public void explode(World w, BlockPos pos, IBlockState ibs, EntityLivingBase igniter)
+	public void explode(World w, BlockPos bp, IBlockState ibs, EntityLivingBase elb)
 	{
-		if (!w.isRemote)
-        {
-            if (((Boolean)ibs.getValue(Explode)).booleanValue())
-            {
-                DiamondTNTPrimed dtnt = new DiamondTNTPrimed(w, (double)((float)pos.getX() + 0.5F), (double)pos.getY(), (double)((float)pos.getZ() + 0.5F), igniter);
-                w.spawnEntityInWorld(dtnt);
-                w.playSound((EntityPlayer)null, dtnt.posX, dtnt.posY, dtnt.posZ, SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 100.0F, -1 * Gemmary.diamondTntExplosionSize);
-            }
-        }
+		if(!w.isRemote)
+		{
+			if(ibs.getValue(EXPLODE))
+			{
+				DiamondTNTPrimed dtnt = new DiamondTNTPrimed(w, bp.getX(), bp.getY(), bp.getZ(), elb);
+				w.spawnEntityInWorld(dtnt);
+				w.playSound(null, dtnt.posX, dtnt.posY, dtnt.posZ, SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 100.0F, -1 * Gemmary.diamond_tnt_explosion_size);
+			}
+		}
 	}
 	
 	@Override
-	public boolean onBlockActivated(World w, BlockPos pos, IBlockState ibs, EntityPlayer p, EnumHand hand, ItemStack heldItem, EnumFacing side, float X, float Y, float Z)
+	public boolean onBlockActivated(World w, BlockPos bp, IBlockState ibs, EntityPlayer ep, EnumHand eh, ItemStack held, EnumFacing ef, float x, float y, float z)
 	{
-		if(heldItem != null)
+		if(held != null)
 		{
-			Item i = heldItem.getItem();
-			
+			Item i = held.getItem();
 			if(i == Items.FLINT_AND_STEEL || i == Items.FIRE_CHARGE)
 			{
-				explode(w, pos, ibs.withProperty(Explode, true), p);
-				w.setBlockToAir(pos);
-				
-				if(i == Items.FLINT_AND_STEEL)
-				{
-					heldItem.damageItem(1, p);
-				}
-				else if(!p.capabilities.isCreativeMode)
-				{
-					--heldItem.stackSize;
-				}
+				explode(w, bp, ibs.withProperty(EXPLODE, true), ep);
+				w.setBlockToAir(bp);
+				if(i == Items.FLINT_AND_STEEL) held.damageItem(1, ep);
+				else if(!ep.capabilities.isCreativeMode) --held.stackSize;
 				
 				return true;
 			}
 		}
 		
-		return super.onBlockActivated(w, pos, ibs, p, hand, heldItem, side, X, Y, Z);
+		return super.onBlockActivated(w, bp, ibs, ep, eh, held, ef, x, y, z);
 	}
 	
 	@Override
-	 public void onEntityCollidedWithBlock(World w, BlockPos pos, IBlockState ibs, Entity e)
-	 {
-		if(!w.isRemote && e instanceof EntityArrow)
+	public void onEntityCollidedWithBlock(World w, BlockPos bp, IBlockState ibs, Entity e)
+	{
+		if(!w.isRemote)
 		{
-			EntityArrow arrow = (EntityArrow)e;
-			
-			if(arrow.isBurning())
+			if(e instanceof EntityArrow)
 			{
-				explode(w, pos, w.getBlockState(pos).withProperty(Explode, true), arrow.shootingEntity instanceof EntityLivingBase ? (EntityLivingBase)arrow.shootingEntity : null);
-				w.setBlockToAir(pos);
+				EntityArrow ea = (EntityArrow) e;
+				if(ea.isBurning())
+				{
+					Entity shot = ea.shootingEntity;
+					boolean b1 = shot instanceof EntityLivingBase;
+					EntityLivingBase shooter = b1 ? (EntityLivingBase) shot : null;
+					explode(w, bp, w.getBlockState(bp).withProperty(EXPLODE, true), shooter);
+					w.setBlockToAir(bp);
+				}
 			}
 		}
-	 }
+	}
 	
 	@Override
-	public boolean canDropFromExplosion(Explosion e)
-	{
-		return false;
-	}
+	public boolean canDropFromExplosion(Explosion e) {return false;}
 	
 	@Override
 	public IBlockState getStateFromMeta(int meta)
 	{
-		return getDefaultState().withProperty(Explode, Boolean.valueOf((meta & 1) > 0));
+		IBlockState def = getDefaultState();
+		IBlockState with = def.withProperty(EXPLODE, (meta & 1) > 0);
+		return with;
 	}
 	
 	@Override
 	public int getMetaFromState(IBlockState ibs)
 	{
-		return ibs.getValue(Explode).booleanValue() ? 1 : 0;
+		boolean b1 = ibs.getValue(EXPLODE);
+		return b1 ? 1 : 0;
 	}
 	
-	protected BlockStateContainer createBlockState()
+	public BlockStateContainer createBlockState()
 	{
-		return new BlockStateContainer(this, new IProperty[] {Explode});
-	}
-	
-	@Override
-	public boolean isOpaqueCube(IBlockState ibs)
-	{
-		return false;
+		BlockStateContainer bsc = new BlockStateContainer(this, EXPLODE);
+		return bsc;
 	}
 	
 	@Override
-	public boolean isFullCube(IBlockState ibs)
-	{
-		return false;
-	}
+	public boolean isOpaqueCube(IBlockState ibs) {return false;}
+	@Override
+	public boolean isFullCube(IBlockState ibs) {return false;}
 }

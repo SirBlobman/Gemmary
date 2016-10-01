@@ -6,8 +6,8 @@ import java.util.List;
 
 import com.SirBlobman.gemmary.GUtil;
 
+import net.minecraft.client.resources.I18n;
 import net.minecraft.command.CommandBase;
-import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.Entity;
@@ -19,102 +19,113 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.oredict.OreDictionary;
 
-@SuppressWarnings({"rawtypes", "unchecked"})
 public class CommandGemmary extends CommandBase implements ICommand
 {
-	Object p = new Object[0];
-	private final ArrayList aliases;
-	
-	protected String fullEntityName;
-	protected Entity conjuredEntity;
+	private final List<String> alias;
+	String name;
+	Entity ent;
 	
 	public CommandGemmary()
 	{
-		aliases = new ArrayList();
-		aliases.add("gemmary");
-		aliases.add("gem");
+		alias = new ArrayList<String>();
+		alias.add("gemmary");
+		alias.add("gem");
 	}
 	
 	@Override
-	public String getCommandName()
+	public String getCommandName() {return "gemmary";}
+	
+	@Override
+	public String getCommandUsage(ICommandSender cs)
 	{
-		return "gemmary";
+		String usage = "\u00a7f/gemmart [mohsScale | suicide | oreDictionary | getClass]";
+		return usage;
 	}
 	
 	@Override
-	public String getCommandUsage(ICommandSender ics)
+	public List<String> getTabCompletionOptions(MinecraftServer ms, ICommandSender ics, String[] args, BlockPos pos)
 	{
-		return "§f/gemmary [mohsScale | suicide | OreDictionary | getClass]";
+		boolean b1 = args.length == 1;
+		List<String> l1 = getListOfStringsMatchingLastWord(args, new String[] {"mohsScale", "suicide", "OreDictionary", "getClass"});
+		List<String> l2 = Collections.emptyList();
+		return b1 ? l1 : l2;
 	}
 	
 	@Override
-	public List<String> getTabCompletionOptions(MinecraftServer server, ICommandSender sender, String[] args, BlockPos pos)
-    {
-		return args.length == 1 ? getListOfStringsMatchingLastWord(args, new String[] {"mohsScale", "suicide", "OreDictionary", "getClass"}): Collections.<String>emptyList();
-    }
-
-	@Override
-	public void execute(MinecraftServer srvr, ICommandSender s, String[] args) throws CommandException 
+	public void execute(MinecraftServer ms, ICommandSender cs, String[] args)
 	{
-		EntityPlayer player = (EntityPlayer)s.getCommandSenderEntity();
-		if(player == null)
+		Entity e = cs.getCommandSenderEntity();
+		if(e != null && cs.getCommandSenderEntity() instanceof EntityPlayer)
 		{
-			return;
-		}
-		if(args.length > 0)
-		{
-			String air = new String(GUtil.translate("command.gemmary.error.holdingAir"));
-			
-			if(args[0].equalsIgnoreCase("mohsscale"))
+			EntityPlayer ep = (EntityPlayer) e;
+			String sub = args[0].toLowerCase();
+			if(args.length > 0)
 			{
-				
-				Item held_item = player.getHeldItemMainhand().getItem();
-				
-
-				if(held_item == null)
+				String air = I18n.format("command.gemmary.error.holdingAir");
+				if(sub.equals("mohsscale"))
 				{
-					player.addChatComponentMessage(new TextComponentString(air));
-				}
-				else
-				{
-					player.addChatComponentMessage(new TextComponentString(GUtil.getMohsValueOfItem(held_item)));
-				}
-			}
-			if(args[0].equalsIgnoreCase("oredictionary"))
-			{
-				ItemStack held = player.getHeldItemMainhand();
-				if(held == null) {player.addChatComponentMessage(new TextComponentString(air));}
-				else
-				{
-					int[] ids = OreDictionary.getOreIDs(held);
-					player.addChatComponentMessage(new TextComponentString("OreDictionary Names:"));
-					for(int i : ids)
+					ItemStack held = ep.getHeldItemMainhand();
+					Item heldi = held.getItem();
+					if(heldi == null) 
 					{
-						String name = OreDictionary.getOreName(i);
-						player.addChatComponentMessage(new TextComponentString(" - " + name));
+						ep.addChatComponentMessage(new TextComponentString(air));
+						return;
+					}
+					else
+					{
+						TextComponentString msg = new TextComponentString(GUtil.getMohsOfItem(heldi));
+						ep.addChatComponentMessage(msg);
+						return;
 					}
 				}
-			}
-			if(args[0].equalsIgnoreCase("suicide"))
-			{
-				player.setHealth(0.0F);
-				player.addChatComponentMessage(new TextComponentString("§5[§3Gemmary§5]§r Oops! You killed your self!"));
-			}
-			if(args[0].equalsIgnoreCase("getClass"))
-			{
-				ItemStack held = player.getHeldItemMainhand();
-				if(held == null) {player.addChatComponentMessage(new TextComponentString(air));}
-				else
+				if(sub.equals("oredictionary"))
 				{
-					Class c = held.getItem().getClass();
-					player.addChatMessage(new TextComponentString("Item Class Type: " + c.getName()));
+					ItemStack held = ep.getHeldItemMainhand();
+					if(held == null)
+					{
+						ep.addChatComponentMessage(new TextComponentString(air));
+						return;
+					}
+					else
+					{
+						int[] ids = OreDictionary.getOreIDs(held);
+						ep.addChatComponentMessage(new TextComponentString("OreDictionary Names:"));
+						for(int id : ids)
+						{
+							String name = OreDictionary.getOreName(id);
+							ep.addChatComponentMessage(new TextComponentString(" - " + name));
+						}
+						return;
+					}
 				}
+				if(sub.equals("suicide"))
+				{
+					ep.setHealth(0.0F);
+					ep.addChatComponentMessage(new TextComponentString(GUtil.gemmary + "Oops! You killed your self!"));
+					return;
+				}
+				if(sub.equals("getclass"))
+				{
+					ItemStack held = ep.getHeldItemMainhand();
+					if(held == null)
+					{
+						ep.addChatComponentMessage(new TextComponentString(air));
+						return;
+					}
+					else
+					{
+						Item i = held.getItem();
+						Class<? extends Item> c = i.getClass();
+						ep.addChatComponentMessage(new TextComponentString("Item Class: " + c.getName()));
+					}
+				}
+				ep.addChatComponentMessage(new TextComponentString(GUtil.IA));
+				return;
 			}
+			ep.addChatComponentMessage(new TextComponentString(GUtil.NEA));
+			return;
 		}
-		else
-		{
-			player.addChatComponentMessage(new TextComponentString("§5[§3Gemmary§5]§r Thanks for testing Gemmary"));
-			player.addChatComponentMessage(new TextComponentString(getCommandUsage(s)));
-		}
+		cs.addChatMessage(new TextComponentString(GUtil.csNotPlayer));
+		return;
 	}
 }

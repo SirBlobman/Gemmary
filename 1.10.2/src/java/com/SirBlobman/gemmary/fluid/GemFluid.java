@@ -7,23 +7,24 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 
-public class GemFluid extends Fluid 
+public class GemFluid extends Fluid
 {
 	private MapColor color;
-	
-	public GemFluid(String name, MapColor color)
+	public GemFluid(String name, MapColor mc)
 	{
-		super(name, new ResourceLocation(Gemmary.MODID, "fluids/" + name + "_still"), new ResourceLocation(Gemmary.MODID, "fluids/" + name + "_flow"));
+		super
+		(
+			name,
+			new ResourceLocation(Gemmary.MODID, "fluids/" + name + "_still"),
+			new ResourceLocation(Gemmary.MODID, "fluids/" + name + "_flow")
+		);
 		setDensity(1600);
 		setViscosity(12000);
 		setTemperature(1974);
 		setFillSound(SoundEvents.ITEM_BUCKET_FILL_LAVA);
 		setEmptySound(SoundEvents.ITEM_BUCKET_EMPTY_LAVA);
-		this.color = color;
+		this.color = mc;
 	}
 	
-	public MapColor getMapColor()
-	{
-		return this.color;
-	}
+	public MapColor getMapColor() {return color;}
 }

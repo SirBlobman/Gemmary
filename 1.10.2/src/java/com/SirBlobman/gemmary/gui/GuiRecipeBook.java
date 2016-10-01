@@ -3,106 +3,47 @@ package com.SirBlobman.gemmary.gui;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
-import com.SirBlobman.gemmary.GUtil;
-
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class GuiRecipeBook extends GuiScreen
 {
-	private static final int BookHeight = 192;
-	private static final int BookWidth = 192;
-	private static int currentPage = 0;
-	private static final int  TotalPages = 5;
+	private final int BOOK_H = 192;
+	private final int BOOK_W = 192;
+	private final int TOTAL_PAGES = 5;
+	private int page = 0;
 	
-	private static ResourceLocation[] bookTextures = new ResourceLocation[TotalPages];
+	private ResourceLocation[] textures = new ResourceLocation[TOTAL_PAGES];
 	private GuiButton done;
 	private NextButton next;
-	private NextButton previous;
-	
-	@SideOnly(Side.CLIENT)
-	static class NextButton extends GuiButton
-	{
-		private final boolean isNext;
-		
-		public NextButton(int id, int x, int y, boolean next)
-		{
-			super(id, x, y, 23, 13, "");
-			isNext = next;
-		}
-		
-		@Override
-		public void drawButton(Minecraft mc, int X, int Y)
-		{
-			if(visible)
-			{
-				boolean isHovered = (X >= xPosition && Y >= yPosition && X < xPosition + width && Y < yPosition + height);
-				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-				mc.getTextureManager().bindTexture(bookTextures[1]);
-				int x = 0;
-				int y = 192;
-				
-				if(isHovered)
-				{
-					x += 23;
-				}
-				if(!isNext)
-				{
-					y += 13;
-				}
-				
-				drawTexturedModalRect(xPosition, yPosition, x, y, 23, 13);
-			}
-		}
-	}
+	private NextButton prev;
 	
 	public GuiRecipeBook()
 	{
-		bookTextures[0] = new ResourceLocation("gemmary" + ":" + "textures/gui/recipe_book/cover.png");
-		bookTextures[1] = new ResourceLocation("gemmary" + ":" + "textures/gui/recipe_book/1.png");
-		bookTextures[2] = new ResourceLocation("gemmary" + ":" + "textures/gui/recipe_book/2.png");
-		bookTextures[3] = new ResourceLocation("gemmary" + ":" + "textures/gui/recipe_book/3.png");
-		bookTextures[4] = new ResourceLocation("gemmary" + ":" + "textures/gui/recipe_book/4.png");
+		String path = "gemmary:textures/gui/recipe_book/";
+		textures[0] = new ResourceLocation(path + "cover.png");
+		textures[1] = new ResourceLocation(path + "1.png");
+		textures[2] = new ResourceLocation(path + "2.png");
+		textures[3] = new ResourceLocation(path + "3.png");
+		textures[4] = new ResourceLocation(path + "4.png");
 	}
 	
 	@Override
-	public void onGuiClosed()
-	{
-		Keyboard.enableRepeatEvents(false);
-	}
-	
+	public void onGuiClosed() {Keyboard.enableRepeatEvents(false);}
 	@Override
-	public boolean doesGuiPauseGame()
-	{
-		return false;
-	}
+	public boolean doesGuiPauseGame() {return false;}
 	
 	@Override
 	public void actionPerformed(GuiButton gb)
 	{
-		if(gb == done)
-		{
-			mc.displayGuiScreen((GuiScreen) null);
-		}
-		if(gb == next)
-		{
-			if(currentPage < TotalPages - 1)
-			{
-				++currentPage;
-			}
-		}
-		if(gb == previous)
-		{
-			if(currentPage > 0)
-			{
-				--currentPage;
-			}
-		}
+		if(gb == done) mc.displayGuiScreen(null);
+		if(gb == next) {if(page < TOTAL_PAGES - 1) ++page;}
+		if(gb == prev) {if(page < TOTAL_PAGES - 1) --page;}
 	}
 	
 	@Override
@@ -110,44 +51,63 @@ public class GuiRecipeBook extends GuiScreen
 	{
 		buttonList.clear();
 		Keyboard.enableRepeatEvents(true);
-		
-		int bookLeft = (width - BookWidth) / 2;
-		done = new GuiButton(0, width / 2 + 2, 4 + GuiRecipeBook.BookHeight, 98, 20, GUtil.translate("gui.done"));
+		int bookLeft = (width - BOOK_W) / 2;
+		done = new GuiButton(0, width / 2 + 2, 4 + BOOK_H, 98, 20, I18n.format("gui.recipe_book.done"));
 		next = new NextButton(1, bookLeft + 120, 156, true);
-		previous = new NextButton(2, bookLeft + 38, 156, false);
-		
+		prev = new NextButton(2, bookLeft + 38, 156, false);
 		buttonList.add(done);
 		buttonList.add(next);
-		buttonList.add(previous);
+		buttonList.add(prev);
 	}
 	
 	@Override
-	public void drawScreen(int X, int Y, float pTicks)
+	public void drawScreen(int x, int y, float ticks)
 	{
-		GL11.glColor4f(1.0F,  1.0F,  1.0F, 1.0F);
+		GL11.glColor4f(1, 1, 1, 1);
+		Minecraft m = Minecraft.getMinecraft();
+		TextureManager tm = m.getTextureManager();
+		tm.bindTexture(textures[page]);
 		
-		switch(currentPage)
+		int bookLeft = (width - BOOK_W) / 2;
+		drawTexturedModalRect(bookLeft, 2, 0, 0, BOOK_W, BOOK_H);
+		String pagei = I18n.format("gui.recipe_book.page", (page + 1), TOTAL_PAGES);
+		FontRenderer fr = fontRendererObj;
+		int sw = fr.getStringWidth(pagei);
+		fr.drawString(pagei, bookLeft - sw + BOOK_W - 44, 18, 0);
+		
+		super.drawScreen(x, y, ticks);
+	}
+	
+	class NextButton extends GuiButton
+	{
+		private final boolean next;
+		
+		public NextButton(int id, int x, int y, boolean next)
 		{
-			case 0: mc.getTextureManager().bindTexture(bookTextures[0]);
-				break;
-			case 1: mc.getTextureManager().bindTexture(bookTextures[1]);
-				break;
-			case 2: mc.getTextureManager().bindTexture(bookTextures[2]);
-				break;
-			case 3: mc.getTextureManager().bindTexture(bookTextures[3]);
-				break;
-			case 4: mc.getTextureManager().bindTexture(bookTextures[4]);
-				break;
-			case 5: mc.getTextureManager().bindTexture(bookTextures[5]);
-				break;
+			super(id, x, y, 23, 13, "");
+			this.next = next;
 		}
 		
-		int bookLeft = (width - BookWidth) / 2;
-		drawTexturedModalRect(bookLeft, 2, 0, 0, BookWidth, BookHeight);
-		String pageIndicator = I18n.format("book.pageIndicator", new Object[] {Integer.valueOf(currentPage + 1), TotalPages});
-		int stringWidth = fontRendererObj.getStringWidth(pageIndicator);
-		fontRendererObj.drawString(pageIndicator, bookLeft - stringWidth + BookWidth - 44, 18, 0);
-		
-		super.drawScreen(X, Y, pTicks);
+		@Override
+		public void drawButton(Minecraft m, int x, int y)
+		{
+			if(visible)
+			{
+				boolean b1 = x >= xPosition;
+				boolean b2 = y >= yPosition;
+				boolean b3 = x < xPosition + width;
+				boolean b4 = y < yPosition + height;
+				boolean hover = b1 && b2 && b3 && b4;
+				GL11.glColor4f(1, 1, 1, 1);
+				TextureManager tm = m.getTextureManager();
+				tm.bindTexture(textures[1]);
+				int x2 = 0;
+				int y2 = 192;
+				if(hover) x2 += 23;
+				if(next) y2 += 13;
+				
+				drawTexturedModalRect(xPosition, yPosition, x2, y2, 23, 13);
+			}
+		}
 	}
 }

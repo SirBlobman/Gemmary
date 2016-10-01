@@ -1,6 +1,6 @@
 {
-    "variants": {
-        "16x=false": {"model": "gemmary:ruby_block"},
-        "16x=true": {"model": "gemmary:16x/ruby_block"}
+    "variants":
+    {
+        "normal": {"model":"gemmary:ruby_block"}
     }
 }

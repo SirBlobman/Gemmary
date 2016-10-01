@@ -13,50 +13,39 @@ import net.minecraft.world.World;
 
 public class DiamondTNTPrimed extends Entity
 {
-	private static final DataParameter<Integer> FUSE = EntityDataManager.<Integer>createKey(DiamondTNTPrimed.class, DataSerializers.VARINT);
-	private EntityLivingBase placedBy;
+	private final DataParameter<Integer> FUSE = EntityDataManager.createKey(DiamondTNTPrimed.class, DataSerializers.VARINT);
+	private EntityLivingBase placer;
 	private int fuse;
-			
+	
 	public DiamondTNTPrimed(World w)
 	{
 		super(w);
 		fuse = 80;
 		preventEntitySpawning = true;
-		setSize(.98F, .98F);
+		setSize(0.98F, 0.98F);
 	}
 	
-	public DiamondTNTPrimed(World w, double x, double y, double z, EntityLivingBase igniter)
+	public DiamondTNTPrimed(World w, double x, double y, double z, EntityLivingBase placer)
 	{
 		this(w);
 		setPosition(x,y,z);
-		float f = (float) (Math.random() * (Math.PI * 2d));
-		motionX = (double)(-((float)Math.sin((double)f)) * 0.02F);
-        motionY = 0.20000000298023224D;
-        motionZ = (double)(-((float)Math.cos((double)f)) * 0.02F);
-        setFuse(80);
-        prevPosX = x;
-        prevPosY = y;
-        prevPosZ = z;
-        placedBy = igniter;
-	}
-
-	@Override
-	protected void entityInit()
-	{
-		dataManager.register(FUSE, Integer.valueOf(80));
+		float f = (float) (Math.random() * (Math.PI * 2.0D));
+		motionX = -(Math.sin(f) * 0.02F);
+		motionY = 0.20000000298023224D;
+		motionZ = -(Math.cos(f) * 0.02F);
+		setFuse(80);
+		prevPosX = x;
+		prevPosY = y;
+		prevPosZ = z;
+		this.placer = placer;
 	}
 	
 	@Override
-	protected boolean canTriggerWalking()
-	{
-		return false;
-	}
-	
+	public void entityInit() {dataManager.register(FUSE, 80);}
 	@Override
-	public boolean canBeCollidedWith()
-	{
-		return !isDead;
-	}
+	public boolean canTriggerWalking() {return false;}
+	@Override
+	public boolean canBeCollidedWith() {return !isDead;}
 	
 	@Override
 	public void onUpdate()
@@ -82,69 +71,41 @@ public class DiamondTNTPrimed extends Entity
 		if(fuse <= 0)
 		{
 			setDead();
-			if(!worldObj.isRemote)
-			{
-				explode();
-			}
+			if(!worldObj.isRemote) explode();
 		}
 		else
 		{
 			handleWaterMovement();
-			worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX, posY + 0.5, posZ, 0.0, 0.0, 0.0, new int[0]);
+			worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX, posY, posZ, 0.0D, 0.0D, 0.0D, new int[0]);
 		}
 	}
 	
 	private void explode()
 	{
-		float power = Gemmary.diamondTntExplosionSize;
-		worldObj.createExplosion(this, posX, posY + (height/16.0), posZ, power, true);
-	}
-
-	@Override
-	protected void readEntityFromNBT(NBTTagCompound compound)
-	{
-		setFuse(compound.getShort("Fuse"));
-	}
-
-	@Override
-	protected void writeEntityToNBT(NBTTagCompound compound)
-	{
-		compound.setShort("Fuse", (short)getFuse());
-	}
-	
-	public EntityLivingBase getPlacedBy()
-	{
-		return placedBy;
+		float power = Gemmary.diamond_tnt_explosion_size;
+		worldObj.createExplosion(this, posX, posY + (height / 16.0D), posZ, power, true);
 	}
 	
 	@Override
-	public float getEyeHeight()
-	{
-		return 0.0F;
-	}
+	public void readEntityFromNBT(NBTTagCompound tag) {setFuse(tag.getShort("Fuse"));}
+	
+	@Override
+	public void writeEntityToNBT(NBTTagCompound old) {old.setShort("Fuse", (short) getFuse());}
+	
+	public EntityLivingBase getPlacer() {return placer;}
+	
+	@Override
+	public float getEyeHeight() {return 0.0F;}
 	
 	public void setFuse(int f)
 	{
-		dataManager.set(FUSE, Integer.valueOf(f));
+		dataManager.set(FUSE, f);
 		fuse = f;
 	}
 	
 	@Override
-	public void notifyDataManagerChange(DataParameter<?> key)
-	{
-		if(FUSE.equals(key))
-		{
-			fuse = getFuseDataManager();
-		}
-	}
+	public void notifyDataManagerChange(DataParameter<?> key) {if(FUSE.equals(key)) fuse = getFuseDataManager();}
 	
-	public int getFuseDataManager()
-	{
-		return ((Integer)dataManager.get(FUSE)).intValue();
-	}
-	
-	public int getFuse()
-	{
-		return fuse;
-	}
+	public int getFuseDataManager() {return dataManager.get(FUSE);}
+	public int getFuse() {return fuse;}
 }

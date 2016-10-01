@@ -2,71 +2,44 @@ package com.SirBlobman.gemmary.block;
 
 import java.util.Random;
 
-import com.SirBlobman.gemmary.Gemmary;
-import com.SirBlobman.gemmary.creative.tab.GemmaryTabs;
+import com.SirBlobman.gemmary.creative.GemmaryTabs;
 
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 
-@SuppressWarnings("unused")
 public class OreBlockFalling extends BlockFalling
 {
 	private Item drop;
-	private int meta;
-	private int least;
-	private int most;
+	private int meta,min,max;
 	
-	protected OreBlockFalling(String gem, Item drop, int meta, int least, int most, String harvestTool, int harvestLvl, float hardness)
+	public OreBlockFalling(Item gem, int meta, int min, int max, int level, float mohs)
 	{
 		super();
-		this.drop = drop;
+		this.drop = gem;
 		this.meta = meta;
-		this.least = least;
-		this.most = most;
-		setHarvestLevel(harvestTool, harvestLvl);
-		setHardness(hardness);
+		this.min = min;
+		this.max = max;
+		setHarvestLevel("shovel", level);
+		setHardness(mohs);
 		setResistance(15.0F);
 		setSoundType(SoundType.SAND);
-		setUnlocalizedName(gem + "_ore");
-		setRegistryName(gem + "_ore");
-		setCreativeTab(GemmaryTabs.Blocks);
+		String name = gem.getUnlocalizedName().substring(5) + "_ore";
+		setUnlocalizedName(name);
+		setRegistryName(name);
+		setCreativeTab(GemmaryTabs.BLOCKS);
 	}
 	
 	@Override
-	public Item getItemDropped(IBlockState ibs, Random r, int fortune) {return drop;}
+	public Item getItemDropped(IBlockState ibs, Random r, int i) {return drop;}
+	@Override
+	public int damageDropped(IBlockState ibs) {return meta;}
 	
 	@Override
-	public int quantityDropped(IBlockState ibs, int fortune, Random r)
+	public int quantityDropped(IBlockState ibs, int i, Random r)
 	{
-		if(least >= most) {return least;}
-		
-		return least + r.nextInt(most - least + fortune + 1);
-	}
-
-	public static final PropertyBool altTexture = PropertyBool.create("16x");
-
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return getDefaultState().withProperty(altTexture, Gemmary.altTextures);
-	}
-
-	public int getMetaFromState(IBlockState ibs)
-	{
-		if(ibs.getValue(altTexture)) return 1;
-		else return 0;
-	}
-
-	protected BlockStateContainer createBlockState()
-	{
-		return new BlockStateContainer(this, new IProperty[] {altTexture});
+		if(min >= max) return min;
+		return min + r.nextInt(max - min + i + 1);
 	}
 }

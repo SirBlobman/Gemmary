@@ -4,103 +4,112 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.SirBlobman.gemmary.container.ContainerCompressor;
-import com.SirBlobman.gemmary.tile.CompressorTE;
+import com.SirBlobman.gemmary.gui.container.ContainerCompressor;
+import com.SirBlobman.gemmary.tile.TileCompressor;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT)
 public class GuiCompressor extends GuiContainer
 {
-	private static final ResourceLocation gui = new ResourceLocation("gemmary:textures/gui/compressor.png");
-	private CompressorTE te;
+	private final String resource = "gemmary:textures/gui/compressor.png";
+	private final ResourceLocation GUI = new ResourceLocation(resource);
+	private TileCompressor te;
 	
-	public GuiCompressor(InventoryPlayer iP, CompressorTE tC)
+	public GuiCompressor(InventoryPlayer ip, TileCompressor tc)
 	{
-		super(new ContainerCompressor(iP, tC));
-		
+		super(new ContainerCompressor(ip, tc));
 		xSize = 176;
 		ySize = 207;
-		
-		te = tC;
+		te = tc;
 	}
 	
-	final int CompressBarXPos = 49;
-	final int CompressBarYPos = 60;
-	final int CompressBarIconU = 0;
-	final int CompressBarIconV = 207;
-	final int CompressBarWidth = 80;
-	final int CompressBarHeight = 18;
+	final int BAR_X = 49;
+	final int BAR_Y = 60;
+	final int BAR_U = 0;
+	final int BAR_V = 207;
+	final int BAR_W = 80;
+	final int BAR_H = 18;
 	
-	final int FlameXPos = 31;
-	final int FlameYPos = 60;
-	final int FlameIconU = 176;
-	final int FlameIconV = 0;
-	final int FlameWidth = 18;
-	final int FlameHeight = 18;
-	final int FlameXSpacing = 18;
+	final int FLAME_X = 31;
+	final int FLAME_Y = 60;
+	final int FLAME_U = 176;
+	final int FLAME_V = 0;
+	final int FLAME_W = 18;
+	final int FLAME_H = 18;
+	final int FLAME_S = 18;
 	
 	@Override
-	protected void drawGuiContainerBackgroundLayer(float pTicks, int x, int y)
+	public void drawGuiContainerBackgroundLayer(float ticks, int x, int y)
 	{
-		Minecraft.getMinecraft().getTextureManager().bindTexture(gui);
+		Minecraft m = Minecraft.getMinecraft();
+		TextureManager tm = m.getTextureManager();
+		tm.bindTexture(GUI);
 		
-		//Red, Green, Blue, Alpha
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		GlStateManager.color(1, 1, 1, 1);
 		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 		
-		double compressProgress = te.fractionOfCompressTimeComplete();
-		drawTexturedModalRect(guiLeft + CompressBarXPos, guiTop + CompressBarYPos, CompressBarIconU, CompressBarIconV, (int)(compressProgress * CompressBarWidth), CompressBarHeight);
+		double progress = te.compresstimeCompleteFraction();
+		drawTexturedModalRect(guiLeft + BAR_X, guiTop + BAR_Y, BAR_U, BAR_V, (int) (progress * BAR_W), BAR_H);
 		
-		for(int i = 0; i < CompressorTE.FuelSlotsCount; ++i)
+		for(int i = 0; i < te.FUEL_SLOTS; ++i)
 		{
-			double compressRemaining = te.fractionOfFuelRemaining(i);
-			int yOffset = (int)((1.0 -compressRemaining) * FlameHeight);
-			drawTexturedModalRect(guiLeft + FlameXPos + FlameXSpacing * i, guiTop + FlameYPos + yOffset, FlameIconU, FlameIconV + yOffset, FlameWidth, FlameHeight - yOffset);
+			double remaining = te.fuelFractionRemaining(i);
+			int yOff = (int) ((1.0 - remaining) * FLAME_H);
+			drawTexturedModalRect(guiLeft + FLAME_X + FLAME_S * i, guiTop + FLAME_Y + yOff, FLAME_U, FLAME_V + yOff, FLAME_W, FLAME_H - yOff);
 		}
 	}
 	
 	@Override
-	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
+	public void drawGuiContainerForegroundLayer(int mx, int my)
 	{
-		super.drawGuiContainerForegroundLayer(mouseX, mouseY);
+		super.drawGuiContainerForegroundLayer(mx, my);
+		final int LABEL_X = 72;
+		final int LABEL_Y = 5;
+		FontRenderer fr = fontRendererObj;
+		String label = I18n.format(te.getName());
+		fr.drawString(label, LABEL_X, LABEL_Y, Color.darkGray.getRGB());
 		
-		final int LabelXPos = 72;
-		final int LabelYPos = 5;
-		fontRendererObj.drawString(I18n.format(te.getName()), LabelXPos, LabelYPos, Color.darkGray.getRGB());
-		
-		List<String> hoveringText = new ArrayList<String>();
-		Object par = new Object[0];
-		if(isInRect(guiLeft + CompressBarXPos, guiTop + CompressBarYPos, CompressBarWidth, CompressBarHeight, mouseX, mouseY))
+		List<String> hover = new ArrayList<String>();
+		if(isIn(guiLeft + BAR_X, guiTop + BAR_Y, BAR_W, BAR_H, mx, my))
 		{
-			hoveringText.add(I18n.format("gui.c.compresstime", par));
-			int compressPercentage = (int)(te.fractionOfCompressTimeComplete() * 100);
-			hoveringText.add(compressPercentage + "%");
+			String time = I18n.format("gui.compressor.time");
+			hover.add(time);
+			int percent = (int) (te.compresstimeCompleteFraction() * 100);
+			hover.add(percent + "%");
 		}
 		
-		for(int i = 0; i < CompressorTE.FuelSlotsCount; ++i)
+		for(int i = 0; i < te.FUEL_SLOTS; ++i)
 		{
-			if(isInRect(guiLeft + FlameXPos + FlameXSpacing * i, guiTop + FlameYPos, FlameWidth, FlameHeight, mouseX, mouseY))
+			if(isIn(guiLeft + FLAME_X + FLAME_S * i, guiTop + FLAME_Y, FLAME_W, FLAME_H, mx, my))
 			{
-				hoveringText.add(I18n.format("gui.c.fuel", par));
-				hoveringText.add(te.secondsOfFuelRemaining(i) + "s");
+				String fuel = I18n.format("gui.compressor.fuel");
+				hover.add(fuel);
+				hover.add(te.fuelSecondsRemaining(i) + "s");
 			}
 		}
-		if(!hoveringText.isEmpty())
+		
+		if(!hover.isEmpty())
 		{
-			drawHoveringText(hoveringText, mouseX - guiLeft, mouseY - guiTop, fontRendererObj);
+			drawHoveringText(hover, mx - guiLeft, my - guiTop, fr);
 		}
 	}
 	
-	public static boolean isInRect(int x, int y, int xSize, int ySize, int mouseX, int mouseY)
+	private boolean isIn(int x, int y, int xs, int ys, int mx, int my)
 	{
-		return ((mouseX >= x && mouseX <= x+xSize) && (mouseY >= y && mouseY <= y+ySize));
+		boolean b1 = mx >= x;
+		boolean b2 = mx <= x + xs;
+		boolean b3 = b1 && b2;
+		boolean b4 = my >= y;
+		boolean b5 = my <= y + ys;
+		boolean b6 = b4 && b5;
+		boolean b7 = b3 && b6;
+		return b7;
 	}
 }

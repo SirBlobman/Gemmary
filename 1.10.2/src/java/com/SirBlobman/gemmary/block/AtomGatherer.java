@@ -1,163 +1,131 @@
 package com.SirBlobman.gemmary.block;
 
+import java.util.List;
 import java.util.Random;
-
-import javax.annotation.Nullable;
 
 import com.SirBlobman.gemmary.GUtil;
 import com.SirBlobman.gemmary.Gemmary;
-import com.SirBlobman.gemmary.creative.tab.GemmaryTabs;
+import com.SirBlobman.gemmary.creative.GemmaryTabs;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class AtomGatherer extends Block 
+public class AtomGatherer extends Block
 {
-	public static final PropertyDirection facing = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
-	boolean automatic = false;
+	private static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+	private boolean auto;
 	
-	public AtomGatherer(boolean auto) 
+	public AtomGatherer(boolean auto)
 	{
 		super(Material.IRON);
-		automatic = auto;
-		if(!automatic) {setUnlocalizedName("atom_gatherer"); setRegistryName("atom_gatherer");}
-		else {setRegistryName("auto_atom_gatherer"); setUnlocalizedName("auto_atom_gatherer"); setTickRandomly(true);}
-		setCreativeTab(GemmaryTabs.Blocks);
-		setDefaultState(blockState.getBaseState().withProperty(facing, EnumFacing.NORTH));
+		this.auto = auto;
+		String name;
+		if(auto) 
+		{
+			name = "auto_atom_gatherer";
+			setTickRandomly(true);
+		}
+		else name = "atom_gatherer";
+		setUnlocalizedName(name);
+		setRegistryName(name);	
+		setCreativeTab(GemmaryTabs.BLOCKS);
+		setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 	}
 	
-	@SideOnly(Side.CLIENT)
 	@Override
 	public BlockRenderLayer getBlockLayer() {return BlockRenderLayer.TRANSLUCENT;}
 	
 	@Override
-	protected BlockStateContainer createBlockState()
+	public BlockStateContainer createBlockState() 
 	{
-		return new BlockStateContainer(this, new IProperty[] {facing});
+		BlockStateContainer bsc = new BlockStateContainer(this, FACING);
+		return bsc;
 	}
 	
 	@Override
-	public IBlockState onBlockPlaced(World w, BlockPos pos, EnumFacing ef, float X, float Y, float Z, int meta, EntityLivingBase placer)
+	public IBlockState onBlockPlaced(World w, BlockPos bp, EnumFacing ef, float x, float y, float z, int i, EntityLivingBase elb)
 	{
-		EnumFacing enumfacing = placer.getHorizontalFacing().rotateY();
-
-        try
-        {
-            return super.onBlockPlaced(w, pos, ef, X, Y, Z, meta, placer).withProperty(facing, enumfacing);
-        }
-        catch (IllegalArgumentException ex)
-        {
-            if (!w.isRemote)
-            {
-                GUtil.print(String.format("Invalid damage property for AtomGatherer at %s. Found %d, must be in [0, 1, 2]", new Object[] {pos, Integer.valueOf(meta >> 2)}));
-
-                if (placer instanceof EntityPlayer)
-                {
-                    ((EntityPlayer)placer).addChatMessage(new TextComponentTranslation("Invalid damage property. Please pick in [0, 1, 2]", new Object[0]));
-                }
-            }
-
-            return super.onBlockPlaced(w, pos, ef, X, Y, Z, 0, placer).withProperty(facing, enumfacing);
-        }
+		EnumFacing f = elb.getHorizontalFacing().rotateY();
+		try{return super.onBlockPlaced(w, bp, ef, x, y, z, i, elb).withProperty(FACING, f);}
+		catch(IllegalArgumentException ex)
+		{
+			if(!w.isRemote)
+			{
+				String msg = "Invalid damage property for AtomGatherer at %s\nFound %d, must be in [0,1,2]";
+				String msg2 = String.format(msg, bp, i >> 2);
+				GUtil.print(msg2);
+				
+				if(elb instanceof EntityPlayer)
+				{
+					EntityPlayer ep = (EntityPlayer) elb;
+					ep.addChatMessage(new TextComponentString("Invalid damage property"));
+				}
+			}
+			
+			return super.onBlockPlaced(w, bp, ef, x, y, z, 0, elb).withProperty(FACING, f);
+		}
 	}
 	
 	@Override
-	public boolean onBlockActivated(World w, BlockPos pos, IBlockState ibs, EntityPlayer ep, EnumHand eh, @Nullable ItemStack held, EnumFacing ef, float X, float Y, float Z)
+	public boolean onBlockActivated(World w, BlockPos bp, IBlockState ibs, EntityPlayer ep, EnumHand eh, ItemStack held, EnumFacing ef, float x, float y, float z)
 	{
-		if(!automatic) spawnItem(w, pos);
-		
+		if(!auto) spawn(w, bp);
 		return true;
 	}
 	
 	@Override
-	public void randomTick(World w, BlockPos pos, IBlockState ibs, Random r)
+	public void randomTick(World w, BlockPos bp, IBlockState ibs, Random r)
 	{
-		if(automatic)
+		if(auto)
 		{
-			int items = Gemmary.atomsToSpawn;
+			int items = Gemmary.atoms_to_spawn;
 			while(items > 0)
 			{
-				spawnItem(w, pos);
+				spawn(w, bp);
 				items--;
-			}	
+			}
 		}
 	}
 	
 	@Override
 	public IBlockState getStateFromMeta(int meta)
-    {
-        return this.getDefaultState().withProperty(facing, EnumFacing.getHorizontal(meta));
-    }
-
-    @Override
-    public int getMetaFromState(IBlockState ibs)
-    {
-    	return ((EnumFacing)ibs.getValue(facing)).getHorizontalIndex();
-    }
-    
-    private void spawnItem(World w, BlockPos pos)
-    {
-    	if(!w.isRemote)
-    	{
-    		if(breakBelow(w, pos))
-    		{
-    			Random r = new Random();
-    			ItemStack is = GUtil.getOreDictionaryAtoms().get(r.nextInt(GUtil.getOreDictionaryAtoms().size()));
-    			EntityItem ei = new EntityItem(w, pos.getX(), pos.getY(), pos.getZ());
-    			ei.entityDropItem(is, 2);
-    			EntityPlayer p = w.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 2.0, true);
-    			if(p != null) p.addChatMessage(new TextComponentString("Drop:" + is));
-    		}
-    	}
-    }
-    
-    private boolean breakBelow(World w, BlockPos pos)
-    {
-    	int y = pos.getY() - 1;
-    	BlockPos newLocation = new BlockPos(pos.getX(), y, pos.getZ());
-    	while(w.getBlockState(newLocation).getBlock().equals(Blocks.AIR))
-    	{
-    		newLocation = new BlockPos(pos.getX(), y--, pos.getZ());
-    	}
-    	IBlockState below = w.getBlockState(newLocation);
-    	if(below.getBlockHardness(w, newLocation) != -1.0F)
-    	{
-    		w.setBlockToAir(newLocation);
-    		return true;
-    	}
-    	else
-    	{
-    		return false;
-    	}
-    }
-    
-    @Override
-    public boolean isFullCube(IBlockState ibs)
-    {
-    	return false;
-    }
-    
-    @Override
-    public boolean isOpaqueCube(IBlockState ibs)
-    {
-    	return false;
-    }
+	{
+		return getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta));
+	}
+	@Override
+	public int getMetaFromState(IBlockState ibs)
+	{
+		return ibs.getValue(FACING).getHorizontalIndex();
+	}
+	
+	@Override
+	public boolean isFullCube(IBlockState ibs) {return false;}
+	@Override
+	public boolean isOpaqueCube(IBlockState ibs) {return false;}
+	
+	private void spawn(World w, BlockPos bp)
+	{
+		if(!w.isRemote)
+		{
+			Random r = new Random();
+			List<ItemStack> atoms = GUtil.getOreDictAtoms();
+			ItemStack is = atoms.get(r.nextInt(atoms.size()));
+			EntityItem ei = new EntityItem(w, bp.getX(), bp.getY() + 0.5D, bp.getZ());
+			ei.setEntityItemStack(is);
+			w.spawnEntityInWorld(ei);
+		}
+	}
 }

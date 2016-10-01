@@ -1,12 +1,18 @@
 package com.SirBlobman.gemmary.tile;
 
+import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public final class GTiles 
+public final class GTiles
 {
-	public static void createTiles()
+	public static void tiles()
 	{
-		GameRegistry.registerTileEntity(CompressorTE.class, "compressor");
-		GameRegistry.registerTileEntity(HydrothermalTE.class, "hydrothermal_vein");
+		r(TileCompressor.class, "compressor");
+		r(TileHydrothermal.class, "hydrothermal");
+	}
+	
+	private static void r(Class<? extends TileEntity> c, String name)
+	{
+		GameRegistry.registerTileEntity(c, name);
 	}
 }

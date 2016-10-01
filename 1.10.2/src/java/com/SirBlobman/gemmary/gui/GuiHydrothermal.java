@@ -4,101 +4,95 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.SirBlobman.gemmary.GUtil;
-import com.SirBlobman.gemmary.container.ContainerHydrothermal;
-import com.SirBlobman.gemmary.tile.HydrothermalTE;
+import com.SirBlobman.gemmary.gui.container.ContainerHydrothermal;
+import com.SirBlobman.gemmary.tile.TileHydrothermal;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.texture.TextureManager;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT)
 public class GuiHydrothermal extends GuiContainer
 {
-	private static final ResourceLocation htv = new ResourceLocation("gemmary:textures/gui/ahtv.png");
-	private HydrothermalTE tH;
+	private final ResourceLocation GUI = new ResourceLocation("gemmary:textures/gui/ahtv.png");
+	private TileHydrothermal th;
 	
-	public GuiHydrothermal(InventoryPlayer ip, HydrothermalTE th)
+	public GuiHydrothermal(InventoryPlayer ip, TileHydrothermal th)
 	{
 		super(new ContainerHydrothermal(ip, th));
 		xSize = 176;
 		ySize = 166;
-		
-		tH = th;
+		this.th = th;
 	}
 	
-	final int WaterXPos = 14;
-	final int WaterYPos = 17;
-	final int WaterIconU = 248;
-	final int WaterIconV = 0;
-	final int WaterIconWidth = 8;
-	final int WaterIconHeight = 41;
+	final int WATER_X = 14;
+	final int WATER_Y = 17;
+	final int WATER_U = 248;
+	final int WATER_V = 0;
+	final int WATER_W = 8;
+	final int WATER_H = 41;
 	
-	final int ProgXPos = 80;
-	final int ProgYPos = 35;
-	final int ProgIconU = 176;
-	final int ProgIconV = 14;
-	final int ProgIconWidth = 24;
-	final int ProgIconHeight = 16;
+	final int BAR_X = 80;
+	final int BAR_Y = 35;
+	final int BAR_U = 176;
+	final int BAR_V = 14;
+	final int BAR_W = 24;
+	final int BAR_H = 16;
 	
 	@Override
-	protected void drawGuiContainerBackgroundLayer(float pTicks, int x, int y)
+	public void drawGuiContainerBackgroundLayer(float ticks, int x, int y)
 	{
-		Minecraft.getMinecraft().getTextureManager().bindTexture(htv);
-		GlStateManager.color(10.F, 1.0F, 1.0F, 1.0F);
+		Minecraft m = Minecraft.getMinecraft();
+		TextureManager tm = m.getTextureManager();
+		tm.bindTexture(GUI);
+		GlStateManager.color(1, 1, 1, 1);
 		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 		
-		double Progress = tH.fractionOfProgressComplete();
-		drawTexturedModalRect(guiLeft + ProgXPos, guiTop + ProgYPos, ProgIconU, ProgIconV, (int)Progress * ProgIconWidth, ProgIconHeight);
+		double progress = th.progressFraction();
+		drawTexturedModalRect(guiLeft + BAR_X, guiTop + BAR_Y, BAR_U, BAR_V, (int) (progress * BAR_W), BAR_H);
 		
-		for(int i = 0; i < 1; ++i)
-		{
-			double waterRemaining = tH.fractionOfWaterRemaining(i);
-			int yOffset = (int) ((1 - waterRemaining) * WaterIconHeight);
-			
-			drawTexturedModalRect(guiLeft + WaterXPos + i, guiTop + WaterYPos + yOffset, WaterIconU, WaterIconV + yOffset, WaterIconWidth, WaterIconHeight + yOffset);
-		}
+		double remaining = th.waterLeftFraction(0);
+		int yOff = (int) ((1 - remaining) * WATER_H);
+		drawTexturedModalRect(guiLeft + WATER_X, guiTop + WATER_Y + yOff, WATER_U, WATER_V + yOff, WATER_W, WATER_H + yOff);
 	}
 	
 	@Override
-	protected void drawGuiContainerForegroundLayer(int x, int y)
+	public void drawGuiContainerForegroundLayer(int x, int y)
 	{
 		super.drawGuiContainerForegroundLayer(x, y);
 		
-		final int LabelXPos = 5;
-		final int LabelYPos = 5;
-		fontRendererObj.drawString(tH.getName(), LabelXPos, LabelYPos, Color.darkGray.getRGB());
-		
-		List<String> hText = new ArrayList<String>();
-		
-		if(isInRect(guiLeft + ProgXPos, guiTop + ProgYPos, ProgIconWidth, ProgIconHeight, x, y))
+		final int LABEL_X = 5;
+		final int LABEL_Y = 5;
+		FontRenderer fr = fontRendererObj;
+		fr.drawString(th.getName(), LABEL_X, LABEL_Y, Color.darkGray.getRGB());
+		List<String> hover = new ArrayList<String>();
+		if(isIn(guiLeft + BAR_X, guiTop + BAR_Y, BAR_W, BAR_H, x, y))
 		{
-			hText.add(GUtil.translate("gui.htv.progress"));
-			int progressPercentage = (int) (tH.fractionOfProgressComplete() * 100);
-			hText.add(progressPercentage + "%");
+			hover.add(I18n.format("gui.htv.progress"));
+			int progress = (int) (th.progressFraction() * 100);
+			hover.add(progress + "%");
 		}
-		
-		for(int i = 0; i < 1; ++i)
+		if(isIn(guiLeft + WATER_X, guiTop + WATER_Y, WATER_W, WATER_H, x, y))
 		{
-			if(isInRect(guiLeft + WaterXPos + i, guiTop + WaterYPos, WaterIconWidth, WaterIconHeight, x, y))
-			{
-				hText.add(GUtil.translate("gui.htv.water"));
-				hText.add(tH.millibucketsOfWaterRemaining(i) + "mb");
-			}
+			hover.add(I18n.format("gui.htv.water"));
+			hover.add(th.waterLeftMilliBuckets(0) + "mb");
 		}
-		
-		if(!hText.isEmpty())
-		{
-			drawHoveringText(hText, x - guiLeft, y - guiTop, fontRendererObj);
-		}
+		if(!hover.isEmpty()) drawHoveringText(hover, x - guiLeft, y - guiTop, fr);
 	}
 	
-	public static boolean isInRect(int x, int y, int xSize, int ySize, int mouseX, int mouseY)
+	private boolean isIn(int x, int y, int xs, int ys, int mx, int my)
 	{
-		return ((mouseX >= x && mouseX <= x + xSize) && (mouseY >= y && mouseY <= y + ySize));
+		boolean b1 = mx >= x;
+		boolean b2 = mx <= x + xs;
+		boolean b3 = b1 && b2;
+		boolean b4 = my >= y;
+		boolean b5 = my <= y + ys;
+		boolean b6 = b4 && b5;
+		boolean b7 = b3 && b6;
+		return b7;
 	}
 }
