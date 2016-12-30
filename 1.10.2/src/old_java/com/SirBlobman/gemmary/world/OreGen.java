@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class OreGen implements IWorldGenerator
 {
-	private WorldGenerator amethyst = c(GBlocks.ameOre, 8, Blocks.STONE);
+	/**private WorldGenerator amethyst = c(GBlocks.ameOre, 8, Blocks.STONE);
 	private WorldGenerator corundum = c(GBlocks.corOre, 8, Blocks.STONE);
 	private WorldGenerator talc = c(GBlocks.talOre, 8, Blocks.SAND);
 	private WorldGenerator tanzanite = c(GBlocks.tanOre, 8, Blocks.STONE);
@@ -77,5 +77,5 @@ public class OreGen implements IWorldGenerator
 			BlockPos bp = new BlockPos(X, Y, Z);
 			wg.generate(w, r, bp);
 		}
-	}
+	}**/
 }

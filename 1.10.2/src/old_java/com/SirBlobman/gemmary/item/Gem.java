@@ -3,7 +3,6 @@ package com.SirBlobman.gemmary.item;
 import java.util.List;
 
 import com.SirBlobman.gemmary.GUtil;
-import com.SirBlobman.gemmary.Gemmary;
 import com.SirBlobman.gemmary.creative.GemmaryTabs;
 
 import net.minecraft.client.resources.I18n;
@@ -20,22 +19,20 @@ public class Gem extends Item
 	{
 		super();
 		setUnlocalizedName(type);
-		setRegistryName(Gemmary.MODID, type);
+		setRegistryName(type);
 		setHasSubtypes(true);
 		setCreativeTab(GemmaryTabs.ITEMS);
 		this.mohs = mohs;
 	}
 	
 	@Override
-	public boolean isBeaconPayment(ItemStack is) {return !dusty(is);}
+	public boolean isBeaconPayment(ItemStack is) {return !isDusty(is);}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack is)
 	{
 		String oname = getUnlocalizedName();
-		int meta = is.getItemDamage();
-		boolean b1 = (meta == 0);
-		String add = b1 ? "" : "_dusty";
+		String add = is.getItemDamage() == 0 ? "" : "_dusty";
 		String name = oname + add;
 		return name;
 	}
@@ -44,9 +41,8 @@ public class Gem extends Item
 	public String getItemStackDisplayName(ItemStack is)
 	{
 		String un = getUnlocalizedName(is);
-		String name = I18n.format(getUnlocalizedName() + ".name");
-		if(un.endsWith("_dusty")) return I18n.format("info.dusty", name).trim();
-		return name;
+		if(un.endsWith("_dusty")) return I18n.format("info.dusty", I18n.format(getUnlocalizedName() + ".name")).trim();
+		return super.getUnlocalizedName(is);
 	}
 	
 	@Override
@@ -65,5 +61,5 @@ public class Gem extends Item
 	}
 	
 	public double getMohs() {return mohs;}
-	public boolean dusty(ItemStack is) {return (is.getItemDamage() == 1);}
+	public boolean isDusty(ItemStack is) {return (is.getItemDamage() == 1);}
 }

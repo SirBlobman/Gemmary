@@ -1,6 +1,5 @@
-package com.SirBlobman.gemmary;
+package com.SirBlobman.gemmary.proxy;
 
-import com.SirBlobman.gemmary.render.RenderBlock;
 import com.SirBlobman.gemmary.render.RenderItem;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -13,13 +12,12 @@ public class Client extends Common
 	{
 		super.pre(e);
 		RenderItem.pre();
+		RenderItem.items();
 	}
 	
 	@Override
-	public void init(FMLInitializationEvent e) 
+	public void init(FMLInitializationEvent e)
 	{
 		super.init(e);
-		RenderItem.items();
-		RenderBlock.blocks();
 	}
 }

@@ -12,7 +12,7 @@ public final class RenderBlock
 {
 	public static void blocks()
 	{
-		r(GBlocks.amethyst);
+	/**	r(GBlocks.amethyst);
 		r(GBlocks.corundum);
 		r(GBlocks.ruby);
 		r(GBlocks.sapphire);
@@ -39,10 +39,10 @@ public final class RenderBlock
 		r(GBlocks.diamond);
 		r(GBlocks.whiteChalk);
 		r(GBlocks.atomGatherer);
-		r(GBlocks.autoAtomGatherer);
+		r(GBlocks.autoAtomGatherer);**/
 	}
 	
-	public static void r(Block b)
+	private static void r(Block b)
 	{
 		Item i = Item.getItemFromBlock(b);
 		ResourceLocation rl = b.getRegistryName();

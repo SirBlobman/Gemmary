@@ -1,11 +1,7 @@
 package com.SirBlobman.gemmary.render;
 
-import com.SirBlobman.gemmary.GUtil;
 import com.SirBlobman.gemmary.Gemmary;
-import com.SirBlobman.gemmary.item.Atom;
 import com.SirBlobman.gemmary.item.GItems;
-import com.SirBlobman.gemmary.item.Gem;
-import com.SirBlobman.gemmary.item.armor.Armor;
 
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -13,40 +9,42 @@ import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 
-public class RenderItem 
+public class RenderItem
 {
-	public static void pre()
+	public static void pre() 
 	{
-		for(Gem g : GUtil.gems())
-		{
-			ResourceLocation rl1 = g.getRegistryName();
-			String name2 = g.getUnlocalizedName().substring(5) + "_dusty";
-			ri(g, rl1, name2);
-		}
+		ri(GItems.amethyst, "amethyst_dusty");
+		ri(GItems.corundum, "corundum_dusty");
+		/*ri(GItems.ruby, "ruby_dusty");
+		ri(GItems.sapphire, "sapphire_dusty");
+		ri(GItems.talc, "talc_dusty");
+		ri(GItems.tanzanite, "tanzanite_dusty");
+		ri(GItems.topaz, "topaz_dusty");
+		ri(GItems.turquoise, "turquoise_dusty");*/
 	}
 	
-	public static void items()
+	public static void items() 
 	{
-		for(Gem g : GUtil.gems())
-		{
-			r(g);
-			String name = g.getUnlocalizedName().substring(5) + "_dusty";
-			r(g, 1, name);
-		}
+		r(GItems.amethyst);
+		r(GItems.corundum);
+		/*r(GItems.ruby);
+		r(GItems.sapphire);
+		r(GItems.talc);
+		r(GItems.tanzanite);
+		r(GItems.topaz);
+		r(GItems.turquoise);*/
 		
-		r(GItems.diamond);
-		r(GItems.emerald);
-		
-		for(Atom a : GUtil.atoms()) r(a);
-		r(GItems.cCr);
-		r(GItems.cFe);
-		
-		for(Armor a : GUtil.armor()) r(a);
-		
-		r(GItems.hWC);
-		r(GItems.cloth);
-		r(GItems.recipeBook);
+		r(GItems.amethyst, 1, "amethyst_dusty");
+		r(GItems.corundum, 1, "corundum_dusty");
+		/*r(GItems.ruby, 1, "ruby_dusty");
+		r(GItems.sapphire, 1, "sapphire_dusty");
+		r(GItems.talc, 1, "talc_dusty");
+		r(GItems.tanzanite, 1, "tanzanite_dusty");
+		r(GItems.topaz, 1, "topaz_dusty");
+		r(GItems.turquoise, 1, "turquoise_dusty");*/
 	}
+	
+	private static final String MOD = Gemmary.MODID;
 	
 	private static void r(Item i)
 	{
@@ -54,18 +52,15 @@ public class RenderItem
 		ModelResourceLocation mrl = new ModelResourceLocation(rl, "inventory");
 		ModelLoader.setCustomModelResourceLocation(i, 0, mrl);
 	}
-	
-	private static final String MOD = Gemmary.MODID;
 	private static void r(Item i, int meta, String file)
 	{
-		String rl = MOD + ":" + file;
+		ResourceLocation rl = new ResourceLocation(MOD, file);
 		ModelResourceLocation mrl = new ModelResourceLocation(rl, "inventory");
 		ModelLoader.setCustomModelResourceLocation(i, meta, mrl);
 	}
-	
-	private static void ri(Item i, ResourceLocation rl1, String name2)
+	private static void ri(Item i, String name)
 	{
-		ResourceLocation rl2 = new ResourceLocation(name2);
-		ModelBakery.registerItemVariants(i, rl1, rl2);
+		ResourceLocation rl = new ResourceLocation(MOD, name);
+		ModelBakery.registerItemVariants(i, i.getRegistryName(), rl);
 	}
 }

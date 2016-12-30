@@ -15,7 +15,7 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public final class GBlocks
 {
-	public static GemBlock amethyst = new GemBlock(GItems.amethyst, 3.5F);
+	/**public static GemBlock amethyst = new GemBlock(GItems.amethyst, 3.5F);
 	public static GemBlock corundum = new GemBlock(GItems.corundum, 4.5F);
 	public static GemBlock ruby = new GemBlock(GItems.ruby, 4.5F);
 	public static GemBlock sapphire = new GemBlock(GItems.sapphire, 4.5F);
@@ -101,5 +101,5 @@ public final class GBlocks
 		Object[] recipe = new Object[] {"GGG", "GGG", "GGG", 'G', gem};
 		ShapedOreRecipe sr = new ShapedOreRecipe(gb, recipe);
 		GameRegistry.addRecipe(sr);
-	}
+	}**/
 }

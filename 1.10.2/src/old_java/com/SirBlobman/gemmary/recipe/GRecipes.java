@@ -24,7 +24,7 @@ public class GRecipes
 	public static void vanilla()
 	{
 		Object[] compressor = new Object[] {"PPP", "PRP", "PPP", 'P', Blocks.PISTON, 'R', Items.REDSTONE};
-		Object[] superCompressor = new Object[] {"CCC", "CSC", "CCC", 'C', GBlocks.compressor, 'S', Items.STRING};
+		//Object[] superCompressor = new Object[] {"CCC", "CSC", "CCC", 'C', GBlocks.compressor, 'S', Items.STRING};
 		Object[] ahtv = new Object[] {"CcL", "#B#", "RRR", 'B', Items.BUCKET, 'C', Blocks.CRAFTING_TABLE, 'c', Blocks.CHEST, 'L', Items.LAVA_BUCKET, 'R', Blocks.REDSTONE_BLOCK};
 		Object[] diamondTNT = new Object[] {"DDD", "DTD", "DDD", 'D', "blockDiamond", 'T', "tnt"};
 		Object[] hwc = new Object[] {"#I#", "IWI", "ILI", 'I', "ingotIron", 'L', Items.LAVA_BUCKET, 'W', Items.WATER_BUCKET};
@@ -34,7 +34,7 @@ public class GRecipes
 		Object[] recipeBook = new Object[] {GItems.amethyst};
 		Object[] chalk = new Object[] {"gemTalc", "gemTalc", "gemTalc"};
 		
-		shaped(new ItemStack(GBlocks.compressor), compressor);
+		/**shaped(new ItemStack(GBlocks.compressor), compressor);
 		shaped(new ItemStack(GBlocks.superCompressor), superCompressor);
 		shaped(new ItemStack(GBlocks.ahtv), ahtv);
 		shaped(new ItemStack(GBlocks.diamondTNT), diamondTNT);
@@ -43,20 +43,20 @@ public class GRecipes
 		shaped(new ItemStack(GItems.emerald), emeraldPart);
 		shaped(new ItemStack(GItems.cloth), cloth);
 		shapeless(new ItemStack(GItems.recipeBook), recipeBook);
-		shapeless(new ItemStack(GBlocks.whiteChalk), chalk);
+		shapeless(new ItemStack(GBlocks.whiteChalk), chalk);**/
 	}
 	
 	public static void compressor()
 	{
 		compressor(new ItemStack(Blocks.COAL_BLOCK), new ItemStack(Items.DIAMOND), 100.0F);
-		compressor(new ItemStack(GItems.carbon), new ItemStack(GItems.diamond), 11.11F);
-		compressor(new ItemStack(GItems.cCr), new ItemStack(GItems.ruby), 100.0F);
-		compressor(new ItemStack(GItems.cFe), new ItemStack(GItems.sapphire), 100.0F);
+		//compressor(new ItemStack(GItems.carbon), new ItemStack(GItems.diamond), 11.11F);
+		//compressor(new ItemStack(GItems.cCr), new ItemStack(GItems.ruby), 100.0F);
+		//compressor(new ItemStack(GItems.cFe), new ItemStack(GItems.sapphire), 100.0F);
 	}
 	
 	public static void hydrating()
 	{
-		hydro(new ItemStack(GItems.beryllium), new ItemStack(GItems.emerald), 100.0F);
+		//hydro(new ItemStack(GItems.beryllium), new ItemStack(GItems.emerald), 100.0F);
 	}
 	
 	private static void shapeless(ItemStack output, Object[] recipe)

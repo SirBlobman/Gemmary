@@ -226,7 +226,7 @@ public class TileHydrothermal extends TileEntity implements IInventory,ITickable
 				if(b == Blocks.PACKED_ICE) return 250;
 			}
 			if(i == Items.WATER_BUCKET) return 1000;
-			if(i == GItems.hWC) return 2500;
+			//if(i == GItems.hWC) return 2500;
 		}
 		return 0;
 	}

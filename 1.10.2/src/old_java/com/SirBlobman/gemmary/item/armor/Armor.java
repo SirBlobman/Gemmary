@@ -20,7 +20,7 @@ public class Armor extends ItemArmor
 		this.type = type;
 		setUnlocalizedName("armor/" + gem + "_" + type);
 		setRegistryName(gem + "_" + type);
-		setCreativeTab(GemmaryTabs.ARMOR);
+		//setCreativeTab(GemmaryTabs.ARMOR);
 		canRepair = true;
 		this.repair = new ItemStack(repair);
 	}

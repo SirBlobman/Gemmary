@@ -20,35 +20,35 @@ public class Common
 {
 	public void pre(FMLPreInitializationEvent e)
 	{
-		GItems.gems();
-		GItems.gemParts();
+		/**GItems.gemParts();
 		GItems.atoms();
 		GItems.alloys();
 		GItems.armor();
-		GItems.items();
+		GItems.items();**/
 		
-		GBlocks.gemBlocks();
+		/**GBlocks.gemBlocks();
 		GBlocks.ores();
 		GBlocks.crystals();
-		GBlocks.others();
+		GBlocks.others();**/
 		
-		GFluids.fluids();
+		//GFluids.fluids();
 		
-		GTiles.tiles();
+		//GTiles.tiles();
 	}
 	
 	public void init(FMLInitializationEvent e)
 	{
-		OreDict.ores();
-		
+		//OreDict.ores();
+
+		GItems.gems();
 		NetworkRegistry nr = NetworkRegistry.INSTANCE;
 		nr.registerGuiHandler(Gemmary.instance, new GuiHandler());
 		
-		GameRegistry.registerWorldGenerator(new OreGen(), 0);
+		//GameRegistry.registerWorldGenerator(new OreGen(), 0);
 		
-		GRecipes.vanilla();
-		GRecipes.compressor();
-		GRecipes.hydrating();
+		//GRecipes.vanilla();
+		//GRecipes.compressor();
+		//GRecipes.hydrating();
 		
 		GEntities.entities();
 		
