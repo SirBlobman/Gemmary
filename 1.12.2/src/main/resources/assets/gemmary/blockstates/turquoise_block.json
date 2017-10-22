@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "normal": {"model": "gemmary:turquoise_block"},
+    "fancy=false": {"model": "gemmary:turquoise_block"},
+    "fancy=true": {"model": "gemmary:fancy/turquoise_block"}
+  }
+}

@@ -1,0 +1,37 @@
+<Creative Tabs>
+itemGroup.gemmary.items=§5§lGemmary§r ⎹  §2Items§r
+itemGroup.gemmary.blocks=§5§lGemmary§r ⎹  §2Blocks§r
+
+<Gems>
+item.amethyst.name=Amethyst
+item.ruby.name=Ruby
+item.sapphire.name=Sapphire
+item.talc.name=Talc
+item.tanzanite.name=Tanzanite
+item.topaz.name=Topaz
+item.turquoise.name=Turquoise
+
+<Gem Parts>
+item.diamond_part.name=Diamond Part
+item.emerald_part.name=Emerald Part
+
+<Elements>
+item.aluminum_element.name=Aluminum
+item.beryllium_element.name=Beryllium
+item.carbon_element.name=Carbon
+item.chromium_element.name=Chromium
+item.oxygen_element.name=Oxygen
+
+<Blocks>
+tile.amethyst_block.name=Amethyst Block
+tile.ruby_block.name=Ruby Block
+tile.sapphire_block.name=Sapphire Block
+tile.talc_block.name=Talc Block
+tile.tanzanite_block.name=Tanzanite Block
+tile.topaz_block.name=Topaz Block
+tile.turquoise_block.name=Turquoise Block
+
+<Lores>
+lore.element.atomic_symbol=§7Symbol:§f %s
+lore.element.atomic_number=§7Atomic Number:§f %s
+lore.element.atomic_mass=§7Atomic Mass:§f %s

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "normal": {"model": "gemmary:sapphire_block"},
+    "fancy=false": {"model": "gemmary:sapphire_block"},
+    "fancy=true": {"model": "gemmary:fancy/sapphire_block"}
+  }
+}
