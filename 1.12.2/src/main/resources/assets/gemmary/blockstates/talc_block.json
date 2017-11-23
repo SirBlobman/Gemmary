@@ -1,7 +1,5 @@
 {
   "variants": {
-    "normal": {"model": "gemmary:talc_block"},
-    "fancy=false": {"model": "gemmary:talc_block"},
-    "fancy=true": {"model": "gemmary:fancy/talc_block"}
+    "normal": {"model": "gemmary:talc_block"}
   }
 }

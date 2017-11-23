@@ -1,7 +1,5 @@
 {
   "variants": {
-    "normal": {"model": "gemmary:topaz_block"},
-    "fancy=false": {"model": "gemmary:topaz_block"},
-    "fancy=true": {"model": "gemmary:fancy/topaz_block"}
+    "normal": {"model": "gemmary:topaz_block"}
   }
 }

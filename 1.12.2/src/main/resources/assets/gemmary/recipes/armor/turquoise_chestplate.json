@@ -1,0 +1,18 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "T T",
+    "TTT",
+    "TTT"
+  ],
+  "key": {
+    "T": {
+      "type": "forge:ore_dict",
+      "ore": "gemTurquoise"
+    }
+  },
+  "result": {
+    "item": "gemmary:turquoise_chestplate",
+    "count": 1
+  }
+}

@@ -1,7 +1,5 @@
 {
   "variants": {
-    "normal": {"model": "gemmary:tanzanite_block"},
-    "fancy=false": {"model": "gemmary:tanzanite_block"},
-    "fancy=true": {"model": "gemmary:fancy/tanzanite_block"}
+    "normal": {"model": "gemmary:tanzanite_block"}
   }
 }

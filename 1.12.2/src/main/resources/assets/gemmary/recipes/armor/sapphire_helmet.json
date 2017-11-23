@@ -1,0 +1,17 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "SSS",
+    "S S"
+  ],
+  "key": {
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "gemSapphire"
+    }
+  },
+  "result": {
+    "item": "gemmary:sapphire_helmet",
+    "count": 1
+  }
+}

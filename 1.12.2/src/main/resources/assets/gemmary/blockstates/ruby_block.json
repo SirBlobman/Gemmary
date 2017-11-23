@@ -1,7 +1,5 @@
 {
   "variants": {
-    "normal": {"model": "gemmary:ruby_block"},
-    "fancy=false": {"model": "gemmary:ruby_block"},
-    "fancy=true": {"model": "gemmary:fancy/ruby_block"}
+    "normal": {"model": "gemmary:ruby_block"}
   }
 }

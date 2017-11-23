@@ -1,7 +1,5 @@
 {
   "variants": {
-    "normal": {"model": "gemmary:amethyst_block"},
-    "fancy=false": {"model": "gemmary:amethyst_block"},
-    "fancy=true": {"model": "gemmary:fancy/amethyst_block"}
+    "normal": {"model": "gemmary:amethyst_block"}
   }
 }

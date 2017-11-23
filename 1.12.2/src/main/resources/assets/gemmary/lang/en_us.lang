@@ -2,6 +2,14 @@
 itemGroup.gemmary.items=§5§lGemmary§r ⎹  §2Items§r
 itemGroup.gemmary.blocks=§5§lGemmary§r ⎹  §2Blocks§r
 
+<Containers and GUIs>
+container.gemmary.compressor=Compressor
+container.gemmary.hydrothermal_vein=Hydrothermal Vein
+gui.gemmary.compressor.fuel=Fuel Left
+gui.gemmary.compressor.progress=Progress
+gui.gemmary.hydrothermal_vein.water=Water
+gui.gemmary.hydrothermal_vein.lava=Lava
+
 <Gems>
 item.amethyst.name=Amethyst
 item.ruby.name=Ruby
@@ -30,6 +38,42 @@ tile.talc_block.name=Talc Block
 tile.tanzanite_block.name=Tanzanite Block
 tile.topaz_block.name=Topaz Block
 tile.turquoise_block.name=Turquoise Block
+tile.compressor.name=Compressor
+tile.atom_gatherer.name=Atom Gatherer
+tile.hydrothermal_vein.name=Hydrothermal Vein
+
+<Armor>
+item.amethyst_helmet.name=Amethyst Helmet
+item.amethyst_chestplate.name=Amethyst Chestplate
+item.amethyst_leggings.name=Amethyst Leggings
+item.amethyst_boots.name=Amethyst Boots
+item.ruby_helmet.name=Ruby Helmet
+item.ruby_chestplate.name=Ruby Chestplate
+item.ruby_leggings.name=Ruby Leggings
+item.ruby_boots.name=Ruby Boots
+item.sapphire_helmet.name=Sapphire Helmet
+item.sapphire_chestplate.name=Sapphire Chestplate
+item.sapphire_leggings.name=Sapphire Leggings
+item.sapphire_boots.name=Sapphire Boots
+item.talc_helmet.name=Talc Helmet
+item.talc_chestplate.name=Talc Chestplate
+item.talc_leggings.name=Talc Leggings
+item.talc_boots.name=Talc Boots
+item.tanzanite_helmet.name=Tanzanite Helmet
+item.tanzanite_chestplate.name=Tanzanite Chestplate
+item.tanzanite_leggings.name=Tanzanite Leggings
+item.tanzanite_boots.name=TanzaniteBoots
+item.topaz_helmet.name=Topaz Helmet
+item.topaz_chestplate.name=Topaz Chestplate
+item.topaz_leggings.name=Topaz Leggings
+item.topaz_boots.name=Topaz Boots
+item.turquoise_helmet.name=Turquoise Helmet
+item.turquoise_chestplate.name=Turquoise Chestplate
+item.turquoise_leggings.name=Turquoise Leggings
+item.turquoise_boots.name=Turquoise Boots
+
+<Tools>
+item.cloth.name=Cloth
 
 <Lores>
 lore.element.atomic_symbol=§7Symbol:§f %s

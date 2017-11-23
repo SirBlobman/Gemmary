@@ -3,9 +3,7 @@ package com.SirBlobman.gemmary.utility;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.Event;
@@ -66,11 +64,22 @@ public class Util {
         return list;
     }
     
+    public static <K, V> Map<K, V> newMap() {
+        Map<K, V> map = new HashMap<K, V>();
+        return map;
+    }
+    
     public static int getRGB(int red, int green, int blue) {
         int r = (red << 16) & 0x00FF0000;
         int g = (green << 8) & 0x0000FF00;
         int b = (blue) & 0x000000FF;
         int color = (0xFF000000 | r | g | b);
         return color;
+    }
+    
+    public static String cropDecimal(double d, int places) {
+        String format = "%,." + places + "f";
+        String dec = String.format(format, d);
+        return dec;
     }
 }

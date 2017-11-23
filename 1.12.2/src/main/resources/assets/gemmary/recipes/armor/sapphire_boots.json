@@ -1,0 +1,17 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "S S",
+    "S S"
+  ],
+  "key": {
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "gemRuby"
+    }
+  },
+  "result": {
+    "item": "gemmary:sapphire_boots",
+    "count": 1
+  }
+}
