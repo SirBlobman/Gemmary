@@ -1,18 +1,18 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "AAA",
-    "AAA",
-    "AAA"
+    "SSS",
+    "SSS",
+    "SSS"
   ],
   "key": {
-    "A": {
+    "S": {
       "type": "forge:ore_dict",
-      "ore": "gemAmethyst"
+      "ore": "gemSapphire"
     }
   },
   "result": {
-    "item": "gemmary:amethyst_block",
+    "item": "gemmary:sapphire_block",
     "count": 1
   }
 }

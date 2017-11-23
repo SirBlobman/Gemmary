@@ -5,6 +5,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
+import net.minecraft.command.ICommandSender;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.EventBus;
@@ -26,6 +28,15 @@ public class Util {
 
         String s = new String(cc);
         return s;
+    }
+    
+    public static String[] color(String... oo) {
+        String[] cc = new String[oo.length];
+        for(int i = 0; i < oo.length; i++) {
+            String s = oo[i];
+            String c = color(s);
+            cc[i] = c;
+        } return cc;
     }
 
     public static void print(Object... oo) {
@@ -81,5 +92,13 @@ public class Util {
         String format = "%,." + places + "f";
         String dec = String.format(format, d);
         return dec;
+    }
+    
+    public static void sendMessage(ICommandSender cs, String... ss) {
+        String[] msg = color(ss);
+        for(String s : msg) {
+            TextComponentString txt = new TextComponentString(s);
+            cs.sendMessage(txt);
+        }
     }
 }

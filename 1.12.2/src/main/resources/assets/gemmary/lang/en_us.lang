@@ -1,6 +1,22 @@
+﻿<Language Information>
+language.name=English
+language.region=United States
+language.code=en_us
+
 <Creative Tabs>
 itemGroup.gemmary.items=§5§lGemmary§r ⎹  §2Items§r
 itemGroup.gemmary.blocks=§5§lGemmary§r ⎹  §2Blocks§r
+
+<Command Info>
+command.gemmary.ore_dictionary_ids=§fOre Dictionary IDs:
+command.gemmary.item_class=§fItem Class: §7%s
+command.gemmary.block_class=§fBlock Class: §7%s
+
+<Command Errors>
+command.gemmary.error.no_ore_dictionary_ids=§cThis item does not have any Ore Dictionary ids
+command.gemmary.error.holding_nothing=§cYou must be holding an item
+command.gemmary.error.not_living=§cYou are not alive...
+command.gemmary.error.not_enough_arguments=§cNot Enough Arguments
 
 <Containers and GUIs>
 container.gemmary.compressor=Compressor

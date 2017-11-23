@@ -1,5 +1,6 @@
 package com.SirBlobman.gemmary;
 
+import com.SirBlobman.gemmary.command.CommandGemmary;
 import com.SirBlobman.gemmary.config.GConfig;
 import com.SirBlobman.gemmary.proxy.Common;
 import com.SirBlobman.gemmary.render.GRendering;
@@ -17,6 +18,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -63,6 +65,11 @@ public class Gemmary {
     @EventHandler
     public void post(FMLPostInitializationEvent e) {
         proxy.post(e);
+    }
+    
+    @EventHandler
+    public void serverStart(FMLServerStartingEvent e) {
+        e.registerServerCommand(new CommandGemmary());
     }
     
     @SubscribeEvent

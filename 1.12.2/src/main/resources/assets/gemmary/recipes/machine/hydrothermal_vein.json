@@ -1,0 +1,29 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "AIL",
+    "RrR",
+    "RWR"
+  ],
+  "key": {
+    "A": {"item": "gemmary:aluminum_element"},
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "L": {"item": "minecraft:lava_bucket"},
+    "R": {
+      "type": "forge:ore_dict",
+      "ore": "blockRedstone"
+    },
+    "r": {
+      "type": "forge:ore_dict",
+      "ore": "dustRedstone"
+    },
+    "W": {"item": "minecraft:water_bucket"}
+  },
+  "result": {
+    "item": "gemmary:hydrothermal_vein",
+    "count": 1
+  }
+}

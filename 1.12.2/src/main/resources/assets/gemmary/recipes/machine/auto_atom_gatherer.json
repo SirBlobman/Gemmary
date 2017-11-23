@@ -1,0 +1,16 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "rrr",
+    "rar",
+    "rrr"
+  ],
+  "key": {
+    "a": {"item": "gemmary:atom_gatherer"},
+    "r": {"item": "minecraft:redstone_torch"}
+  },
+  "result": {
+    "item": "gemmary:auto_atom_gatherer",
+    "count": 1
+  }
+}
