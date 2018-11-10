@@ -94,7 +94,8 @@ public class GuiCompressor extends GuiContainer {
         
         if(isInRectangle(this.guiLeft + FLAME_X, this.guiTop + FLAME_Y, FLAME_W, FLAME_H, mouseX, mouseY)) {
             String fuel = I18n.format("gui.gemmary.compressor.fuel");
-            String seconds = (int) this.tileEntity.getSecondsRemainingFuel() + "s";
+            int timeLeft = (int) Math.round(this.tileEntity.getSecondsRemainingFuel());
+            String seconds = timeLeft + "s";
             hoverTextList.add(fuel);
             hoverTextList.add(seconds);
         }
