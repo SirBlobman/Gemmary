@@ -1,0 +1,123 @@
+<English Language File for Gemmary 1.9.4>
+<Client Logs>
+log.client.pre-init-done=Pre-Init Completed on Client
+log.client.init-done=Init Completed on Client
+log.client.post-init-done=Post-Init Completed on Client
+
+<Server Logs>
+log.server.pre-init-done=Pre-Init Completed on Server
+log.server.init-done=Init Completed on Server
+log.server.post-init-done=Post-Init Complted on Server
+
+<Creative Tabs>
+itemGroup.GBlocks=§3Gemmary §9Blocks
+itemGroup.GItems=§3Gemmary §9Items
+itemGroup.GArmor=§3Gemmary §9Armor
+itemGroup.GBuckets=§3Gemmary §9Buckets
+
+<Lores>
+lore.mohs_scale=§eMohs Scale Hardness
+lore.dusty_gems=§aDusty! Must be polished before use
+lore.elements.1=§fEnlarged %s §fAtom!
+lore.elements.2=§fYou can only hold 1!
+
+<Information>
+info.dusty=§rDusty %s
+
+<Blocks>
+tile.gem_block.name=%s §rBlock
+
+<Ores>
+tile.gem_ore.name=%s §rOre
+
+<Crystals>
+tile.crystal.name=%s §rCrystal
+
+<Fluids>
+fluid.amethyst=Liquid §5Amethyst§r
+
+<Colors>
+color.blue=§1Blue
+color.green=§2Green
+color.aqua=§3Aqua
+color.red=§4Red
+color.purple=§5Purple
+color.gold=§6Gold
+color.light-gray=§7Light Gray
+color.gray=§8Gray
+color.blue2=§9Blue
+color.black=§0Black
+color.light-green=§aLight Green
+color.light-aqua=§bLight Aqua
+color.light-red=§cLight Red
+color.pink=§dPink
+color.yellow=§eYellow
+color.white=§fWhite
+
+<Chalk>
+tile.chalk.name=%s §rChalk
+
+<Other Blocks>
+tile.diamond_tnt.name=§3Diamond §fTnT
+
+<Gems>
+item.amethyst.name=§5Amethyst
+item.corundum.name=§cCorundum
+item.quartz.name=§f§lQuartz
+item.ruby.name=§4Ruby
+item.sapphire.name=§9Sapphire
+item.talc.name=§f§lTalc
+item.tanzanite.name=§1Tanzanite
+item.topaz.name=§6Topaz
+item.turquoise.name=§3Turquoise
+
+<Gem Parts>
+item.diamond_part.name=§3Diamond §fPart
+item.emerald_part.name=§2Emerald §fPart
+
+<Elements>
+item.aluminum.name=§7Aluminum
+item.beryllium.name=§7Beryllium
+item.carbon.name=§0Carbon
+item.chromium.name=§7Chromium
+item.hydrogen.name=§1Hydrogen
+item.iron.name=§7Iron
+item.oxygen.name=§cOxygen
+item.titanium.name=§8Titanium
+
+<Armor>
+armor.helmet=%s §rHelmet
+armor.chestplate=%s §rChestplate
+armor.leggings=%s §rLeggings
+armor.boots=%s §rBoots
+
+<Other Items>
+item.recipe_book.name=[WIP] Recipe Book
+item.heated_water_container.name=Water Container - Heated
+item.cloth.name=Cloth
+item.creative_fuel.name=Creative Fuel
+
+<Commands>
+command.gemmary.error.noMohsScale=§5[§3Gemmary§5]§r §4This item doesn't have a Mohs Scale.
+command.gemmary.error.holdingAir=§5[§3Gemmary§5]§r §4Air cannot be measured by the Mohs Scale.
+command.gemmary.MohsScale=§aMohs Scale
+
+<Tile Entitities>
+tile.normal_compressor.name=Compressor
+tile.fast_compressor.name=§4§k|§3Ultra Compressor§4§k|§r
+container.compressor=Item Compressor
+gui.c.fuel=§5Fuel
+gui.c.compresstime=§cCompression
+
+tile.artificial_hydrothermal_vein.name=§bHydrothermal Vein§r
+container.ahtv.name=§aHydrothermal Vein
+gui.htv.water=§9Water
+gui.htv.progress=§fProgress
+
+tile.atom_gatherer.name=§rAtom Gatherer
+tile.auto_atom_gatherer.name=§rAutomatic Atom Gatherer
+
+<Just Enough Items>
+gui.gemmary-jei.compressing=§9Gemmary §fCompressing
+gui.gemmary-jei.hydrating=§9Gemmary §fHydrating
+gui.gemmary-jei.exp=EXP: %s

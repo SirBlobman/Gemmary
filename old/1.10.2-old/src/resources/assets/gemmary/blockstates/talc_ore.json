@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "16x=false": {"model": "gemmary:talc_ore"},
+        "16x=true": {"model": "gemmary:16x/talc_ore"}
+    }
+}

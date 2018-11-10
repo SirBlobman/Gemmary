@@ -1,0 +1,12 @@
+[{
+"modid": "gemmary",
+"name": "Gemmary",
+"description": "The Science of Gems",
+"mcversion": "1.9.4",
+"version": "",
+"url": "", 
+"updateUrl": "",
+"authorList": ["SirBlobman"],
+"credits": "BedrockMiner for his tutorials",
+"logoFile": "/logo.png"
+}]

@@ -1,0 +1,73 @@
+﻿<Idioma Minecraft Español para Gemmary. Hecho por el SirBlobman>
+mod.name=Gemmary
+<Elementos>
+item.aluminum_element.name=§7Aluminio
+item.carbon_element.name=§0Carbón
+item.chromium_element.name=§8Cromo
+item.oxygen_element.name=§cOxígeno
+
+<Gemas>
+item.amethyst.name=§5Amastita
+item.corundum.name=§Corundo
+item.ruby.name=§4Rubí
+item.sapphire.name=§9Zafiro
+item.talc.name=§fTalco
+item.tanzanite.name=§1Tanzanita
+item.topaz.name=§6Topacio
+item.turquoise.name=§3Turquesa
+
+<Minerales>
+tile.amethyst_ore.name=Mineral de §5Amatista
+tile.corundum_ore.name=Mineral de §cCorundo
+tile.ruby_ore.name=Mineral de §4Rubí
+tile.sapphire_ore.name=Mineral de §9Zafiro
+tile.talc_ore.name=Mineral de §fTalco
+tile.tanzanite_ore.name=Mineral de §1Tanzanita
+tile.topaz_ore.name=Mineral de §6Topacio
+tile.turquoise_ore.name=Mineral de §3Turquesa
+
+<Bloques y Machinas>
+tile.atom_combiner.name=Combinador de Átomos
+tile.carbon_compressor.name=Compresor de Carbon
+tile.chalk.name=§fTiza
+tile.diamond_tnt.name=§cTnT §fde §bDiamante
+tile.small_engine.name=Motor Pequeño
+tile.quartz_crystals.name=Cristales de §f§lCuarzo
+tile.amethyst_block.name=§5Amethyst §fBlock
+tile.corundum_block=Bloque de §Corundo
+tile.ruby_block.name=Bloque de §4Rubí
+tile.sapphire_block.name=Bloque de §9Zafiro
+tile.talc_block.name=Bloque de §fTalco
+tile.tanzanite_block.name=Bloque de §1Tanzanita
+tile.topaz_block.name=Bloque de §6Topacio
+tile.turquoise_block.name=Bloque de §3Turquesa
+
+<Etiquetas Creativas>
+itemGroup.Gems=§3§ki§b§lGemas §ry §eLingotes§3§ki§f
+itemGroup.Elements=§6Elementos
+itemGroup.Blocks_Ores=§aBloques §ry §8Minerales
+itemGroup.Other=§fOtras Cosas
+
+<Contenedores>
+container.ac=Combinador de Atomos
+container.ac.inv=Inventario
+container.cc=Compresor
+
+<Botones de GUI>
+button.block=Block Recipes
+button.item=Item Recipes
+
+<Lores>
+lore.all.2=Sólo puedes mantener uno a la vez
+lore.alumnum.1=Atom Aluminio Ampliada y Inestable
+lore.carbon.1=Atom Carbon Ampliada y Inestable
+lore.chromium.1=Atom Cromo Ampliada y Inestable
+lore.oxygen.1=Atom Oxigeno Ampliada y Inestable
+
+<Textos>
+
+<Otro>
+item.recipe_book.name=Libro de Recetas
+gui.done.gemmary=Cierra Libro de Recetas
+gui.cc.cooktime=Progreso:
+gui.cc.fuel=Presión:

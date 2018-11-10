@@ -1,0 +1,6 @@
+{
+    "variants":
+    {
+        "normal": {"model":"gemmary:corundum_block"}
+    }
+}

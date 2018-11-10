@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": {"model": "gemmary:hydrothermal_vein"},
+    "facing=south": {"model": "gemmary:hydrothermal_vein", "y": 180},
+    "facing=west":  {"model": "gemmary:hydrothermal_vein", "y": 270},
+    "facing=east":  {"model": "gemmary:hydrothermal_vein", "y": 90}
+  }
+}

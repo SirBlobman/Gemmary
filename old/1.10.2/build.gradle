@@ -1,0 +1,50 @@
+//Gemmary Build File for Gradle
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+//Gemmary Information
+version = "Release 0.0.3.0"
+group = "com.SirBlobman.gemmary"
+archivesBaseName = "Gemmary "
+sourceCompatibility = targetCompatibility = "1.8"
+compileJava {
+    sourceCompatibility = targetCompatibility = "1.8"
+}
+
+//Minecraft (Forge) Information
+minecraft {
+    version = "1.10.2-12.18.1.2092"
+    runDir = "run"
+    mappings = "snapshot_20160518" //May 18, 2016
+    makeObfSourceJar = false
+}
+
+dependencies {}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+    
+    from(sourceSets.main.resources.srcDirs)
+    {
+        include 'mcmod.info'
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+    
+    from(sourceSets.main.resources.srcDirs)
+    {
+        exclude 'mcmod.info'
+    }
+}

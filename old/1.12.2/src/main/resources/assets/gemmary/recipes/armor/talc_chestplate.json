@@ -1,0 +1,18 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "T T",
+    "TTT",
+    "TTT"
+  ],
+  "key": {
+    "T": {
+      "type": "forge:ore_dict",
+      "ore": "gemTalc"
+    }
+  },
+  "result": {
+    "item": "gemmary:talc_chestplate",
+    "count": 1
+  }
+}

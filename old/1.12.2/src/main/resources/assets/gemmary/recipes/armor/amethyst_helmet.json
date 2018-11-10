@@ -1,0 +1,17 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "AAA",
+    "A A"
+  ],
+  "key": {
+    "A": {
+      "type": "forge:ore_dict",
+      "ore": "gemAmethyst"
+    }
+  },
+  "result": {
+    "item": "gemmary:amethyst_helmet",
+    "count": 1
+  }
+}

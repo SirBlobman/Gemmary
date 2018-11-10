@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "gemmary:atom_gatherer" },
+        "facing=south": { "model": "gemmary:atom_gatherer", "y": 180 },
+        "facing=west":  { "model": "gemmary:atom_gatherer", "y": 270 },
+        "facing=east":  { "model": "gemmary:atom_gatherer", "y": 90 }
+    }
+}

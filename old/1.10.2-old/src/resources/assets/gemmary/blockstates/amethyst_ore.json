@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "16x=false": {"model": "gemmary:amethyst_ore"},
+        "16x=true": {"model": "gemmary:16x/amethyst_ore"}
+    }
+}
