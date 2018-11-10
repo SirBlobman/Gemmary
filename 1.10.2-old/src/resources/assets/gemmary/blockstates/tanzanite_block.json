@@ -1,6 +1,0 @@
-{
-    "variants": {
-        "16x=false": {"model": "gemmary:tanzanite_block"},
-        "16x=true": {"model": "gemmary:16x/tanzanite_block"}
-    }
-}

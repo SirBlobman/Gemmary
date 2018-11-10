@@ -1,0 +1,82 @@
+# This is the "United States English" language file for Gemmary
+# This will be used as default if other language files do not include some of the keys
+
+# Config Options
+gemmary.config.main=Configuration for Gemmary
+gemmary.config.option.diamond_tnt.explosion_size=Diamond TNT - Explosion Size
+gemmary.config.option.cloth.durability=Cloth - Durability
+gemmary.config.option.hd_textures=1024x Textures
+
+# Item Lores
+lore.gemmary.element.atom.symbol=§2Symbol: §r%1$s
+lore.gemmary.element.atom.number=§2Atomic Number: §r%1$s
+lore.gemmary.element.atom.mass=§2Atomic Mass: §r%1$s
+
+# Tiles and Containers
+tile.compressor.name=Compressor
+container.gemmary.compressor=Compressor
+
+# GUI Text
+gui.gemmary.compressor.fuel=§9Fuel Remaining
+gui.gemmary.compressor.progress=§9Progress
+
+# Blocks
+tile.amethyst_block.name=Amethyst Block
+tile.ruby_block.name=Ruby Block
+tile.sapphire_block.name=Sapphire Block
+tile.talc_block.name=Talc Block
+tile.tanzanite_block.name=Tanzanite Block
+tile.topaz_block.name=Topaz Block
+tile.turquoise_block.name=Turquoise Block
+
+# Items
+item.amethyst.name=Amethyst
+item.ruby.name=Ruby
+item.sapphire.name=Sapphire
+item.talc.name=Talc
+item.tanzanite.name=Tanzanite
+item.topaz.name=Topaz
+item.turquoise.name=Turquoise
+item.diamond_part.name=Diamond Fragment
+item.emerald_part.name=Emerald Fragment
+item.aluminum.name=Enlarged Aluminum Atom
+item.beryllium.name=Enlarged Beryllium Atom
+item.carbon.name=Enlarged Carbon Atom
+item.chromium.name=Enlarged Chromium Atom
+item.oxygen.name=Enlarged Oxygen Atom
+item.cloth.name=Cloth
+
+# Armor
+item.amethyst_helmet.name=Amethyst Helmet
+item.amethyst_chestplate.name=Amethyst Chestplate
+item.amethyst_leggings.name=Amethyst Leggings
+item.amethyst_boots.name=Amethyst Boots
+item.ruby_helmet.name=Ruby Helmet
+item.ruby_chestplate.name=Ruby Chestplate
+item.ruby_leggings.name=Ruby Leggings
+item.ruby_boots.name=Ruby Boots
+item.sapphire_helmet.name=Sapphire Helmet
+item.sapphire_chestplate.name=Sapphire Chestplate
+item.sapphire_leggings.name=Sapphire Leggings
+item.sapphire_boots.name=Sapphire boots
+item.talc_helmet.name=Talc Helmet
+item.talc_chestplate.name=Talc Chestplate
+item.talc_leggings.name=Talc Leggings
+item.talc_boots.name=Talc Boots
+item.tanzanite_helmet.name=Tanzanite Helmet
+item.tanzanite_chestplate.name=Tanzanite Chestplate
+item.tanzanite_leggings.name=Tanzanite Leggings
+item.tanzanite_boots.name=Tanzanite Boots
+item.topaz_helmet.name=Topaz Helmet
+item.topaz_chestplate.name=Topaz Chestplate
+item.topaz_leggings.name=Topaz Leggings
+item.topaz_boots.name=Topaz Boots
+item.turquoise_helmet.name=Turquoise Helmet
+item.turquoise_chestplate.name=Turquoise Chestplate
+item.turquoise_leggings.name=Turquoise Leggings
+item.turquoise_boots.name=Turquoise Boots
+
+
+# Creative Tabs
+itemGroup.gemmary.items=Gemmary Items
+itemGroup.gemmary.blocks=Gemmary Blocks

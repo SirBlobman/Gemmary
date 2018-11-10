@@ -1,7 +1,0 @@
-{
-    "parent": "item/generated",
-    "textures": {
-        "layer1": "gemmary:items/Atoms/Chromium/chromium",
-        "layer0": "gemmary:items/corundum"
-    }
-}

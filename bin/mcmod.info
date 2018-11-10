@@ -1,0 +1,16 @@
+[{
+  "modid": "gemmary",
+  "name": "Gemmary",
+  "description": "The science of gems.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://minecraft.curseforge.com/projects/gemmary",
+  "updateJSON": "https://raw.githubusercontent.com/SirBlobman/Gemmary/master/update.json",
+  "authorList": ["SirBlobman"],
+  "credits": "",
+  "logoFile": "assets/gemmary/logo/logo.png",
+  "screenshots": [],
+  "requiredMods": [],
+  "dependecies": [],
+  "dependants": []
+}]

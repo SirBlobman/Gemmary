@@ -1,8 +1,0 @@
-{
-  "variants": {
-    "facing=north": {"model": "gemmary:fancy/compressor"},
-    "facing=south": {"model": "gemmary:fancy/compressor", "y": 180},
-    "facing=west":  {"model": "gemmary:fancy/compressor", "y": 270},
-    "facing=east":  {"model": "gemmary:fancy/compressor", "y": 90}
-  }
-}
