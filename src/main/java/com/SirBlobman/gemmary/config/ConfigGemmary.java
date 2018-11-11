@@ -31,13 +31,16 @@ public class ConfigGemmary {
 	@Name("Cloth Durability")
 	@LangKey("gemmary.config.option.cloth.durability")
 	@RangeInt(min=1, max=32767)
+    @RequiresMcRestart
 	@Comment("How much durability should the cloth item have?")
-	@RequiresMcRestart
 	public static int CLOTH_DURABILITY = 10;
 	
 	@Name("HD Textures")
 	@LangKey("gemmary.config.option.hd_textures")
-	@Comment("Should we use 1024x textures instead of the default 16x?")
-	@RequiresMcRestart
+    @RequiresMcRestart
+	@Comment({
+	    "Should we use 1024x textures instead of the default 16x?",
+	    "§4WARNING! §cRequires a lot of RAM and GPU power"
+	})
 	public static boolean HD_TEXTURES = false;
 }
