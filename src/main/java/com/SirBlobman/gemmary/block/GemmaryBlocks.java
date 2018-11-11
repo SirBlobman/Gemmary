@@ -18,29 +18,31 @@ public final class GemmaryBlocks {
     ;
     
     public static final BlockAbstractMachine
-        COMPRESSOR = new BlockCompressor()
+        COMPRESSOR = new BlockCompressor(),
+        HYDROTHERMAL_VEIN = new BlockHydrothermalVein()
     ;
     
     public static final ItemBlock
-        ITEM_BLOCK_AMETHYST  = createItemBlock(BLOCK_AMETHYST),
-        ITEM_BLOCK_RUBY      = createItemBlock(BLOCK_RUBY),
-        ITEM_BLOCK_SAPPHIRE  = createItemBlock(BLOCK_SAPPHIRE),
-        ITEM_BLOCK_TALC      = createItemBlock(BLOCK_TALC),
-        ITEM_BLOCK_TANZANITE = createItemBlock(BLOCK_TANZANITE),
-        ITEM_BLOCK_TOPAZ     = createItemBlock(BLOCK_TOPAZ),
-        ITEM_BLOCK_TURQUOISE = createItemBlock(BLOCK_TURQUOISE),
+        ITEM_BLOCK_AMETHYST     = createItemBlock(BLOCK_AMETHYST),
+        ITEM_BLOCK_RUBY         = createItemBlock(BLOCK_RUBY),
+        ITEM_BLOCK_SAPPHIRE     = createItemBlock(BLOCK_SAPPHIRE),
+        ITEM_BLOCK_TALC         = createItemBlock(BLOCK_TALC),
+        ITEM_BLOCK_TANZANITE    = createItemBlock(BLOCK_TANZANITE),
+        ITEM_BLOCK_TOPAZ        = createItemBlock(BLOCK_TOPAZ),
+        ITEM_BLOCK_TURQUOISE    = createItemBlock(BLOCK_TURQUOISE),
     
-        ITEM_COMPRESSOR      = createItemBlock(COMPRESSOR)
+        ITEM_COMPRESSOR         = createItemBlock(COMPRESSOR),
+        ITEM_HYDROTHERMAL_VEIN  = createItemBlock(HYDROTHERMAL_VEIN)
     ;
     
     public static final void registerAllBlocks(IForgeRegistry<Block> ifr) {
         ifr.registerAll(BLOCK_AMETHYST, BLOCK_RUBY, BLOCK_SAPPHIRE, BLOCK_TALC, BLOCK_TANZANITE, BLOCK_TOPAZ, BLOCK_TURQUOISE);
-        ifr.registerAll(COMPRESSOR);
+        ifr.registerAll(COMPRESSOR, HYDROTHERMAL_VEIN);
     }
     
     public static final void registerAllItems(IForgeRegistry<Item> ifr) {
         ifr.registerAll(ITEM_BLOCK_AMETHYST, ITEM_BLOCK_RUBY, ITEM_BLOCK_SAPPHIRE, ITEM_BLOCK_TALC, ITEM_BLOCK_TANZANITE, ITEM_BLOCK_TOPAZ, ITEM_BLOCK_TURQUOISE);
-        ifr.registerAll(ITEM_COMPRESSOR);
+        ifr.registerAll(ITEM_COMPRESSOR, ITEM_HYDROTHERMAL_VEIN);
     }
     
     public static final ItemBlock createItemBlock(Block block) {

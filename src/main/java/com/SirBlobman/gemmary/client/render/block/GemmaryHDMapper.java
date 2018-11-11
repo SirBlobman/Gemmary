@@ -19,7 +19,7 @@ public class GemmaryHDMapper extends StateMapperBase {
         String bpath = (ConfigGemmary.HD_TEXTURES ? "hd/" : "sd/") + brl.getResourcePath();
         
         ImmutableMap<IProperty<?>, Comparable<?>> properties = state.getProperties();
-        String propertyString = super.getPropertyString(properties);
+        String propertyString = getPropertyString(properties);
 
         ResourceLocation nrl = new ResourceLocation(ModInfo.MODID, bpath);
         ModelResourceLocation mrl = new ModelResourceLocation(nrl, propertyString);

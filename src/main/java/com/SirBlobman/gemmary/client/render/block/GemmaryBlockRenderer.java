@@ -7,6 +7,8 @@ import static com.SirBlobman.gemmary.block.GemmaryBlocks.BLOCK_TALC;
 import static com.SirBlobman.gemmary.block.GemmaryBlocks.BLOCK_TANZANITE;
 import static com.SirBlobman.gemmary.block.GemmaryBlocks.BLOCK_TOPAZ;
 import static com.SirBlobman.gemmary.block.GemmaryBlocks.BLOCK_TURQUOISE;
+import static com.SirBlobman.gemmary.block.GemmaryBlocks.COMPRESSOR;
+import static com.SirBlobman.gemmary.block.GemmaryBlocks.HYDROTHERMAL_VEIN;
 
 import java.util.List;
 
@@ -23,7 +25,9 @@ public final class GemmaryBlockRenderer {
         GemmaryHDMapper ghm = new GemmaryHDMapper();
         
         List<Block> blocks = Lists.newArrayList(
-            BLOCK_AMETHYST, BLOCK_RUBY, BLOCK_SAPPHIRE, BLOCK_TALC, BLOCK_TANZANITE, BLOCK_TOPAZ, BLOCK_TURQUOISE
+            BLOCK_AMETHYST, BLOCK_RUBY, BLOCK_SAPPHIRE, BLOCK_TALC, BLOCK_TANZANITE, BLOCK_TOPAZ, BLOCK_TURQUOISE,
+            
+            COMPRESSOR, HYDROTHERMAL_VEIN
         );
         blocks.forEach(block -> ModelLoader.setCustomStateMapper(block, ghm));
     }

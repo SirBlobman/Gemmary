@@ -14,11 +14,18 @@ lore.gemmary.element.atom.mass=§2Atomic Mass: §r%1$s
 
 # Tiles and Containers
 tile.compressor.name=Compressor
+tile.hydrothermal_vein.name=Hydrothermal Vein
+
 container.gemmary.compressor=Compressor
+container.gemmary.hydrothermal_vein=Hydrothermal Vein
 
 # GUI Text
 gui.gemmary.compressor.fuel=§9Fuel Remaining
 gui.gemmary.compressor.progress=§9Progress
+
+gui.gemmary.hydrothermal_vein.water=§9Water
+gui.gemmary.hydrothermal_vein.lava=§9Lava
+gui.gemmary.hydrothermal_vein.progress=§9Progress
 
 # Blocks
 tile.amethyst_block.name=Amethyst Block

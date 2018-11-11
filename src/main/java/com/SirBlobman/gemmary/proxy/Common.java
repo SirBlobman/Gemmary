@@ -7,6 +7,7 @@ import com.SirBlobman.gemmary.forge.GemmaryOreDictionary;
 import com.SirBlobman.gemmary.item.GemmaryItems;
 import com.SirBlobman.gemmary.recipe.GemmaryRecipes;
 import com.SirBlobman.gemmary.tileentity.TileEntityCompressor;
+import com.SirBlobman.gemmary.tileentity.TileEntityHydrothermalVein;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -22,6 +23,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class Common {
 	public void pre(FMLPreInitializationEvent e) {
 		GameRegistry.registerTileEntity(TileEntityCompressor.class, new ResourceLocation(ModInfo.MODID, "compressor"));
+		GameRegistry.registerTileEntity(TileEntityHydrothermalVein.class, new ResourceLocation(ModInfo.MODID, "hydrothermal_vein"));
 	}
 	
 	public void init(FMLInitializationEvent e) {

@@ -7,12 +7,14 @@ import static com.SirBlobman.gemmary.block.GemmaryBlocks.ITEM_BLOCK_TALC;
 import static com.SirBlobman.gemmary.block.GemmaryBlocks.ITEM_BLOCK_TANZANITE;
 import static com.SirBlobman.gemmary.block.GemmaryBlocks.ITEM_BLOCK_TOPAZ;
 import static com.SirBlobman.gemmary.block.GemmaryBlocks.ITEM_BLOCK_TURQUOISE;
+import static com.SirBlobman.gemmary.block.GemmaryBlocks.ITEM_COMPRESSOR;
+import static com.SirBlobman.gemmary.block.GemmaryBlocks.ITEM_HYDROTHERMAL_VEIN;
 import static com.SirBlobman.gemmary.item.GemmaryItems.*;
-
-import java.util.Arrays;
 
 import com.SirBlobman.gemmary.config.ConfigGemmary;
 import com.SirBlobman.gemmary.constant.ModInfo;
+
+import java.util.Arrays;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -45,7 +47,11 @@ public final class GemmaryItemRenderer {
     }
     
     public static void registerItemBlocks() {
-        register(ITEM_BLOCK_AMETHYST, ITEM_BLOCK_RUBY, ITEM_BLOCK_SAPPHIRE, ITEM_BLOCK_TALC, ITEM_BLOCK_TANZANITE, ITEM_BLOCK_TOPAZ, ITEM_BLOCK_TURQUOISE);
+        register(
+            ITEM_BLOCK_AMETHYST, ITEM_BLOCK_RUBY, ITEM_BLOCK_SAPPHIRE, ITEM_BLOCK_TALC, ITEM_BLOCK_TANZANITE, ITEM_BLOCK_TOPAZ, ITEM_BLOCK_TURQUOISE,
+            
+            ITEM_COMPRESSOR, ITEM_HYDROTHERMAL_VEIN
+        );
     }
     
     public static final void register(Item... items) {
