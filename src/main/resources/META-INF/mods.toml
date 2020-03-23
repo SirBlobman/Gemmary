@@ -1,0 +1,30 @@
+modLoader="javafml"
+loaderVersion="[31,)"
+
+issueTrackerURL="https://github.com/SirBlobman/Gemmary/issues/"
+showAsResourcePack=false
+
+[[mods]]
+modId="gemmary"
+version="2.0.0"
+displayName="Gemmary"
+updateJSONURL="https://raw.githubusercontent.com/SirBlobman/Gemmary/master/update.json"
+displayURL="Gemmary GitHub"
+logoFile="logo.png"
+credits="Thanks to the Forge team for making mods possible."
+authors="SirBlobman"
+description="The science of gems."
+
+[[dependencies.gemmary]]
+    modId="forge"
+    mandatory=true
+    versionRange="[31,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.gemmary]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.15.2]"
+    ordering="NONE"
+    side="BOTH"
