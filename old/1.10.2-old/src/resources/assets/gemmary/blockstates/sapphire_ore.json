@@ -1,6 +1,0 @@
-{
-    "variants": {
-        "16x=false": {"model": "gemmary:sapphire_ore"},
-        "16x=true": {"model": "gemmary:16x/sapphire_ore"}
-    }
-}

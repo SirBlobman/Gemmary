@@ -1,6 +1,0 @@
-{
-    "parent": "block/redstone_dot",
-    "textures": {
-        "particle": "gemmary:blocks/white_chalk"
-    }
-}

@@ -1,8 +1,0 @@
-{
-    "parent": "gemmary:item/amethyst",
-    "textures":
-    {
-        "layer0": "gemmary:items/corundum",
-        "layer1": "gemmary:items/dusty"
-    }
-}

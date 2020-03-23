@@ -1,9 +1,0 @@
-[{
-  "modid": "gemmary",
-  "name": "Gemmary",
-  "description": "The science of gems",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "authorList": ["SirBlobman"],
-  "logoFile": "assets/gemmary/logo/logo.png"
-}]

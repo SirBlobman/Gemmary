@@ -1,6 +1,0 @@
-{
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "gemmary:items/Armor/talc_chestplate"
-    }
-}
