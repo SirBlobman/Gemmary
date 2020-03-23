@@ -1,0 +1,13 @@
+{
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/gemmary/",
+    "1.15.2": {
+        "2.0.0": "Not currently available, but hopefully soon"
+    },
+    "1.12.2": {
+        "1.0.0.0 Release": "Latest version on CurseForge for 1.12.2"
+    },
+    
+    "promos": {
+        "1.12.2-latest": "1.0.0.0 Release"
+    }
+}
