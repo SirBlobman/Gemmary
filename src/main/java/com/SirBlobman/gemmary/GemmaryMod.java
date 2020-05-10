@@ -20,6 +20,7 @@ public class GemmaryMod {
     public GemmaryMod() {
         instance = this;
         this.itemManager = new ItemManager(this);
+        
         MinecraftForge.EVENT_BUS.register(this);
     }
     

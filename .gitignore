@@ -17,10 +17,7 @@ dependency-reduced-pom.xml
 
 # Gradle
 .gradle/
-gradle/
 build/
-gradlew
-gradlew.bat
 
 # Forge and Minecraft
 run/

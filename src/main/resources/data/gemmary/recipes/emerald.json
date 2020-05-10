@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "EEE",
+    "EEE",
+    "EEE"
+  ],
+  "key":{
+    "E": {
+      "tag": "gemmary:gem_parts/emerald"
+    }
+  },
+  "result": {
+    "item": "minecraft:emerald",
+    "count": 1
+  }
+}
