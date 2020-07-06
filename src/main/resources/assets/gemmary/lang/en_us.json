@@ -28,5 +28,14 @@
   "item.gemmary.nitrogen_atom": "Nitrogen Atom",
   "item.gemmary.oxygen_atom": "Oxygen Atom",
   "item.gemmary.fluorine_atom": "Fluorine Atom",
-  "item.gemmary.neon_atom": "Neon Atom"
+  "item.gemmary.neon_atom": "Neon Atom",
+
+  "item.gemmary.sodium_atom": "Sodium Atom",
+  "item.gemmary.magnesium_atom": "Magnesium Atom",
+  "item.gemmary.aluminium_atom": "Aluminium Atom",
+  "item.gemmary.silicon_atom": "Silicon Atom",
+  "item.gemmary.phosphorus_atom": "Phosphorus Atom",
+  "item.gemmary.sulfur_atom": "Sulfur Atom",
+  "item.gemmary.chlorine_atom": "Chlorine Atom",
+  "item.gemmary.argon_atom": "Argon Atom"
 }
