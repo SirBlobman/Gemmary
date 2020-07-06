@@ -86,6 +86,23 @@ public class ItemManager {
         registerItem(new ItemElement("krypton", "Kr", 36, 83.798D));
         
         registerItem(new ItemElement("rubidium", "Rb", 37, 85.468D));
+        registerItem(new ItemElement("strontium", "Sr", 38, 87.62D));
+        registerItem(new ItemElement("yttrium", "Y", 39, 88.906D));
+        registerItem(new ItemElement("zirconium", "Zr", 40, 91.224D));
+        registerItem(new ItemElement("niobium", "Nb", 41, 92.906D));
+        registerItem(new ItemElement("molybdenum", "Mo", 42, 95.95D));
+        registerItem(new ItemElement("technetium", "Tc", 43, 98.0D));
+        registerItem(new ItemElement("ruthenium", "Ru", 44, 101.07D));
+        registerItem(new ItemElement("rhodium", "Rh", 45, 102.91D));
+        registerItem(new ItemElement("palladium", "Pd", 46, 106.42D));
+        registerItem(new ItemElement("silver", "Ag", 47, 107.87D));
+        registerItem(new ItemElement("cadmium", "Cd", 48, 112.41D));
+        registerItem(new ItemElement("indium", "In", 49, 114.82D));
+        registerItem(new ItemElement("tin", "Sn", 50, 118.71D));
+        registerItem(new ItemElement("antimony", "Sb", 51, 121.76D));
+        registerItem(new ItemElement("tellurium", "Te", 52, 127.60D));
+        registerItem(new ItemElement("iodine", "I", 53, 126.90D));
+        registerItem(new ItemElement("xenon", "Xe", 54, 131.29D));
     }
     
     private void registerItem(Item item) {
