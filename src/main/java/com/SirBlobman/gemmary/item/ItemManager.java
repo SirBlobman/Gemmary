@@ -44,10 +44,13 @@ public class ItemManager {
         registerItem(new ItemGemPart("diamond"));
         registerItem(new ItemGemPart("emerald"));
         
-        // Periodic Elements
+        // Periodic Table
+        
+        // Row 1
         registerItem(new ItemElement("hydrogen", "H", 1, 1.008D));
         registerItem(new ItemElement("helium", "He", 4, 4.0026D));
         
+        // Row 2
         registerItem(new ItemElement("lithium", "Li", 3, 6.94D));
         registerItem(new ItemElement("beryllium", "Be", 4, 9.0122D));
         registerItem(new ItemElement("boron", "B", 5, 10.81D));
@@ -57,6 +60,7 @@ public class ItemManager {
         registerItem(new ItemElement("fluorine", "F", 9, 18.998D));
         registerItem(new ItemElement("neon", "Ne", 10, 20.180D));
         
+        // Row 3
         registerItem(new ItemElement("sodium", "Na", 11, 22.990D));
         registerItem(new ItemElement("magnesium", "Mg", 12, 23.305D));
         registerItem(new ItemElement("aluminium", "Al", 13, 26.982D));
@@ -66,6 +70,7 @@ public class ItemManager {
         registerItem(new ItemElement("chlorine", "Cl", 17, 35.45D));
         registerItem(new ItemElement("argon", "Ar", 18, 39.948D));
         
+        // Row 4
         registerItem(new ItemElement("potassium", "K", 19, 39.098D));
         registerItem(new ItemElement("calcium", "Ca", 20, 40.078D));
         registerItem(new ItemElement("scandium", "Sc", 21, 44.956D));
@@ -85,6 +90,7 @@ public class ItemManager {
         registerItem(new ItemElement("bromine", "Br", 35, 79.904D));
         registerItem(new ItemElement("krypton", "Kr", 36, 83.798D));
         
+        // Row 5
         registerItem(new ItemElement("rubidium", "Rb", 37, 85.468D));
         registerItem(new ItemElement("strontium", "Sr", 38, 87.62D));
         registerItem(new ItemElement("yttrium", "Y", 39, 88.906D));
@@ -103,6 +109,40 @@ public class ItemManager {
         registerItem(new ItemElement("tellurium", "Te", 52, 127.60D));
         registerItem(new ItemElement("iodine", "I", 53, 126.90D));
         registerItem(new ItemElement("xenon", "Xe", 54, 131.29D));
+        
+        // Row 6 + Lanthanoids
+        registerItem(new ItemElement("caesium", "Cs", 55, 132.91D));
+        registerItem(new ItemElement("barium", "Ba", 56, 137.33D));
+        registerItem(new ItemElement("lanthanum", "La", 57, 138.91D));
+        registerItem(new ItemElement("cerium", "Ce", 58, 140.12D));
+        registerItem(new ItemElement("praseodymium", "Pr", 59, 140.91D));
+        registerItem(new ItemElement("neodymium", "Nd", 60, 144.24D));
+        registerItem(new ItemElement("promethium", "Pm", 59, 145.0D));
+        registerItem(new ItemElement("samarium", "Sm", 62, 150.36D));
+        registerItem(new ItemElement("europium", "Eu", 63, 151.96D));
+        registerItem(new ItemElement("gadolinium", "Gd", 64, 157.25D));
+        registerItem(new ItemElement("terbium", "Tb", 65, 158.93D));
+        registerItem(new ItemElement("dysprosium", "Dy", 66, 162.50D));
+        registerItem(new ItemElement("holmium", "Ho", 67, 164.93D));
+        registerItem(new ItemElement("erbium", "Er", 68, 167.26D));
+        registerItem(new ItemElement("thulium", "Tm", 69, 168.93D));
+        registerItem(new ItemElement("ytterbium", "Yb", 70, 173.05D));
+        registerItem(new ItemElement("lutetium", "Lu", 71, 174.97D));
+        registerItem(new ItemElement("hafnium", "Hf", 72, 178.49D));
+        registerItem(new ItemElement("tantalum", "Ta", 73, 180.95D));
+        registerItem(new ItemElement("tungsten", "W", 74, 183.84D));
+        registerItem(new ItemElement("rhenium", "Re", 75, 186.21D));
+        registerItem(new ItemElement("osmium", "os", 76, 190.23D));
+        registerItem(new ItemElement("iridium", "Ir", 77, 192.22D));
+        registerItem(new ItemElement("platinum", "Pt", 78, 195.08D));
+        registerItem(new ItemElement("gold", "Au", 79, 196.97D));
+        registerItem(new ItemElement("mercury", "Hg", 80, 200.59D));
+        registerItem(new ItemElement("thallium", "Tl", 81, 204.38D));
+        registerItem(new ItemElement("lead", "Pb", 82, 207.2D));
+        registerItem(new ItemElement("bismuth", "Bi", 83, 208.98D));
+        registerItem(new ItemElement("polonium", "Po", 84, 209.0D));
+        registerItem(new ItemElement("astatine", "At", 85, 210.0D));
+        registerItem(new ItemElement("radon", "Rn", 86, 222.0D));
     }
     
     private void registerItem(Item item) {
