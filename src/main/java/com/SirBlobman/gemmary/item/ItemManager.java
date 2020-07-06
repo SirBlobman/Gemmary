@@ -143,6 +143,40 @@ public class ItemManager {
         registerItem(new ItemElement("polonium", "Po", 84, 209.0D));
         registerItem(new ItemElement("astatine", "At", 85, 210.0D));
         registerItem(new ItemElement("radon", "Rn", 86, 222.0D));
+        
+        // Row 7 + Actinoids
+        registerItem(new ItemElement("francium", "Fr", 87, 223.0D));
+        registerItem(new ItemElement("radium", "Ra", 88, 226.0D));
+        registerItem(new ItemElement("actinium", "Ac", 89, 227.0D));
+        registerItem(new ItemElement("thorium", "Th", 90, 232.04D));
+        registerItem(new ItemElement("protactinium", "Pa", 91, 231.04D));
+        registerItem(new ItemElement("uranium", "U", 92, 238.03D));
+        registerItem(new ItemElement("neptunium", "Np", 93, 237.0D));
+        registerItem(new ItemElement("plutonium", "Pu", 94, 244.0D));
+        registerItem(new ItemElement("americium", "Am", 95, 243.0D));
+        registerItem(new ItemElement("curium", "Cm", 96, 247.0D));
+        registerItem(new ItemElement("berkelium", "Bk", 97, 247.0D));
+        registerItem(new ItemElement("californium", "Cf", 98, 251.0D));
+        registerItem(new ItemElement("einsteinium", "Es", 99, 252.0D));
+        registerItem(new ItemElement("fermium", "Fm", 100, 257.0D));
+        registerItem(new ItemElement("medelevium", "Md", 101, 258.0D));
+        registerItem(new ItemElement("nobelium", "No", 102, 259.0D));
+        registerItem(new ItemElement("lawrencium", "Lr", 103, 266.0D));
+        registerItem(new ItemElement("rutherfordium", "Rf", 104, 267.0D));
+        registerItem(new ItemElement("dubnium", "Db", 105, 268.0D));
+        registerItem(new ItemElement("seaborgium", "Sg", 106, 269.0D));
+        registerItem(new ItemElement("bohrium", "Bh", 107, 270.0D));
+        registerItem(new ItemElement("hassium", "Hs", 108, 277.0D));
+        registerItem(new ItemElement("meitnerium", "Mt", 109, 278.0D));
+        registerItem(new ItemElement("darmstadtium", "Ds", 110, 281.0D));
+        registerItem(new ItemElement("roentgenium", "Rg", 111, 282.0D));
+        registerItem(new ItemElement("copernicium", "Cn", 112, 285.0D));
+        registerItem(new ItemElement("nihonium", "Nh", 113, 286.0D));
+        registerItem(new ItemElement("flerovium", "Fl", 114, 289.0D));
+        registerItem(new ItemElement("moscovium", "Mc", 115, 290.0D));
+        registerItem(new ItemElement("livermorium", "Lv", 116, 293.0D));
+        registerItem(new ItemElement("tennessine", "Ts", 117, 294.0D));
+        registerItem(new ItemElement("oganesson", "Og", 118, 294.0D));
     }
     
     private void registerItem(Item item) {
