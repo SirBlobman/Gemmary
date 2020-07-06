@@ -48,7 +48,7 @@ public class ItemManager {
         
         // Row 1
         registerItem(new ItemElement("hydrogen", "H", 1, 1.008D));
-        registerItem(new ItemElement("helium", "He", 4, 4.0026D));
+        registerItem(new ItemElement("helium", "He", 2, 4.0026D));
         
         // Row 2
         registerItem(new ItemElement("lithium", "Li", 3, 6.94D));
