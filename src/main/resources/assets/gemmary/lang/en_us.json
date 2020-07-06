@@ -1,4 +1,7 @@
 {
+  "itemGroup.gemmaryItems": "Gemmary | Items",
+  "itemGroup.gemmaryAtoms": "Gemmary | Periodic Table",
+
   "gemmary.lore.mohsValue": "\u00A78\u00A7LMohs Value: \u00A77%.2d",
   "gemmary.lore.elementSymbol": "\u00A78\u00A7LSymbol: \u00A77%s",
   "gemmary.lore.atomicNumber": "\u00A78\u00A7LAtomic Number: \u00A77%s",
@@ -15,6 +18,15 @@
   "item.gemmary.diamond_part": "Diamond Fragment",
   "item.gemmary.emerald_part": "Emerald Fragment",
 
-  "itemGroup.gemmaryItems": "Gemmary | Items",
-  "itemGroup.gemmaryAtoms": "Gemmary | Periodic Table"
+  "item.gemmary.hydrogen_atom": "Hydrogen Atom",
+  "item.gemmary.helium_atom": "Helium Atom",
+
+  "item.gemmary.lithium_atom": "Lithium Atom",
+  "item.gemmary.beryllium_atom": "Beryllium Atom",
+  "item.gemmary.boron_atom": "Boron Atom",
+  "item.gemmary.carbon_atom": "Carbon Atom",
+  "item.gemmary.nitrogen_atom": "Nitrogen Atom",
+  "item.gemmary.oxygen_atom": "Oxygen Atom",
+  "item.gemmary.fluorine_atom": "Fluorine Atom",
+  "item.gemmary.neon_atom": "Neon Atom"
 }
