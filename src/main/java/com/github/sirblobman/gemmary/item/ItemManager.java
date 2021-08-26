@@ -1,18 +1,20 @@
-package com.SirBlobman.gemmary.item;
+package com.github.sirblobman.gemmary.item;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.SirBlobman.gemmary.GemmaryMod;
-
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
+
+import com.github.sirblobman.gemmary.GemmaryMod;
+
 import net.minecraftforge.registries.IForgeRegistry;
 
-public class ItemManager {
+public final class ItemManager {
     private IForgeRegistry<Item> forgeRegistry;
     private final GemmaryMod gemmary;
     private final Map<String, Item> itemMap;
+    
     public ItemManager(GemmaryMod gemmary) {
         this.gemmary = gemmary;
         this.itemMap = new HashMap<>();

@@ -1,8 +1,9 @@
-package com.SirBlobman.gemmary;
-
-import com.SirBlobman.gemmary.item.ItemManager;
+package com.github.sirblobman.gemmary;
 
 import net.minecraft.item.Item;
+
+import com.github.sirblobman.gemmary.item.ItemManager;
+
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -13,7 +14,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 @Mod("gemmary")
 @EventBusSubscriber(modid="gemmary", bus=Bus.MOD)
-public class GemmaryMod {
+public final class GemmaryMod {
     private static GemmaryMod instance;
     private final ItemManager itemManager;
     

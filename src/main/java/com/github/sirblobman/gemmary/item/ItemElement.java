@@ -1,9 +1,7 @@
-package com.SirBlobman.gemmary.item;
+package com.github.sirblobman.gemmary.item;
 
 import java.util.Collections;
 import java.util.List;
-
-import com.SirBlobman.gemmary.item.group.ItemGroupManager;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
@@ -12,10 +10,13 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
-public class ItemElement extends Item {
+import com.github.sirblobman.gemmary.item.group.ItemGroupManager;
+
+public final class ItemElement extends Item {
     private final String elementSymbol;
     private final int atomicNumber;
     private final double atomicWeight;
+    
     public ItemElement(String elementName, String elementSymbol, int atomicNumber, double atomicWeight) {
         super(new Properties().group(ItemGroupManager.GEMMARY_ATOMS));
         setRegistryName("gemmary", elementName + "_atom");

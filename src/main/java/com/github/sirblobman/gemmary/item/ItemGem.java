@@ -1,8 +1,6 @@
-package com.SirBlobman.gemmary.item;
+package com.github.sirblobman.gemmary.item;
 
 import java.util.List;
-
-import com.SirBlobman.gemmary.item.group.ItemGroupManager;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
@@ -11,8 +9,11 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
-public class ItemGem extends Item {
+import com.github.sirblobman.gemmary.item.group.ItemGroupManager;
+
+public final class ItemGem extends Item {
     private final double mohsValue;
+    
     public ItemGem(String name, double mohsValue) {
         super(new Properties().group(ItemGroupManager.GEMMARY_ITEMS));
         

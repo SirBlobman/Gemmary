@@ -1,4 +1,4 @@
-package com.SirBlobman.gemmary.item.group;
+package com.github.sirblobman.gemmary.item.group;
 
 import net.minecraft.item.ItemGroup;
 
