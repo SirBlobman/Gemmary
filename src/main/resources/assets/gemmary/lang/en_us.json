@@ -1,0 +1,9 @@
+{
+  "item_group.gemmary.main": "Gemmary: Items",
+  "item_group.gemmary.periodic": "Gemmary: Periodic Table",
+
+  "lore.gemmary.mohs_hardness": "Mohs Hardness:",
+  "lore.gemmary.element_symbol": "Symbol:",
+  "lore.gemmary.atomic_number": "Atomic Number:",
+  "lore.gemmary.atomic_weight": "Atomic Weight:"
+}

@@ -1,0 +1,31 @@
+modLoader="javafml"
+loaderVersion="[45,)"
+license="GNU GPL v3, https://www.gnu.org/licenses/gpl-3.0.en.html"
+issueTrackerURL="https://github.com/SirBlobman/Gemmary/issues"
+
+[[mods]]
+modId="gemmary"
+version="${file.jarVersion}"
+displayName="Gemmary"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/gemmary"
+logoFile="logo.png"
+credits="Thanks to allin khant zeya for creating some textures and model files."
+authors="SirBlobman"
+displayTest="MATCH_VERSION"
+description='''
+A gem-themed mod that adds custom items, atoms, gems, and machines.
+'''
+
+[[dependencies.gemmary]]
+    modId="forge"
+    mandatory=true
+    versionRange="[45,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.gemmary]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.19.4,1.20)"
+    ordering="NONE"
+    side="BOTH"
