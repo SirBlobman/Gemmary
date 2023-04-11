@@ -19,13 +19,28 @@ public final class GemmaryBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, GemmaryMod.MOD_ID);
 
+    public static final DeferredRegister<Block> MACHINES =
+            DeferredRegister.create(ForgeRegistries.BLOCKS, GemmaryMod.MOD_ID);
+
     public static void registerBlocks(IEventBus modEventBus) {
         registerGemBlocks();
         BLOCKS.register(modEventBus);
+        MACHINES.register(modEventBus);
     }
 
-    private static RegistryObject<Block> registerBlock(Supplier<Block> supplier, String id) {
+    private static void registerBlock(Supplier<Block> supplier, String id) {
         RegistryObject<Block> register = BLOCKS.register(id, supplier);
+        Supplier<Item> itemSupplier = () -> {
+            Block block = register.get();
+            Properties properties = new Properties();
+            return new BlockItem(block, properties);
+        };
+
+        GemmaryItems.ITEMS.register(id, itemSupplier);
+    }
+
+    private static RegistryObject<Block> registerMachine(Supplier<Block> supplier, String id) {
+        RegistryObject<Block> register = MACHINES.register(id, supplier);
         Supplier<Item> itemSupplier = () -> {
             Block block = register.get();
             Properties properties = new Properties();
@@ -37,13 +52,12 @@ public final class GemmaryBlocks {
     }
 
     public static final RegistryObject<Block> COMPRESSOR_MACHINE =
-            registerBlock(CompressorMachineBlock::new, "compressor_machine");
+            registerMachine(CompressorMachineBlock::new, "compressor_machine");
 
     public static final RegistryObject<Block> HYDROTHERMAL_VEIN_MACHINE =
-            registerBlock(HydrothermalVeinMachineBlock::new, "hydrothermal_vein_machine");
+            registerMachine(HydrothermalVeinMachineBlock::new, "hydrothermal_vein_machine");
 
     public static void registerGemBlocks() {
-        registerBlock(() -> new GemBlock(7.0D), "amethyst_block");
         registerBlock(() -> new GemBlock(9.0D), "ruby_block");
         registerBlock(() -> new GemBlock(9.0D), "sapphire_block");
         registerBlock(() -> new GemBlock(1.0D), "talc_block");

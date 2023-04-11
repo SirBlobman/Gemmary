@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "gemmary:gem_parts",
+  "ingredients": [
+    { "item": "minecraft:diamond" }
+  ],
+  "result": {
+    "item": "gemmary:diamond_part",
+    "count": 9
+  }
+}

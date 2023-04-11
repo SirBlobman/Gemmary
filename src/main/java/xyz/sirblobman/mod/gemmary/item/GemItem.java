@@ -28,6 +28,7 @@ public final class GemItem extends Item {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level world, @NotNull List<Component> lore,
                                 @NotNull TooltipFlag flags) {
+        super.appendHoverText(stack, world, lore, flags);
         double hardness = getMohsHardness();
 
         MutableComponent line = Component.empty();

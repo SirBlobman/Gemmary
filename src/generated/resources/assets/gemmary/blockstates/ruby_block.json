@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gemmary:block/ruby_block"
+    }
+  }
+}

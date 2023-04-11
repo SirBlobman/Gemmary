@@ -29,6 +29,7 @@ public final class GemBlock extends Block {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable BlockGetter world, @NotNull List<Component> lore,
                                 @NotNull TooltipFlag flags) {
+        super.appendHoverText(stack, world, lore, flags);
         double hardness = getMohsHardness();
 
         MutableComponent line = Component.empty();

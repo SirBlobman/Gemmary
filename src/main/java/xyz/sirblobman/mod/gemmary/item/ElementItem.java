@@ -40,6 +40,7 @@ public final class ElementItem extends Item {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level world, @NotNull List<Component> lore,
                                 @NotNull TooltipFlag flags) {
+        super.appendHoverText(stack, world, lore, flags);
         String elementSymbol = getElementSymbol();
         int atomicNumber = getAtomicNumber();
         double atomicWeight = getAtomicWeight();

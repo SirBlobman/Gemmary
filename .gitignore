@@ -94,4 +94,4 @@ nb-configuration.xml
 ## Minecraft Forge
 ##############################
 run/
-src/generated/
+src/generated/resources/.cache

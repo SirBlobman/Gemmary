@@ -5,5 +5,25 @@
   "lore.gemmary.mohs_hardness": "Mohs Hardness:",
   "lore.gemmary.element_symbol": "Symbol:",
   "lore.gemmary.atomic_number": "Atomic Number:",
-  "lore.gemmary.atomic_weight": "Atomic Weight:"
+  "lore.gemmary.atomic_weight": "Atomic Weight:",
+
+  "block.gemmary.compressor_machine": "Compressor Machine",
+  "block.gemmary.hydrothermal_vein_machine": "Hydrothermal Vein Machine",
+
+  "block.gemmary.ruby_block": "Block of Ruby",
+  "block.gemmary.sapphire_block": "Block of Sapphire",
+  "block.gemmary.talc_block": "Block of Talc",
+  "block.gemmary.tanzanite_block": "Block of Tanzanite",
+  "block.gemmary.topaz_block": "Block of Topaz",
+  "block.gemmary.turquoise_block": "Block of Turquoise",
+
+  "item.gemmary.ruby": "Ruby",
+  "item.gemmary.sapphire": "Sapphire",
+  "item.gemmary.talc": "Talc",
+  "item.gemmary.tanzanite": "Tanzanite",
+  "item.gemmary.topaz": "Topaz",
+  "item.gemmary.turquoise": "Turquoise",
+
+  "item.gemmary.diamond_part": "Shard of Diamond",
+  "item.gemmary.emerald_part": "Shard of Emerald"
 }

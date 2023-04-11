@@ -33,13 +33,12 @@ public final class GemmaryItems {
         ELEMENTS.register("element_" + id, supplier);
     }
 
-    @ObjectHolder(registryName = "minecraft:item", value = "gemmary:amethyst")
-    public static Item AMETHYST;
+    @ObjectHolder(registryName = "minecraft:item", value = "gemmary:ruby")
+    public static Item RUBY;
     @ObjectHolder(registryName = "minecraft:item", value = "gemmary:element_oxygen")
     public static Item OXYGEN;
 
     public static void registerGemsAndParts() {
-        registerItem(() -> new GemItem(7.0D), "amethyst");
         registerItem(() -> new GemItem(9.0D), "ruby");
         registerItem(() -> new GemItem(9.0D), "sapphire");
         registerItem(() -> new GemItem(1.0D), "talc");

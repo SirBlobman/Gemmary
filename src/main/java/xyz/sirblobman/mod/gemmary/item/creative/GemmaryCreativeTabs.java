@@ -49,7 +49,7 @@ public final class GemmaryCreativeTabs {
     }
 
     private static void registerMainCreativeTab(Register e) {
-        Supplier<ItemStack> icon = () -> new ItemStack(GemmaryItems.AMETHYST);
+        Supplier<ItemStack> icon = () -> new ItemStack(GemmaryItems.RUBY);
         registerCreativeTab(e, "main", icon, GemmaryCreativeTabs::getMainDisplayItems, null);
     }
 
