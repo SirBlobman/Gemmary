@@ -9,7 +9,9 @@ import net.minecraft.world.item.Item;
 import xyz.sirblobman.mod.gemmary.GemmaryMod;
 import xyz.sirblobman.mod.gemmary.item.GemmaryItems;
 
+import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
+import net.minecraftforge.client.model.generators.ModelFile.UncheckedModelFile;
 import net.minecraftforge.client.model.generators.ModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
@@ -36,13 +38,20 @@ public final class GemmaryItemModelProvider extends ItemModelProvider {
         Collection<RegistryObject<Item>> elements = GemmaryItems.ELEMENTS.getEntries();
         for (RegistryObject<Item> object : elements) {
             ResourceLocation resourceLocation = object.getId();
+            String path = resourceLocation.getPath();
+
             ResourceLocation textureLocation = new ResourceLocation(resourceLocation.getNamespace(),
-                    "item/" + resourceLocation.getPath());
+                    "item/element/" + resourceLocation.getPath());
             if (!existingFileHelper.exists(textureLocation, ModelProvider.TEXTURE)) {
                 continue;
             }
 
-            basicItem(resourceLocation);
+            ResourceLocation generatedItem = new ResourceLocation("minecraft", "item/generated");
+            UncheckedModelFile modelFile = new UncheckedModelFile(generatedItem);
+
+            ItemModelBuilder builder = getBuilder(path);
+            builder.parent(modelFile);
+            builder.texture("layer0", textureLocation);
         }
     }
 }

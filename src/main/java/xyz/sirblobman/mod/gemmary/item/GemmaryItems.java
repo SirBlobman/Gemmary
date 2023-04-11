@@ -71,7 +71,7 @@ public final class GemmaryItems {
         registerElement(() -> new ElementItem("Al", 13, 26.982D), "aluminium");
         registerElement(() -> new ElementItem("Si", 14, 28.085D), "silicon");
         registerElement(() -> new ElementItem("P", 15, 30.974D), "phosphorus");
-        registerElement(() -> new ElementItem("s", 16, 32.06D), "sulfur");
+        registerElement(() -> new ElementItem("S", 16, 32.06D), "sulfer");
         registerElement(() -> new ElementItem("Cl", 17, 35.45D), "chlorine");
         registerElement(() -> new ElementItem("Ar", 18, 39.948D), "argon");
 
@@ -164,7 +164,7 @@ public final class GemmaryItems {
         registerElement(() -> new ElementItem("Cf", 98, 251.0D), "californium");
         registerElement(() -> new ElementItem("Es", 99, 252.0D), "einsteinium");
         registerElement(() -> new ElementItem("Fm", 100, 257.0D), "fermium");
-        registerElement(() -> new ElementItem("Md", 101, 258.0D), "medelevium");
+        registerElement(() -> new ElementItem("Md", 101, 258.0D), "mendelevium");
         registerElement(() -> new ElementItem("No", 102, 259.0D), "nobelium");
         registerElement(() -> new ElementItem("Lr", 103, 266.0D), "lawrencium");
         registerElement(() -> new ElementItem("Rf", 104, 267.0D), "rutherfordium");
@@ -173,14 +173,14 @@ public final class GemmaryItems {
         registerElement(() -> new ElementItem("Bh", 107, 270.0D), "bohrium");
         registerElement(() -> new ElementItem("Hs", 108, 277.0D), "hassium");
         registerElement(() -> new ElementItem("Mt", 109, 278.0D), "meitnerium");
-        registerElement(() -> new ElementItem("Ds", 110, 281.0D), "darmstadtium");
+        registerElement(() -> new ElementItem("Ds", 110, 281.0D), "darmstadium");
         registerElement(() -> new ElementItem("Rg", 111, 282.0D), "roentgenium");
         registerElement(() -> new ElementItem("Cn", 112, 285.0D), "copernicium");
-        registerElement(() -> new ElementItem("Nh", 113, 286.0D), "nihonium");
-        registerElement(() -> new ElementItem("Fl", 114, 289.0D), "flerovium");
-        registerElement(() -> new ElementItem("Mc", 115, 290.0D), "moscovium");
-        registerElement(() -> new ElementItem("Lv", 116, 293.0D), "livermorium");
-        registerElement(() -> new ElementItem("Ts", 117, 294.0D), "tennessine");
-        registerElement(() -> new ElementItem("Og", 118, 294.0D), "oganesson");
+        registerElement(() -> new ElementItem("Uut", 113, 286.0D), "ununtrium");
+        registerElement(() -> new ElementItem("Uuq", 114, 289.0D), "ununquadium");
+        registerElement(() -> new ElementItem("Uup", 115, 290.0D), "ununpentium");
+        registerElement(() -> new ElementItem("Uuh", 116, 293.0D), "ununhexium");
+        registerElement(() -> new ElementItem("Uus", 117, 294.0D), "ununseptium");
+        registerElement(() -> new ElementItem("Uuo", 118, 294.0D), "ununoctium");
     }
 }

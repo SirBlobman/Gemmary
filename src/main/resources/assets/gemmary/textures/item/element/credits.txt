@@ -1,0 +1,5 @@
+Periodic Table Elements split from Wikipedia source files.
+https://commons.wikimedia.org/wiki/File:Periodic_table_large.svg
+
+./periodic_table.svg
+./periodic_table.png
