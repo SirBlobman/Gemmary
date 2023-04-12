@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gemmary:block/topaz_block"
+    }
+  }
+}

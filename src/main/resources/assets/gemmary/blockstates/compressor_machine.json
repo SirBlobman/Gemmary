@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "gemmary:block/compressor_machine"
+    },
+    "facing=east": {
+      "model": "gemmary:block/compressor_machine",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "gemmary:block/compressor_machine",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "gemmary:block/compressor_machine",
+      "y": 270
+    }
+  }
+}
