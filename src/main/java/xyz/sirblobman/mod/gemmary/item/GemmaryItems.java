@@ -10,6 +10,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.ObjectHolder;
+import net.minecraftforge.registries.RegistryObject;
 
 public final class GemmaryItems {
     public static final DeferredRegister<Item> ITEMS =
@@ -25,8 +26,8 @@ public final class GemmaryItems {
         ELEMENTS.register(eventBus);
     }
 
-    private static void registerItem(Supplier<Item> supplier, String id) {
-        ITEMS.register(id, supplier);
+    private static RegistryObject<Item> registerItem(Supplier<Item> supplier, String id) {
+        return ITEMS.register(id, supplier);
     }
 
     private static void registerElement(Supplier<ElementItem> supplier, String id) {
@@ -183,4 +184,6 @@ public final class GemmaryItems {
         registerElement(() -> new ElementItem("Uus", 117, 294.0D), "ununseptium");
         registerElement(() -> new ElementItem("Uuo", 118, 294.0D), "ununoctium");
     }
+
+    public static final RegistryObject<Item> CLOTH = registerItem(ClothItem::new, "cloth");
 }
