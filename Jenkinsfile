@@ -27,5 +27,17 @@ pipeline {
         success {
             archiveArtifacts artifacts: 'build/libs/gemmary-*.jar', fingerprint: true
         }
+
+        always {
+            script {
+                discordSend webhookURL: DISCORD_URL, title: "Gemmary Mod", link: "${env.BUILD_URL}",
+                        result: currentBuild.currentResult,
+                        description: """\
+                                **Branch:** ${env.GIT_BRANCH}
+                                **Build:** ${env.BUILD_NUMBER}
+                                **Status:** ${currentBuild.currentResult}""".stripIndent(),
+                        enableArtifactsList: false, showChangeset: true
+            }
+        }
     }
 }
