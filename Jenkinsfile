@@ -5,6 +5,10 @@ pipeline {
         githubProjectProperty(projectUrlStr: "https://github.com/SirBlobman/Gemmary")
     }
 
+    environment {
+        DISCORD_URL = credentials('PUBLIC_DISCORD_WEBHOOK')
+    }
+
     triggers {
         githubPush()
     }
